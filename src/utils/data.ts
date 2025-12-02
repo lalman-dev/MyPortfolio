@@ -73,10 +73,15 @@ export interface SocialLinks {
   name: string;
   icon: IconType;
   url: string;
-  color: string; // Tailwind hover text color
-  bgColor: string; // Tailwind hover background color
+  color: string;
+  bgColor: string;
 }
 
+export interface ContactInfo {
+  icon: LucideIcon;
+  label: string;
+  value: string;
+}
 // -------------------- Data --------------------
 
 export const SKILL_CATEGORY: SkillCategory[] = [
@@ -210,5 +215,23 @@ export const SOCIAL_LINKS: SocialLinks[] = [
     url: "mailto:lalman.dev7@gmail.com",
     color: "hover:text-red-500",
     bgColor: "hover:bg-red-100",
+  },
+];
+
+export const CONTACT_INFO = [
+  {
+    icon: MapPin,
+    label: "Location",
+    value: "Uttar Pradesh, INDIA",
+  },
+  {
+    icon: Mail,
+    label: "Email",
+    value: "lalman.dev7@gmail.com",
+  },
+  {
+    icon: Phone,
+    label: "Phone",
+    value: "+91-8858274145",
   },
 ];
