@@ -29,8 +29,8 @@ const Navbar = () => {
           whileHover={{ scale: 1.05 }}
           className="flex items-center space-x-2"
         >
-          <Code2 size={24} className="text-blue-800" />
-          <span className="text-lg ml-1 bg-linear-to-r from-blue-600 to-purple-400 bg-clip-text text-transparent">
+          <Code2 size={24} className="text-blue-600" />
+          <span className="text-lg ml-1 bg-linear-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
             Lalman
           </span>
         </motion.div>
@@ -42,7 +42,7 @@ const Navbar = () => {
               <motion.button
                 whileHover={{ y: -2 }}
                 onClick={() => scrollToSection(item.toLocaleLowerCase())}
-                className={`text-sm uppercase tracking-wider transition-colors ${
+                className={`text-sm uppercase tracking-wider transition-colors duration-300 ${
                   theme === "dark"
                     ? "text-gray-400 hover:text-white"
                     : "text-gray-600 hover:text-gray-900"
@@ -57,7 +57,7 @@ const Navbar = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={toggleTheme}
-            className={`p-2 rounded-full transition-colors ${
+            className={`p-2 rounded-full transition-colors duration-300 ${
               theme === "dark"
                 ? "text-gray-400 hover:text-white hover:bg-gray-800"
                 : "text-gray-600 hover:text-gray-900 hover:bg-gray-200"
@@ -86,7 +86,7 @@ const Navbar = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`p-2 rounded-full transition-colors ${
+            className={`p-2 rounded-full transition-colors duration-300 ${
               theme === "dark"
                 ? "text-gray-400 hover:text-white hover:bg-gray-800"
                 : "text-gray-600 hover:text-gray-900 hover:bg-gray-200"
@@ -116,7 +116,7 @@ const Navbar = () => {
                   href={`#${item.toLowerCase()}`}
                   whileHover={{ x: 5 }}
                   onClick={() => scrollToSection(item.toLowerCase())}
-                  className={`block w-full text-left py-2 text-sm uppercase tracking-wider transition-colors ${
+                  className={`block w-full text-left py-2 text-sm uppercase tracking-wider transition-colors duration-300 ${
                     theme === "dark"
                       ? "text-gray-400 hover:text-white"
                       : "text-gray-600 hover:text-gray-900"

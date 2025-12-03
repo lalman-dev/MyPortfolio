@@ -1,3 +1,4 @@
+import HeroSection from "./components/HeroSection";
 import Navbar from "./components/Navbar";
 import { ThemeProvider } from "./context/ThemeContext";
 
@@ -6,6 +7,7 @@ const App = () => {
     <ThemeProvider>
       <div>
         <Navbar />
+        <HeroSection />
       </div>
     </ThemeProvider>
   );
