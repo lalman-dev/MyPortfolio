@@ -8,9 +8,15 @@ import {
   Mail,
   MapPin,
   Phone,
+  Server,
+  Wrench,
+  Users,
 } from "lucide-react";
 
 import { FiGithub, FiLinkedin, FiTwitter } from "react-icons/fi";
+import { SiJavascript, SiHtml5, SiCss3, SiFigma } from "react-icons/si";
+import { VscNotebook } from "react-icons/vsc";
+import { VscRocket } from "react-icons/vsc";
 import type { LucideIcon } from "lucide-react";
 import type { IconType } from "react-icons";
 
@@ -18,7 +24,7 @@ import type { IconType } from "react-icons";
 
 export interface Skill {
   name: string;
-  level: number; 
+  level: number;
   color: string;
 }
 
@@ -37,13 +43,14 @@ export interface Project {
   liveUrl: string;
   gitHubUrl: string;
   category: string;
-  featured?: boolean; 
+  featured?: boolean;
   image?: string;
 }
 
 export interface TechItem {
   name: string;
   icon?: IconType | LucideIcon;
+  color: string;
 }
 
 export interface JourneyStep {
@@ -52,7 +59,7 @@ export interface JourneyStep {
   company: string;
   description: string;
   icon: LucideIcon;
-  color: string; 
+  color: string;
 }
 
 export interface Passion {
@@ -84,21 +91,56 @@ export const SKILL_CATEGORY: SkillCategory[] = [
     skills: [
       { name: "React", level: 95, color: "bg-blue-600" },
       { name: "TypeScript", level: 85, color: "bg-blue-700" },
-      { name: "NextJS", level: 90, color: "bg-gray-800" },
+      { name: "NextJS", level: 90, color: "bg-gray-500" },
       { name: "TailwindCSS", level: 92, color: "bg-cyan-600" },
       { name: "FramerMotion", level: 82, color: "bg-red-600" },
+    ],
+  },
+  {
+    title: "Backend",
+    icon: Server,
+    description:
+      "While my primary focus is frontend, I’m also exploring backend tools to understand full‑stack development",
+    skills: [
+      { name: "Node.js", level: 70, color: "bg-green-600" },
+      { name: "Express.js", level: 55, color: "bg-gray-700" },
+      { name: "MongoDB", level: 60, color: "bg-green-800" },
+      { name: "Firebase", level: 50, color: "bg-yellow-500" },
+    ],
+  },
+  {
+    title: "Tools",
+    icon: Wrench,
+    description: "Working with modern development and collaboration tools",
+    skills: [
+      { name: "Git", level: 85, color: "bg-orange-600" },
+      { name: "GitHub", level: 88, color: "bg-gray-800" },
+      { name: "VS Code", level: 90, color: "bg-blue-500" },
+      { name: "Figma", level: 75, color: "bg-pink-500" },
+      { name: "Notion", level: 70, color: "bg-gray-500" },
+    ],
+  },
+  {
+    title: "Soft Skills",
+    icon: Users,
+    description: "Personal qualities that support teamwork and growth",
+    skills: [
+      { name: "Problem Solving", level: 85, color: "bg-indigo-600" },
+      { name: "Communication", level: 80, color: "bg-purple-500" },
+      { name: "Adaptability", level: 78, color: "bg-teal-500" },
+      { name: "Collaboration", level: 82, color: "bg-pink-400" },
+      { name: "Continuous Learning", level: 90, color: "bg-green-500" },
     ],
   },
   //I will add Backend, Tools, Soft Skills categories later
 ];
 
 export const TECH_STACK: TechItem[] = [
-  { name: "JavaScript" },
-  { name: "HTML5" },
-  { name: "CSS3" },
-  { name: "Vite" },
-  { name: "Figma" },
-  { name: "Notion" },
+  { name: "JavaScript", icon: SiJavascript, color: "text-yellow-500" },
+  { name: "HTML5", icon: SiHtml5, color: "text-orange-500" },
+  { name: "CSS3", icon: SiCss3, color: "text-blue-500" },
+
+  { name: "Vite", icon: VscRocket, color: "text-purple-500" },
 ];
 
 export const PROJECTS: Project[] = [

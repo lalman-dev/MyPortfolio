@@ -3,6 +3,12 @@ import { ArrowDown, Mail } from "lucide-react";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
 import { useTheme } from "./../context/ThemeContext";
 import PROFILE_PIC from "/src/assets/profilePIc.jpeg";
+import {
+  containerVariants,
+  imageVariants,
+  itemVariants,
+  textVariants,
+} from "../utils/variants";
 
 const HeroSection = () => {
   const { theme } = useTheme();
@@ -14,51 +20,6 @@ const HeroSection = () => {
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
-  };
-  const containerVarients = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      },
-    },
-  };
-
-  const itemVarients = {
-    hidden: { y: 30, opacity: 0 },
-    visible: {
-      opacity: 1,
-      Transition: {
-        duration: 0.8,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const textVarients = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      opacity: 1,
-      Transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const imageVarients = {
-    hidden: { x: 50, opacity: 0 },
-    visible: {
-      x: 0,
-      opacity: 1,
-      Transition: {
-        duration: 1,
-        ease: "easeOut",
-        delay: 0.5,
-      },
-    },
   };
 
   return (
@@ -109,11 +70,11 @@ const HeroSection = () => {
             <motion.div
               initial="hidden"
               animate="visible"
-              variants={containerVarients}
+              variants={containerVariants}
               className="text-center"
             >
               {/* Profile Image - Mobile */}
-              <motion.div variants={imageVarients} className="mb-8">
+              <motion.div variants={imageVariants} className="mb-8">
                 <div className="w-32 h-32 mx-auto relative">
                   <motion.div
                     whileHover={{
@@ -164,7 +125,7 @@ const HeroSection = () => {
               </motion.div>
               {/* Content - Mobile */}
               <motion.div
-                variants={textVarients}
+                variants={textVariants}
                 className={`text-sm uppercase tracking-widest ${
                   theme === "dark" ? "text-gray-500" : "text-gray-600"
                 } mb-4`}
@@ -172,7 +133,7 @@ const HeroSection = () => {
                 Frontend Engineer
               </motion.div>
               <motion.h1
-                variants={itemVarients}
+                variants={itemVariants}
                 className="text-3xl md:text-5xl font-light mb-6 leading-tight"
               >
                 <span
@@ -196,7 +157,7 @@ const HeroSection = () => {
               </motion.h1>
 
               <motion.p
-                variants={itemVarients}
+                variants={itemVariants}
                 className={`text-base md:text-lg mb-8 max-w-xl mx-auto font-light leading-relaxed ${
                   theme === "dark" ? "text-gray-400" : "text-gray-600"
                 }`}
@@ -206,7 +167,7 @@ const HeroSection = () => {
               </motion.p>
               {/* CTA Buttons - for mobile */}
               <motion.div
-                variants={itemVarients}
+                variants={itemVariants}
                 className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8"
               >
                 <motion.button
@@ -233,7 +194,7 @@ const HeroSection = () => {
 
               {/* Social Links - Mobile */}
               <motion.div
-                variants={itemVarients}
+                variants={itemVariants}
                 className="flex justify-center space-x-6 mb-8"
               >
                 {[
@@ -257,7 +218,7 @@ const HeroSection = () => {
               </motion.div>
               {/* Tech Stack - Mobile */}
               <motion.div
-                variants={itemVarients}
+                variants={itemVariants}
                 className="flex justify-center items-center space-x-6 text-xs uppercase tracking-widest flex-wrap"
               >
                 <span
@@ -304,11 +265,11 @@ const HeroSection = () => {
             <motion.div
               initial="hidden"
               animate="visible"
-              variants={containerVarients}
+              variants={containerVariants}
               className="text-left"
             >
               <motion.div
-                variants={textVarients}
+                variants={textVariants}
                 className={`text-sm uppercase tracking-widest ${
                   theme === "dark" ? "text-gray-500" : "text-gray-600"
                 } mb-6`}
@@ -317,7 +278,7 @@ const HeroSection = () => {
                 Frontend Engineer
               </motion.div>
               <motion.h1
-                variants={itemVarients}
+                variants={itemVariants}
                 className="text-5xl xl:text-7xl font-light leading-tight"
               >
                 <span
@@ -340,7 +301,7 @@ const HeroSection = () => {
                 </span>
               </motion.h1>
               <motion.p
-                variants={itemVarients}
+                variants={itemVariants}
                 className={`text-xl mb-12 font-light leading-relaxed max-w-lg  ${
                   theme === "dark" ? "text-gray-400" : "text-gray-600"
                 }`}
@@ -349,7 +310,7 @@ const HeroSection = () => {
                 blends clean aesthetics with seamless user experiences.
               </motion.p>
               {/* CTA Buttons - for desktop  */}
-              <motion.div variants={itemVarients} className="flex gap-6 mb-8">
+              <motion.div variants={itemVariants} className="flex gap-6 mb-8">
                 <motion.button
                   whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.9 }}
@@ -373,7 +334,7 @@ const HeroSection = () => {
               </motion.div>
               {/* Social Links - desktop */}
               <motion.div
-                variants={itemVarients}
+                variants={itemVariants}
                 className="flex space-x-6 mb-12"
               >
                 {[
@@ -396,17 +357,19 @@ const HeroSection = () => {
                 ))}
               </motion.div>
             </motion.div>
+
             {/* Right side -Profile Image */}
+
             <motion.div
               initial="hidden"
               animate="visible"
-              variants={imageVarients}
+              variants={imageVariants}
               className="flex justify-center lg:justify-end"
             >
               <div className="relative">
                 {/* Tech Stack Desktop */}
                 <motion.div
-                  variants={itemVarients}
+                  variants={itemVariants}
                   className="flex items-center space-x-8 text-sm uppercase tracking-widest absolute -top-20"
                 >
                   <span
@@ -462,7 +425,9 @@ const HeroSection = () => {
                       className="w-full h-full object-cover"
                     />
                   </motion.div>
+
                   {/* Decorative elments */}
+
                   <motion.div
                     animate={{
                       rotate: 360,
@@ -497,6 +462,7 @@ const HeroSection = () => {
           </div>
 
           {/* Scroll Indicator */}
+
           <motion.div
             animate={{
               y: [0, 8, 0],
