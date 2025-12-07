@@ -1,10 +1,18 @@
 import { motion } from "framer-motion";
-import type { Variant } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { FiGithub } from "react-icons/fi";
 
-const ProjectCard = ({ project, index, theme }) => {
-  const cardVarient = {
+import type { Variants } from "framer-motion";
+import type { Project } from "../utils/data";
+
+interface ProjectCardProps {
+  project: Project;
+  index: number;
+  theme: "dark" | "light";
+}
+
+const ProjectCard: React.FC<ProjectCardProps> = ({ project, theme }) => {
+  const cardVariant: Variants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
@@ -17,7 +25,7 @@ const ProjectCard = ({ project, index, theme }) => {
   };
   return (
     <motion.div
-      variants={cardVarient}
+      variants={cardVariant}
       whileHover={{
         y: -8,
         transition: { duration: 0.3, ease: "easeOut" },
@@ -49,11 +57,7 @@ const ProjectCard = ({ project, index, theme }) => {
           {/* Category Badge */}
           <div className="absolute top-4 right-4">
             <span
-              className={`text-sm px-3 py-1 rounded-full font-medium ${
-                theme === "dark"
-                  ? "bg-gray-800-80 text-gray-300"
-                  : "bg-white/80 text-gray-700"
-              } backdrop-blur-sm`}
+              className={`text-sm px-3 py-1 rounded-full font-medium bg-white/80 text-gray-700 backdrop-blur-sm`}
             >
               {project.category}
             </span>
@@ -68,7 +72,7 @@ const ProjectCard = ({ project, index, theme }) => {
           >
             <motion.a
               href={project.liveUrl}
-              initial={{ y: 20, opacity: 0.5 }}
+              initial={{ y: 10, opacity: 0.5 }}
               whileHover={{ y: 0, opacity: 1, scale: 1.05 }}
               transition={{ duration: 0.3, delay: 0.1 }}
               className="bg-linear-to-r from-blue-400 to-pink-400 hover:bg-blue-400 hover:from-blue-500 hover:to-pink-500 text-white px-4 py-2 rounded-full flex items-center space-x-2 text-sm font-medium transition-colors"
@@ -78,16 +82,45 @@ const ProjectCard = ({ project, index, theme }) => {
             </motion.a>
 
             <motion.a
-              href={project.githubUrl}
-              initial={{ y: 20, opacity: 0.5 }}
+              href={project.gitHubUrl}
+              initial={{ y: 10, opacity: 0.5 }}
               whileHover={{ y: 0, opacity: 1, scale: 1.05 }}
               transition={{ duration: 0.3, delay: 0.2 }}
-              className={`border-2 border-white text-white hover:bg-white hove:text-gray-900 px-4 py-2 rounded-full flex items-center space-x-2 text-sm font-medium transition-all`}
+              className={`border-2 border-white text-white hover:bg-white hover:text-gray-900 hover:border-gray-600 px-4 py-2 rounded-full flex items-center space-x-2 text-sm font-medium transition-all`}
             >
               <FiGithub size={16} />
               <span>GitHub</span>
             </motion.a>
           </motion.div>
+        </div>
+
+        {/* Project description */}
+        <div className="p-6">
+          <h3 className="text-xl font-medium mb-3 group-hover:text-blue-500 transition-colors">
+            {project.title}
+          </h3>
+          <p
+            className={`text-sm leading-relaxed mb-4 ${
+              theme === "dark" ? "text-gray-400" : "text-gray-600"
+            }`}
+          >
+            {project.description}
+          </p>
+          {/* tech stack */}
+          <div className="flex flex-wrap gap-2">
+            {project.tag.map((tag, tagIndex) => (
+              <span
+                key={tagIndex}
+                className={`text-xs px-3 py-1 rounded-full ${
+                  theme === "dark"
+                    ? "bg-gray-800 text-gray-300"
+                    : "bg-gray-100 text-gray-700"
+                }`}
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </motion.div>

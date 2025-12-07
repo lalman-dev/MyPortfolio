@@ -13,6 +13,10 @@ import {
   Users,
 } from "lucide-react";
 
+import project1 from "../assets/hackernews.png";
+import project3 from "../assets/interviewapp.png";
+import project2 from "../assets/resumeBuilder.png";
+
 import { FiGithub, FiLinkedin, FiTwitter } from "react-icons/fi";
 import { SiJavascript, SiHtml5, SiCss3 } from "react-icons/si";
 import { VscRocket } from "react-icons/vsc";
@@ -43,7 +47,7 @@ export interface Project {
   gitHubUrl: string;
   category: string;
   featured?: boolean;
-  image?: string;
+  image: string;
 }
 
 export interface TechItem {
@@ -145,6 +149,7 @@ export const PROJECTS: Project[] = [
   {
     id: 1,
     title: "HackerNews Portal",
+    image: project1,
     description:
       "A modern HackerNews web built with React, TailwindCSS, and Framer Motion for dynamic UI.",
     tag: ["React", "TailwindCSS", "FramerMotion", "HackerNews API"],
@@ -156,6 +161,7 @@ export const PROJECTS: Project[] = [
   {
     id: 2,
     title: "AI Resume Studio",
+    image: project2,
     description:
       "An all-in-one AI-powered platform to create professional resumes and instantly rate them against industry standards.",
     tag: ["React", "TailwindCSS", "TypeScript", "FramerMotion", "OpenAI API"],
@@ -167,6 +173,7 @@ export const PROJECTS: Project[] = [
   {
     id: 3,
     title: "AI Interview Prep",
+    image: project3,
     description:
       "An intelligent app that helps users practice interviews with AI-generated questions, feedback, and performance insights.",
     tag: ["React", "TailwindCSS", "TypeScript", "FramerMotion", "OpenAI API"],
@@ -230,14 +237,14 @@ export const SOCIAL_LINKS: SocialLinks[] = [
   {
     name: "LinkedIn",
     icon: FiLinkedin,
-    url: "https://www.linkedin.com/in/lalman-dv",
+    url: "https://www.linkedin.com/in/lalman-lalman-34490a163/",
     color: "hover:text-blue-500",
     bgColor: "hover:bg-blue-100",
   },
   {
     name: "Twitter",
     icon: FiTwitter,
-    url: "https://x.com/lalman_dv",
+    url: "https://x.com/imchaudhary2",
     color: "hover:text-sky-400",
     bgColor: "hover:bg-sky-100",
   },
