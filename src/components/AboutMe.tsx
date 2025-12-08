@@ -1,12 +1,5 @@
 import { useRef } from "react";
-import {
-  delay,
-  motion,
-  stagger,
-  useInView,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useTheme } from "../context/ThemeContext";
 import { JOURNEY_STEPS, PASSION } from "../utils/data";
 
@@ -259,7 +252,10 @@ const AboutMe = () => {
           variants={containerVariants}
           className="text-center mt-20"
         >
-          <motion.div variants={itemVariants} className="flex flex-col items-center space-y-6">
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-col items-center space-y-6"
+          >
             <p
               className={`text-lg ${
                 theme === "dark" ? "text-gray-400" : "text-gray-600"
