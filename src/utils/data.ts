@@ -11,6 +11,9 @@ import {
   Server,
   Wrench,
   Users,
+  User,
+  Rocket,
+  ChevronsLeftRightEllipsis,
 } from "lucide-react";
 
 import project1 from "../assets/hackernews.png";
@@ -195,13 +198,40 @@ export const JOURNEY_STEPS: JourneyStep[] = [
     color: "bg-green-500",
   },
   {
-    year: " mid 2025",
+    year: "mid 2025",
     title: "Frontend development journey",
     company: "self-taught",
     description:
-      "Started Transition into structured learning with React, TypeScript, and TailwindCSS, focusing on creating responsive interfaces and modern web applications.",
+      "Started Transitioning into structured learning with React, TypeScript, and TailwindCSS, focusing on creating responsive interfaces and modern web applications.",
     icon: GraduationCap,
     color: "bg-pink-500",
+  },
+  {
+    year: "late 2025",
+    title: "Making projects",
+    company: "community",
+    description:
+      "Started making projects and gaining experience in code, issue tracking, and  problem-solving.",
+    icon: ChevronsLeftRightEllipsis,
+    color: "bg-purple-500",
+  },
+  {
+    year: "late 2025",
+    title: "Portfolio & Personal Branding",
+    company: "self-taught",
+    description:
+      "Built and refined a personal portfolio from scratch, emphasizing accessibility, recruiter appeal, and cohesive branding with custom thumbnails, gradients, and a unique 'L' logo.",
+    icon: User,
+    color: "bg-blue-500",
+  },
+  {
+    year: "future",
+    title: "Professional Opportunities",
+    company: "aspiring",
+    description:
+      "Looking forward to apply my skills in real-world projects, joining a team where I can grow as a frontend developer, and continue crafting meaningful digital experiences.",
+    icon: Rocket,
+    color: "bg-yellow-500",
   },
 ];
 

@@ -1,3 +1,4 @@
+import AboutMe from "./components/AboutMe";
 import HeroSection from "./components/HeroSection";
 import Navbar from "./components/Navbar";
 import Projects from "./components/Projects";
@@ -12,6 +13,7 @@ const App = () => {
         <HeroSection />
         <Skills />
         <Projects />
+        <AboutMe />
       </div>
     </ThemeProvider>
   );

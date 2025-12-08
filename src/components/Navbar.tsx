@@ -52,34 +52,53 @@ const Navbar = () => {
               </motion.button>
             </li>
           ))}
-
+          {/* theme toggle */}
           <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            whileTap={{ scale: 0.9 }}
             onClick={toggleTheme}
-            className={`p-2 rounded-full transition-colors duration-300 ${
-              theme === "dark"
-                ? "text-gray-400 hover:text-white hover:bg-gray-800"
-                : "text-gray-600 hover:text-gray-900 hover:bg-gray-200"
-            }`}
+            className={`relative flex items-center w-16 h-7 rounded-full transition-all duration-900 
+    ${theme === "dark" ? "bg-gray-600" : "bg-gray-500"}`}
           >
-            {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+            <Sun
+              size={16}
+              className={`absolute left-2 transition-colors duration-300 `}
+            />
+            <Moon
+              size={16}
+              className={`absolute right-2 transition-colors duration-300`}
+            />
+            <motion.div
+              layout
+              transition={{ type: "spring", stiffness: 200, damping: 7 }}
+              className={`absolute w-7 h-5 rounded-full 
+      ${theme === "dark" ? "bg-gray-900 right-0.5" : "bg-white left-0.5"}`}
+            />
           </motion.button>
         </ul>
         {/* Mobile Menu Button */}
         <li className="md:hidden flex items-center space-x-4 ">
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          <motion.button
+            whileTap={{ scale: 0.9 }}
             onClick={toggleTheme}
-            className={`p-2 rounded-full transition-colors ${
-              theme === "dark"
-                ? "text-gray-400 hover:text-white hover:bg-gray-800"
-                : "text-gray-600 hover:text-gray-900 hover:bg-gray-200"
-            }`}
+            className={`relative flex items-center w-16 h-7 rounded-full transition-all duration-900 
+    ${theme === "dark" ? "bg-gray-600" : "bg-gray-500"}`}
           >
-            {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
-          </motion.a>
+            <Sun
+              size={16}
+              className={`absolute left-2 transition-colors duration-300 `}
+            />
+            <Moon
+              size={16}
+              className={`absolute right-2 transition-colors duration-300`}
+            />
+            <motion.div
+              layout
+              transition={{ type: "spring", stiffness: 200, damping: 7 }}
+              className={`absolute w-7 h-5 rounded-full shadow-md 
+      ${theme === "dark" ? "bg-gray-900 right-0.5" : "bg-white left-0.5"}`}
+            />
+          </motion.button>
+
           <motion.button
             aria-expanded={isMenuOpen}
             aria-controls="mobile-menu"
@@ -101,9 +120,9 @@ const Navbar = () => {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.ul
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, x: 50, y: -50 }}
+            animate={{ opacity: 1, x: 0, y: 0 }}
+            exit={{ opacity: 0, x: 50, y: -50 }}
             className={`md:hidden mt-4 p-4 rounded-lg ${
               theme === "dark" ? "bg-gray-900" : " bg-white"
             } border ${

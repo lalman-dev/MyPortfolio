@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { FiGithub } from "react-icons/fi";
-
-import type { Variants } from "framer-motion";
+import { cardVariant } from "../utils/variants";
 import type { Project } from "../utils/data";
 
 interface ProjectCardProps {
@@ -12,17 +11,7 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, theme }) => {
-  const cardVariant: Variants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
+  
   return (
     <motion.div
       variants={cardVariant}
