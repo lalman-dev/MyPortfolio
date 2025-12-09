@@ -9,6 +9,7 @@ import {
   timelineVariants,
   stepVariants,
 } from "../utils/variants";
+
 const AboutMe = () => {
   const { theme } = useTheme();
   const sectionRef = useRef(null);
@@ -261,9 +262,11 @@ const AboutMe = () => {
                 theme === "dark" ? "text-gray-400" : "text-gray-600"
               }`}
             >
-              Ready to turn your vision into reality?
+              Ready to bring your vision to reality?
             </p>
             <motion.button
+              type="button"
+              aria-label="Start collaboration"
               whileHover={{ y: -2, scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-linear-to-r from-blue-600 to-purple-600 text-white hover:from-blue-500 hover:to-purple-500 px-8 py-3 rounded-full text-sm uppercase tracking-wider font-medium transition-all duration-300"

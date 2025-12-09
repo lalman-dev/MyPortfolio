@@ -1,4 +1,5 @@
 import AboutMe from "./components/AboutMe";
+import ContactSection from "./components/ContactSection";
 import HeroSection from "./components/HeroSection";
 import Navbar from "./components/Navbar";
 import Projects from "./components/Projects";
@@ -14,6 +15,7 @@ const App = () => {
         <Skills />
         <Projects />
         <AboutMe />
+        <ContactSection />
       </div>
     </ThemeProvider>
   );
