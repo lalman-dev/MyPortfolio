@@ -6,6 +6,7 @@ import { CONTACT_INFO, SOCIAL_LINKS } from "../utils/data";
 import { containerVariants, itemVariants } from "../utils/variants";
 import TextInput from "./TextInput";
 import SuccessModel from "./SuccessModel";
+import emailjs from "emailjs-com";
 
 type FormKeys = "name" | "email" | "message";
 
@@ -21,6 +22,7 @@ const ContactSection = () => {
     email: "",
     message: "",
   });
+
   const [showSuccess, setShowSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const sectionRef = useRef(null);
@@ -36,16 +38,28 @@ const ContactSection = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-
-    //simulating API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    setIsSubmitting(false);
-    setShowSuccess(true);
-    setFormData({ name: "", email: "", message: "" });
-
-    //Auto Hide success modal after 3 sec
-    setTimeout(() => setShowSuccess(false), 3000);
+    try {
+      const result = await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID as string,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string
+      );
+      if (result.status === 200) {
+        setShowSuccess(true);
+        setFormData({ name: "", email: "", message: "" });
+        setTimeout(() => setShowSuccess(false), 3000);
+      }
+    } catch (error) {
+      console.error("EmailJS error:", error);
+      alert("There was an error sending your message. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   return (
     <section
@@ -122,7 +136,7 @@ const ContactSection = () => {
               }`}
             >
               <h3 className="text-2xl font-medium mb-8">Send me a message</h3>
-              <div className="space-y-6">
+              <form className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <TextInput
                     theme={theme}
@@ -178,7 +192,7 @@ const ContactSection = () => {
                     </>
                   )}
                 </motion.button>
-              </div>
+              </form>
             </motion.div>
           </motion.div>
           {/* Contact Info & Social Links */}
@@ -303,6 +317,10 @@ const ContactSection = () => {
             <motion.button
               whileHover={{ y: -2, scale: 1.03 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() =>
+                (window.location.href =
+                  "mailto:lalman.dev7@gmail.com?subject=Schedule a Call")
+              }
               className={`px-6 py-3 rounded-full border font-medium transition-all duration-300 bg-linear-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white`}
             >
               Schedule a Call

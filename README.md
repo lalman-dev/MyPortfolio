@@ -1,73 +1,62 @@
-# React + TypeScript + Vite
+# 🚀 Lalman's Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Crafting digital experiences with **passion, precision, and a touch of magic** ✨  
+This is my personal portfolio built to showcase projects, skills, and creativity as a frontend developer.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌟 Features
 
-## React Compiler
+- 🎨 **Modern UI/UX** — Responsive, accessible, recruiter‑friendly design
+- ⚡ **Tech Stack** — Built with React, TypeScript, Tailwind CSS, and Framer Motion
+- 🖼️ **Windows‑style desktop experience** — Interactive taskbar, start menu, and draggable windows
+- 📂 **Project Showcase** — Custom thumbnails, gradients, and branding for each project
+- 📬 **Functional Contact Form** — Powered by EmailJS, recruiters can reach me directly
+- 🌗 **Theme Toggle** — Light and dark modes for a personalized experience
+- 🔄 **Smooth Animations** — Motion effects for a lively, polished feel
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+| Category      | Tools & Libraries         |
+| ------------- | ------------------------- |
+| Framework     | React + TypeScript        |
+| Styling       | Tailwind CSS              |
+| Animations    | Framer Motion             |
+| Icons         | Lucide React, React Icons |
+| Email Service | EmailJS                   |
+| Build Tool    | Vite                      |
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 📸 Screenshots
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Portfolio Desktop
+
+---
+
+## 📬 Contact
+
+Want to collaborate or discuss opportunities?
+
+- **Email:** [lalman.dev7@gmail.com](mailto:lalman.dev7@gmail.com)
+- **GitHub:** [github.com/lalman-dv](https://github.com/lalman-dv)
+- **LinkedIn:** [https://www.linkedin.com/in/lalman-lalman-34490a163/](https://www.linkedin.com/in/lalman-lalman-34490a163/)
+- **Twitter:** [twitter.com/lalman](https://x.com/imchaudhary2)
+
+---
+
+## ⚡ Quick Start
+
+Clone the repo and run locally:
+
+```bash
+git clone https://github.com/lalman-dv/myportfolio.git
+cd portfolio
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+📝 License
+© Lalman 2025 · Built with React, TypeScript, Motion & Tailwind · Designed with care
