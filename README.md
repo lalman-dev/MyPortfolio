@@ -4,6 +4,15 @@ Crafting digital experiences with **passion, precision, and a touch of magic** �
 This is my personal portfolio built to showcase projects, skills, and creativity as a frontend developer.
 
 ---
+
+![Live Demo](https://img.shields.io/badge/Live-Demo-00C7B7?style=for-the-badge&logo=vercel&logoColor=white)
+![Responsive](https://img.shields.io/badge/Responsive-Design-38B2AC?style=for-the-badge&logo=responsive&logoColor=white)
+![Dark/Light Mode](https://img.shields.io/badge/Dark/Light-Mode-6B7280?style=for-the-badge&logo=half-life&logoColor=white)
+![Animated UI](https://img.shields.io/badge/Smooth-Animations-0055FF?style=for-the-badge&logo=framer&logoColor=white)
+![Contact Form](https://img.shields.io/badge/Contact-Form-FFB400?style=for-the-badge&logo=email&logoColor=white)
+![Custom Branding](https://img.shields.io/badge/Branded-Thumbnails-8B5CF6?style=for-the-badge&logo=figma&logoColor=white)
+![Windows UI](https://img.shields.io/badge/Desktop-Style%20UI-1E293B?style=for-the-badge&logo=windows&logoColor=white)
+
 🔗 **Live Demo:** [lalman-rho.vercel.app](https://lalman-rho.vercel.app/)
 
 ## 🌟 Features
@@ -20,6 +29,11 @@ This is my personal portfolio built to showcase projects, skills, and creativity
 
 ## 🛠️ Tech Stack
 
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![Framer Motion](https://img.shields.io/badge/Framer%20Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)
+
 | Category      | Tools & Libraries         |
 | ------------- | ------------------------- |
 | Framework     | React + TypeScript        |
@@ -32,16 +46,13 @@ This is my personal portfolio built to showcase projects, skills, and creativity
 ---
 
 ## 📸 Screenshots
+
 ### Portfolio Desktop
 
 <img width="1440" height="900" alt="Screenshot 2025-12-10 at 3 31 37 PM" src="https://github.com/user-attachments/assets/bc84d58a-b32b-4a2c-8376-99cba043f21f" />
 
 <img width="1440" height="900" alt="Screenshot 2025-12-10 at 3 32 17 PM" src="https://github.com/user-attachments/assets/998352d5-cfc7-4c99-b7a4-b08949c9e82d" />
 <img width="1440" height="900" alt="Screenshot 2025-12-10 at 3 32 28 PM" src="https://github.com/user-attachments/assets/6c2c4e7e-9b61-436d-a17b-0e34288d697c" /><img width="1440" height="900" alt="Screenshot 2025-12-10 at 3 32 33 PM" src="https://github.com/user-attachments/assets/c8e6f80f-1739-4d5c-91a4-eb6172801da8" />
-
-
-
-
 
 ---
 
@@ -66,5 +77,6 @@ cd portfolio
 npm install
 npm run dev
 ```
+
 📝 License
 © Lalman 2025 · Built with React, TypeScript, Motion & Tailwind · Designed with care
