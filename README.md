@@ -28,6 +28,7 @@ This is my personal portfolio built to showcase projects, skills, and creativity
 ---
 
 ## 🛠️ Tech Stack
+
 ![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwindcss&logoColor=white)
@@ -36,7 +37,6 @@ This is my personal portfolio built to showcase projects, skills, and creativity
 ![Lucide React](https://img.shields.io/badge/Lucide-React-0A0A0A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![React Icons](https://img.shields.io/badge/React-Icons-CA4245?style=for-the-badge&logo=react&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-Build-646CFF?style=for-the-badge&logo=vite&logoColor=FFD62E)
-
 
 | Category      | Tools & Libraries         |
 | ------------- | ------------------------- |
@@ -65,8 +65,8 @@ This is my personal portfolio built to showcase projects, skills, and creativity
 Want to collaborate or discuss opportunities?
 
 - **Email:** [lalman.dev7@gmail.com](mailto:lalman.dev7@gmail.com)
-- **GitHub:** [github.com/lalman-dv](https://github.com/lalman-dv)
-- **LinkedIn:** [https://www.linkedin.com/in/lalman-lalman-34490a163/](https://www.linkedin.com/in/lalman-lalman-34490a163/)
+- **GitHub:** [github.com/lalman-dev](https://github.com/lalman-dev)
+- **LinkedIn:** [https://www.linkedin.com/in/lalman-lalman-34490a163/](https://www.linkedin.com/in/lalman-dev/)
 - **Twitter:** [https://x.com/imchaudhary2](https://x.com/imchaudhary2)
 
 ---
@@ -76,7 +76,7 @@ Want to collaborate or discuss opportunities?
 Clone the repo and run locally:
 
 ```bash
-git clone https://github.com/lalman-dv/myportfolio.git
+git clone https://github.com/lalman-dev/myportfolio.git
 cd portfolio
 npm install
 npm run dev
