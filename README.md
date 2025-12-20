@@ -66,7 +66,7 @@ Want to collaborate or discuss opportunities?
 
 - **Email:** [lalman.dev7@gmail.com](mailto:lalman.dev7@gmail.com)
 - **GitHub:** [github.com/lalman-dev](https://github.com/lalman-dev)
-- **LinkedIn:** [https://www.linkedin.com/in/lalman-lalman-34490a163/](https://www.linkedin.com/in/lalman-dev/)
+- **LinkedIn:** [https://www.linkedin.com/in/lalman-dev/](https://www.linkedin.com/in/lalman-dev/)
 - **Twitter:** [https://x.com/imchaudhary2](https://x.com/imchaudhary2)
 
 ---
