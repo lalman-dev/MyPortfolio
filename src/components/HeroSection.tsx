@@ -241,7 +241,7 @@ const HeroSection = () => {
                     theme === "dark" ? "text-gray-600" : "text-gray-500"
                   }
                 >
-                  NextJS
+                  Tailwind
                 </span>
                 <span
                   className={
@@ -353,9 +353,9 @@ const HeroSection = () => {
                 className="flex space-x-6 mb-12"
               >
                 {[
-                  { icon: FiGithub, href: "#" },
-                  { icon: FiLinkedin, href: "#" },
-                  { icon: Mail, href: "#" },
+                  { icon: FiGithub, href: "https://github.com/lalman-dev/" },
+                  { icon: FiLinkedin, href: "https://linkedin.com/in/lalman-dev/" },
+                  { icon: Mail, href: "mailto:lalman.dev7@gmail.com" },
                 ].map((social, index) => (
                   <motion.a
                     key={index}
@@ -406,7 +406,7 @@ const HeroSection = () => {
                       theme === "dark" ? "text-gray-600" : "text-gray-500"
                     }
                   >
-                    NextJS
+                    Tailwind
                   </span>
                   <span
                     className={
@@ -498,6 +498,10 @@ const HeroSection = () => {
             }}
             transition={{ duration: 2, repeat: Infinity }}
             className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+            onClick={() => {
+                const section = document.getElementById("footer"); 
+                section?.scrollIntoView({ behavior: "smooth" });
+            }}
           >
             <ArrowDown
               size={20}
