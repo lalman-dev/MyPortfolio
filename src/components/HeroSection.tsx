@@ -198,9 +198,12 @@ const HeroSection = () => {
                 className="flex justify-center space-x-6 mb-8"
               >
                 {[
-                  { icon: FiGithub, href: "#" },
-                  { icon: FiLinkedin, href: "#" },
-                  { icon: Mail, href: "#" },
+                  { icon: FiGithub, href: "https://github.com/lalman-dev/" },
+                  {
+                    icon: FiLinkedin,
+                    href: "https://linkedin.com/in/lalman-dev/",
+                  },
+                  { icon: Mail, href: "mailto:lalman.dev7@gmail.com" },
                 ].map((social, index) => (
                   <motion.a
                     key={index}
@@ -354,7 +357,10 @@ const HeroSection = () => {
               >
                 {[
                   { icon: FiGithub, href: "https://github.com/lalman-dev/" },
-                  { icon: FiLinkedin, href: "https://linkedin.com/in/lalman-dev/" },
+                  {
+                    icon: FiLinkedin,
+                    href: "https://linkedin.com/in/lalman-dev/",
+                  },
                   { icon: Mail, href: "mailto:lalman.dev7@gmail.com" },
                 ].map((social, index) => (
                   <motion.a
@@ -455,7 +461,7 @@ const HeroSection = () => {
                     />
                   </motion.div>
 
-                  {/* Decorative elments */}
+                  {/* Decorative elements */}
 
                   <motion.div
                     animate={{
@@ -497,10 +503,10 @@ const HeroSection = () => {
               y: [0, 8, 0],
             }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+            className="absolute bottom-4 left-1/2 transform -translate-x-1/2"
             onClick={() => {
-                const section = document.getElementById("footer"); 
-                section?.scrollIntoView({ behavior: "smooth" });
+              const section = document.getElementById("footer");
+              section?.scrollIntoView({ behavior: "smooth" });
             }}
           >
             <ArrowDown
