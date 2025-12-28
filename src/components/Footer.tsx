@@ -17,13 +17,13 @@ const Footer = () => {
     {
       name: "GitHub",
       icon: FiGithub,
-      url: "https://github.com/lalman-dv",
+      url: "https://github.com/lalman-dev",
       color: "hover:text-gray-400",
     },
     {
       name: "LinkedIN",
       icon: FiLinkedin,
-      url: "https://www.linkedin.com/in/lalman-lalman-34490a163/",
+      url: "https://www.linkedin.com/in/lalman-dev/",
       color: "hover:text-blue-400",
     },
     {
@@ -73,6 +73,7 @@ const Footer = () => {
 
   return (
     <footer
+      id="footer"
       ref={footerRef}
       className={`relative ${
         theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-gray-900"
