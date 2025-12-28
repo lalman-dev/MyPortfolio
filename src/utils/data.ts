@@ -27,6 +27,8 @@ import {
   SiTypescript,
   SiReact,
   SiTailwindcss,
+  SiNpm,
+  SiRedux,
 } from "react-icons/si";
 import { VscRocket } from "react-icons/vsc";
 import type { LucideIcon } from "lucide-react";
@@ -107,6 +109,8 @@ export const SKILL_CATEGORY: SkillCategory[] = [
       { name: "TypeScript", level: 75, color: "bg-blue-700" },
       { name: "TailwindCSS", level: 85, color: "bg-cyan-600" },
       { name: "FramerMotion", level: 75, color: "bg-red-600" },
+      { name: "NextJS(currently learning)", level: 60, color: "bg-gray-500" },
+      { name: "Redux", level: 70, color: "bg-violet-600" },
     ],
   },
   {
@@ -116,12 +120,11 @@ export const SKILL_CATEGORY: SkillCategory[] = [
       "Proficient with essential development and collaboration tools that streamline coding, design, and teamwork",
     skills: [
       { name: "Git", level: 80, color: "bg-orange-600" },
-      { name: "GitHub", level: 85, color: "bg-gray-800" },
-      { name: "VS Code", level: 85, color: "bg-blue-500" },
+      { name: "GitHub", level: 85, color: "bg-gray-600" },
+      { name: "Vercel/Netlify", level: 85, color: "bg-green-500" },
+      { name: "VS Code", level: 80, color: "bg-blue-500" },
       { name: "Figma", level: 75, color: "bg-pink-500" },
-      { name: "Notion", level: 70, color: "bg-gray-500" },
-      { name: "Vercel/Netlify", level: 70, color: "bg-green-500" },
-      { name: "NPM", level: 75, color: "bg-red-500" },
+      { name: "Notion", level: 70, color: "bg-gray-400" },
     ],
   },
   {
@@ -143,11 +146,10 @@ export const SKILL_CATEGORY: SkillCategory[] = [
     description:
       "While my primary focus is frontend, I'm also exploring backend and database tools to understand full-stack development",
     skills: [
-      { name: "NextJS", level: 90, color: "bg-gray-500" },
-      { name: "Node.js", level: 70, color: "bg-green-600" },
+      { name: "Node.js", level: 55, color: "bg-green-600" },
       { name: "Express.js", level: 55, color: "bg-gray-700" },
       { name: "MongoDB", level: 60, color: "bg-green-800" },
-      { name: "Firebase", level: 50, color: "bg-yellow-500" },
+      { name: "Firebase", level: 45, color: "bg-yellow-500" },
     ],
   },
 ];
@@ -158,7 +160,9 @@ export const TECH_STACK: TechItem[] = [
   { name: "React", icon: SiReact, color: "text-cyan-500" },
   { name: "TailwindCSS", icon: SiTailwindcss, color: "text-teal-400" },
   { name: "HTML5", icon: SiHtml5, color: "text-orange-500" },
+  { name: "NPM", icon: SiNpm, color: "text-red-800" },
   { name: "CSS3", icon: SiCss3, color: "text-blue-500" },
+  { name: "Redux", icon: SiRedux, color: "text-violet-600" },
   { name: "Vite", icon: VscRocket, color: "text-purple-500" },
 ];
 
@@ -203,7 +207,7 @@ export const PROJECTS: Project[] = [
 
 export const JOURNEY_STEPS: JourneyStep[] = [
   {
-    year: "Nov-2024",
+    year: "Feb-2025",
     title: "Started exploring coding journey",
     company: "self-taught",
     description:
@@ -212,7 +216,7 @@ export const JOURNEY_STEPS: JourneyStep[] = [
     color: "bg-green-500",
   },
   {
-    year: "Mar-2025",
+    year: "May-2025",
     title: "Frontend development journey",
     company: "self-taught",
     description:
