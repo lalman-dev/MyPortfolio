@@ -15,9 +15,9 @@ import {
   Rocket,
 } from "lucide-react";
 
-import project1 from "../assets/hackernews.png";
-import project3 from "../assets/interviewapp.png";
-import project2 from "../assets/resumeBuilder.png";
+import hnNews_bg from "/hackernews.png";
+import netflix_bg from "/netflix.png";
+import resume_bg from "/resume.png";
 
 import { FiGithub, FiLinkedin } from "react-icons/fi";
 import {
@@ -169,38 +169,45 @@ export const TECH_STACK: TechItem[] = [
 export const PROJECTS: Project[] = [
   {
     id: 1,
-    title: "HackerNews search",
-    image: project1,
+    title: "HackerNews Search Portal",
+    image: hnNews_bg,
     description:
-      "A modern HackerNews Search web built with React, TailwindCSS, and Framer Motion for dynamic UI.",
-    tag: ["React", "TailwindCSS", "FramerMotion", "HackerNews API"],
-    liveUrl: "#",
-    gitHubUrl: "#",
-    category: "FrontEnd",
+      "A Next.js-based news platform with real-time API integration, search functionality, trending news cards, and category navigation. Built with reusable components and dynamic routing for scalability.",
+    tag: ["Next.js", "React", "TailwindCSS", "REST API"],
+    liveUrl: "https://hn-news-two.vercel.app/",
+    gitHubUrl: "https://github.com/lalman-dev/hn-news",
+    category: "Frontend",
     featured: true,
   },
   {
     id: 2,
     title: "AI Resume Studio",
-    image: project2,
+    image: resume_bg,
     description:
-      "An all-in-one AI-powered platform to create professional resumes against industry standards.",
-    tag: ["React", "TailwindCSS", "TypeScript", "FramerMotion"],
-    liveUrl: "#",
-    gitHubUrl: "#",
-    category: "AI Tools",
+      "A full-stack AI-powered resume builder with ATS-friendly output. Features JWT authentication, protected routes, file uploads, and global state management using Redux Toolkit. Integrated OpenAI API for enhanced summaries and job descriptions.",
+    tag: [
+      "React",
+      "TypeScript",
+      "Redux Toolkit",
+      "Node.js",
+      "MongoDB",
+      "OpenAI API",
+    ],
+    liveUrl: "https://ai-resume-studio-snowy.vercel.app/",
+    gitHubUrl: "https://github.com/lalman-dev/AI-Resume-Studio",
+    category: "Full-Stack",
     featured: true,
   },
   {
     id: 3,
-    title: "AI Interview Prep",
-    image: project3,
+    title: "Netflix Clone",
+    image: netflix_bg,
     description:
-      "An intelligent app that helps users practice interviews with AI-generated questions, feedback, and performance insights.",
-    tag: ["React", "TailwindCSS", "TypeScript", "FramerMotion", "OpenAI API"],
-    liveUrl: "#",
-    gitHubUrl: "#",
-    category: "AI Tools",
+      "A responsive Netflix-style UI built with React and TailwindCSS. Integrated TMDb API for dynamic movie cards and trailers, focusing on reusable components and mobile-first design.",
+    tag: ["React", "TailwindCSS", "TMDb API", "Responsive Design"],
+    liveUrl: "https://netfliaxapp.netlify.app/",
+    gitHubUrl: "https://github.com/lalman-dev/NetflixClone-react-tailwind",
+    category: "Frontend",
     featured: true,
   },
 ];
