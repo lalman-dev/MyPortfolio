@@ -18,7 +18,7 @@ const Navbar = () => {
   return (
     <motion.nav
       style={{ opacity: 1 }}
-      className={`fixed top-0 w-full z-50 px-6 py-4 ${
+      className={`fixed w-screen top-0 z-50 px-6 py-4 ${
         theme === "dark" ? "bg-gray-950/80" : "bg-gray-50/80"
       } backdrop-blur-md border-b ${
         theme === "dark" ? "border-gray-800" : "border-gray-200"

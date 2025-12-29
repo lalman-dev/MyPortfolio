@@ -244,7 +244,7 @@ const HeroSection = () => {
                     theme === "dark" ? "text-gray-600" : "text-gray-500"
                   }
                 >
-                  Tailwind
+                  NextJs
                 </span>
                 <span
                   className={
@@ -259,20 +259,6 @@ const HeroSection = () => {
                   }
                 >
                   TypeScript
-                </span>
-                <span
-                  className={
-                    theme === "dark" ? "text-gray-700" : "text-gray-400"
-                  }
-                >
-                  .
-                </span>
-                <span
-                  className={
-                    theme === "dark" ? "text-gray-600" : "text-gray-500"
-                  }
-                >
-                  Motion
                 </span>
               </motion.div>
             </motion.div>
@@ -412,7 +398,7 @@ const HeroSection = () => {
                       theme === "dark" ? "text-gray-600" : "text-gray-500"
                     }
                   >
-                    Tailwind
+                    NextJS
                   </span>
                   <span
                     className={
@@ -440,7 +426,7 @@ const HeroSection = () => {
                       theme === "dark" ? "text-gray-600" : "text-gray-500"
                     }
                   >
-                    Motion
+                    Tailwind
                   </span>
                 </motion.div>
                 <div className="relative mr-12">
