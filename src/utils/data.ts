@@ -29,6 +29,7 @@ import {
   SiTailwindcss,
   SiNpm,
   SiRedux,
+  SiNextdotjs,
 } from "react-icons/si";
 import { VscRocket } from "react-icons/vsc";
 import type { LucideIcon } from "lucide-react";
@@ -109,7 +110,7 @@ export const SKILL_CATEGORY: SkillCategory[] = [
       { name: "TypeScript", level: 75, color: "bg-blue-700" },
       { name: "TailwindCSS", level: 85, color: "bg-cyan-600" },
       { name: "FramerMotion", level: 75, color: "bg-red-600" },
-      { name: "NextJS(currently learning)", level: 60, color: "bg-gray-500" },
+      { name: "NextJS", level: 80, color: "bg-gray-500" },
       { name: "Redux", level: 70, color: "bg-violet-600" },
     ],
   },
@@ -157,6 +158,7 @@ export const SKILL_CATEGORY: SkillCategory[] = [
 export const TECH_STACK: TechItem[] = [
   { name: "JavaScript", icon: SiJavascript, color: "text-yellow-500" },
   { name: "TypeScript", icon: SiTypescript, color: "text-blue-700" },
+  { name: "NextJS", icon: SiNextdotjs, color: "text-black/70" },
   { name: "React", icon: SiReact, color: "text-cyan-500" },
   { name: "TailwindCSS", icon: SiTailwindcss, color: "text-teal-400" },
   { name: "HTML5", icon: SiHtml5, color: "text-orange-500" },
