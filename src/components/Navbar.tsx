@@ -69,8 +69,8 @@ const Navbar = () => {
             />
             <motion.div
               layout
-              transition={{ type: "spring", stiffness: 200, damping: 7 }}
-              className={`absolute w-7 h-5 rounded-full 
+              transition={{ type: "spring", stiffness: 200, damping: 20 }}
+              className={`absolute w-8 h-6 rounded-full 
       ${theme === "dark" ? "bg-gray-900 right-0.5" : "bg-white left-0.5"}`}
             />
           </motion.button>
