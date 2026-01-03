@@ -13,7 +13,7 @@ This is my personal portfolio built to showcase projects, skills, and creativity
 ![Custom Branding](https://img.shields.io/badge/Branded-Thumbnails-8B5CF6?style=for-the-badge&logo=figma&logoColor=white)
 ![Windows UI](https://img.shields.io/badge/Desktop-Style%20UI-1E293B?style=for-the-badge&logo=windows&logoColor=white)
 
-🔗 **Live Demo:** [lalman-rho.vercel.app](https://lalman-rho.vercel.app/)
+🔗 **Live Demo:** [lalman.dev](https://lalman.dev/)
 
 ## 🌟 Features
 
