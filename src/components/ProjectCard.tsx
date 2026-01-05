@@ -37,9 +37,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, theme }) => {
           />
           {/* Featured Badge */}
           {project.featured && (
-            <div className="absolute top-4 left-4">
-              <span className="bg-linear-to-r from-gray-400 to-gray-800  text-white text-xs px-3 py-1 rounded-full font-medium">
-                Featured
+            <div className="absolute top-4 left-4 opacity-50 hover:opacity-0">
+              <span className="bg-gray-400 text-xs px-3 py-1 rounded-full font-medium">
+                Hover to explore
               </span>
             </div>
           )}
