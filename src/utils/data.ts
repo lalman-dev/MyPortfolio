@@ -186,7 +186,7 @@ export const PROJECTS: Project[] = [
     title: "AI Resume Studio",
     image: resume_bg,
     description:
-      "A full-stack AI-powered resume builder with ATS-friendly output. Features JWT authentication, protected routes, file uploads, and global state management using Redux Toolkit. Integrated OpenAI API for enhanced summaries and job descriptions.",
+      "A full-stack AI-powered resume builder designed to generate ATS-friendly resumes. Built with secure JWT-based authentication, protected routes, file uploads, and centralized state management using Redux Toolkit. Integrated OpenAI APIs to enhance resume summaries and tailor content to job descriptions, with a focus on usability, data flow, and real-world application structure.",
     tag: [
       "React",
       "TypeScript",
@@ -205,7 +205,7 @@ export const PROJECTS: Project[] = [
     title: "Netflix Clone",
     image: netflix_bg,
     description:
-      "A responsive Netflix-style UI built with React and TailwindCSS. Integrated TMDb API for dynamic movie cards and trailers, focusing on reusable components and mobile-first design.",
+      "A responsive Netflix-inspired UI built with React and TailwindCSS. Integrates the TMDb API to render dynamic movie cards and trailers, with a strong focus on component reusability, responsive layouts, and mobile-first design principles.",
     tag: ["React", "TailwindCSS", "TMDb API", "Responsive Design"],
     liveUrl: "https://netfliaxapp.netlify.app/",
     gitHubUrl: "https://github.com/lalman-dev/NetflixClone-react-tailwind",
