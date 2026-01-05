@@ -31,6 +31,14 @@ const Skills = () => {
       },
     }),
   };
+
+  const getProficiencyLabel = (level: number) => {
+    if (level >= 85) return "Advanced";
+    if (level >= 70) return "Proficient";
+    if (level >= 55) return "Comfortable";
+    return "Learning";
+  };
+
   return (
     <section
       ref={sectionRef}
@@ -85,9 +93,9 @@ const Skills = () => {
               theme === "dark" ? "text-gray-400" : "text-gray-600"
             }`}
           >
-            As an aspiring frontend engineer, I’ve built a strong foundation in
+            As an aspiring frontend engineer, I've built a strong foundation in
             modern web technologies. My focus is on creating responsive,
-            user‑friendly applications while continuously learning and expanding
+            user-friendly applications while continuously learning and expanding
             my skillset to grow into a professional developer.
           </motion.p>
         </motion.div>
@@ -140,11 +148,11 @@ const Skills = () => {
                     <div className="flex justify-between items-center mb-2">
                       <span className="text-sm font-medium">{skill.name}</span>
                       <span
-                        className={`text-xs ${
-                          theme === "dark" ? "text-gray-500" : "text-gray-600"
+                        className={`text-xs font-medium ${
+                          theme === "dark" ? "text-gray-400" : "text-gray-600"
                         }`}
                       >
-                        {skill.level}%
+                        {getProficiencyLabel(skill.level)}
                       </span>
                     </div>
                     <div
