@@ -1,6 +1,5 @@
 import { useRef } from "react";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import type { Variants } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useTheme } from "../context/ThemeContext";
 import { SKILL_CATEGORY, TECH_STACK } from "../utils/data";
 import {
@@ -8,62 +7,22 @@ import {
   itemVariants,
   textVariants,
 } from "../utils/variants";
+
 const Skills = () => {
   const { theme } = useTheme();
-  const sectionRef = useRef(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-
-  const skillBarVariants: Variants = {
-    hidden: { width: 0, opacity: 0 },
-    visible: (level: number) => ({
-      width: `${level}%`,
-      opacity: 1,
-      transition: {
-        duration: 1.2,
-        ease: "easeOut",
-        delay: 0.3,
-      },
-    }),
-  };
-
-  const getProficiencyLabel = (level: number) => {
-    if (level >= 85) return "Advanced";
-    if (level >= 70) return "Proficient";
-    if (level >= 55) return "Comfortable";
-    return "Learning";
-  };
 
   return (
     <section
       ref={sectionRef}
       id="skills"
-      className={`py-24 px-6 relative overflow-hidden ${
+      className={`py-24 px-6 ${
         theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"
       }`}
     >
-      {/* Background Elements */}
-
-      <motion.div style={{ y }} className="absolute inset-0 overflow-hidden">
-        <div
-          className={`absolute top-40 right-1/4 w-72 h-72 rounded-full blur-3xl opacity-5 ${
-            theme === "dark" ? "bg-blue-500" : "bg-blue-300"
-          }`}
-        />
-        <div
-          className={`absolute bottom-40 left-1/4 w-64 h-64 rounded-full blur-3xl opacity-5 ${
-            theme === "dark" ? "bg-purple-500" : "bg-purple-300"
-          }`}
-        />
-      </motion.div>
-      <div className="max-w-6xl mx-auto relative z-10">
-        {/* Section Header */}
-
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
         <motion.div
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
@@ -72,36 +31,35 @@ const Skills = () => {
         >
           <motion.div
             variants={itemVariants}
-            className={`text-sm uppercase tracking-widest mb-4 ${
-              theme === "dark" ? "text-gray-500" : "text-gray-600"
+            className={`text-lg uppercase tracking-widest mb-4 ${
+              theme === "dark" ? "text-gray-400" : "text-gray-600"
             }`}
           >
-            Skills and Learning
+            Skills & Capabilities
           </motion.div>
+
           <motion.h2
             variants={itemVariants}
-            className="text-3xl md:text-5xl font-light mb-6"
+            className="text-3xl md:text-5xl font-medium mb-6"
           >
-            My Toolkit &
-            <span className="bg-linear-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-medium ml-2">
-              Technologies
+            Frontend Engineering
+            <span className="ml-2 bg-linear-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-medium">
+              Toolkit
             </span>
           </motion.h2>
+
           <motion.p
             variants={textVariants}
             className={`text-lg max-w-2xl mx-auto font-light ${
               theme === "dark" ? "text-gray-400" : "text-gray-600"
             }`}
           >
-            As an aspiring frontend engineer, I've built a strong foundation in
-            modern web technologies. My focus is on creating responsive,
-            user-friendly applications while continuously learning and expanding
-            my skillset to grow into a professional developer.
+            Technologies and tools I use to design, build, and ship
+            production-ready frontend applications with real-world constraints.
           </motion.p>
         </motion.div>
 
-        {/* Skills Grid */}
-
+        {/* Skill Categories */}
         <motion.div
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
@@ -112,27 +70,22 @@ const Skills = () => {
             <motion.div
               key={category.title}
               variants={itemVariants}
-              className={`p-8 rounded-2xl border ${
+              className={`p-8 rounded-2xl border transition-colors ${
                 theme === "dark"
-                  ? "bg-gray-900/50 border-gray-800 backdrop-blur-sm"
-                  : "bg-white/80 border-gray-200 backdrop-blur-sm"
+                  ? "bg-gray-900/60 border-gray-800"
+                  : "bg-white border-gray-200"
               }`}
             >
-              {/* Category Header */}
-
-              <div className="flex items-center mb-6">
-                <div
-                  className={`p-3 rounded-xl mr-4 ${
-                    theme === "dark" ? "bg-gray-600" : "bg-gray-300"
-                  }`}
-                >
-                  <category.icon size={24} />
+              {/* Category header */}
+              <div className="flex items-start gap-4 mb-6">
+                <div className="p-3 rounded-xl bg-linear-to-r from-blue-500/40 to-purple-500/40 text-purple-600">
+                  <category.icon size={22} />
                 </div>
                 <div>
                   <h3 className="text-xl font-medium mb-1">{category.title}</h3>
                   <p
-                    className={`text-sm ${
-                      theme === "dark" ? "text-gray-400" : "text-gray-600 "
+                    className={`text-sm leading-relaxed ${
+                      theme === "dark" ? "text-gray-400" : "text-gray-600"
                     }`}
                   >
                     {category.description}
@@ -140,53 +93,37 @@ const Skills = () => {
                 </div>
               </div>
 
-              {/* Skills List */}
-
-              <div className="space-y-4">
+              {/* Skill chips */}
+              <ul className="flex flex-wrap gap-3">
                 {category.skills.map((skill) => (
-                  <div key={skill.name} className="group">
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="text-sm font-medium">{skill.name}</span>
-                      <span
-                        className={`text-xs font-medium ${
-                          theme === "dark" ? "text-gray-400" : "text-gray-600"
-                        }`}
-                      >
-                        {getProficiencyLabel(skill.level)}
-                      </span>
-                    </div>
-                    <div
-                      className={`h-2 rounded-full overflow-hidden ${
-                        theme === "dark" ? "bg-gray-800" : "bg-gray-200"
-                      }`}
-                    >
-                      <motion.div
-                        variants={skillBarVariants}
-                        initial="hidden"
-                        animate={isInView ? "visible" : "hidden"}
-                        custom={skill.level}
-                        className={`h-full rounded-full relative ${skill.color}`}
-                      >
-                        <div className="absolute inset-0 bg-white/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      </motion.div>
-                    </div>
-                  </div>
+                  <motion.li
+                    key={skill.name}
+                    whileHover={{ y: -2 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    className={`px-4 py-2 text-sm rounded-full border cursor-default ${
+                      theme === "dark"
+                        ? "border-gray-700 text-gray-300 hover:border-purple-500/60"
+                        : "border-gray-300 text-gray-700 hover:border-purple-500/60"
+                    }`}
+                  >
+                    {skill.name}
+                  </motion.li>
                 ))}
-              </div>
+              </ul>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Additional Skills */}
+        {/* Supporting stack */}
         <motion.div
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={containerVariants}
-          className="mt-16"
+          className="mt-20 text-center"
         >
           <motion.h3
             variants={itemVariants}
-            className="text-xl font-medium mb-4"
+            className="text-xl font-medium mb-6"
           >
             Also Working With
           </motion.h3>
@@ -199,10 +136,11 @@ const Skills = () => {
               <motion.span
                 key={tech.name}
                 whileHover={{ y: -2, scale: 1.05 }}
-                className={`flex items-center gap-2 px-4 py-2 text-sm rounded-full border transition-all duration-200 ${
+                transition={{ type: "spring", stiffness: 300 }}
+                className={`flex items-center gap-2 px-4 py-2 text-sm rounded-full border ${
                   theme === "dark"
-                    ? " bg-gray-900 border-gray-700 hover:border-gray-500"
-                    : "bg-white border-gray-300 text-gray-700 hover:border-gray-500"
+                    ? "bg-gray-900 border-gray-700 text-gray-300"
+                    : "bg-white border-gray-300 text-gray-700"
                 }`}
               >
                 {tech.icon && <tech.icon className={tech.color} size={18} />}
