@@ -1,5 +1,4 @@
 import {
-  Code2,
   GraduationCap,
   Briefcase,
   Heart,
@@ -8,11 +7,12 @@ import {
   Mail,
   MapPin,
   Phone,
-  Server,
-  Wrench,
   Users,
   User,
   Rocket,
+  Code2,
+  Server,
+  Wrench,
 } from "lucide-react";
 
 import hnNews_bg from "/hackernews.png";
@@ -20,30 +20,17 @@ import netflix_bg from "/netflix.png";
 import resume_bg from "/resume.png";
 
 import { FiGithub, FiLinkedin } from "react-icons/fi";
-import {
-  SiJavascript,
-  SiHtml5,
-  SiCss3,
-  SiTypescript,
-  SiReact,
-  SiTailwindcss,
-  SiNpm,
-  SiRedux,
-  SiNextdotjs,
-} from "react-icons/si";
-import { VscRocket } from "react-icons/vsc";
 import type { LucideIcon } from "lucide-react";
 import type { IconType } from "react-icons";
 import { FaXTwitter } from "react-icons/fa6";
+import { SiCss3, SiHtml5, SiJavascript, SiNextdotjs, SiNpm, SiReact, SiRedux, SiTailwindcss, SiTypescript } from "react-icons/si";
+import { VscRocket } from "react-icons/vsc";
 
 // -------------------- Interfaces --------------------
 
 export interface Skill {
   name: string;
-  level: number;
-  color: string;
 }
-
 export interface SkillCategory {
   title: string;
   icon: LucideIcon;
@@ -101,70 +88,70 @@ export interface ContactInfo {
 
 export const SKILL_CATEGORY: SkillCategory[] = [
   {
-    title: "Front-end",
+    title: "Frontend Architecture",
     icon: Code2,
     description:
-      "Focused on building modern responsive UIs with React, TypeScript, and TailwindCSS enhanced by smooth animations",
+      "Designing and building scalable, accessible, and maintainable UI systems using modern React and Next.js.",
     skills: [
-      { name: "React", level: 80, color: "bg-blue-600" },
-      { name: "TypeScript", level: 75, color: "bg-blue-700" },
-      { name: "TailwindCSS", level: 85, color: "bg-cyan-600" },
-      { name: "FramerMotion", level: 75, color: "bg-red-600" },
-      { name: "NextJS", level: 80, color: "bg-gray-500" },
-      { name: "Redux", level: 70, color: "bg-violet-600" },
+      { name: "React" },
+      { name: "Next.js (App Router)" },
+      { name: "TypeScript" },
+      { name: "Tailwind CSS" },
+      { name: "Framer Motion" },
+      { name: "Redux Toolkit" },
     ],
   },
   {
-    title: "Tools",
-    icon: Wrench,
-    description:
-      "Proficient with essential development and collaboration tools that streamline coding, design, and teamwork",
-    skills: [
-      { name: "Git", level: 80, color: "bg-orange-600" },
-      { name: "GitHub", level: 85, color: "bg-gray-600" },
-      { name: "Vercel/Netlify", level: 85, color: "bg-green-500" },
-      { name: "VS Code", level: 80, color: "bg-blue-500" },
-      { name: "Figma", level: 75, color: "bg-pink-500" },
-      { name: "Notion", level: 70, color: "bg-gray-400" },
-    ],
-  },
-  {
-    title: "Soft Skills",
-    icon: Users,
-    description:
-      "Core strengths that help me contribute effectively in projects and adapt to dynamic environments",
-    skills: [
-      { name: "Problem Solving", level: 85, color: "bg-indigo-600" },
-      { name: "Continuous Learning", level: 90, color: "bg-green-500" },
-      { name: "Communication", level: 80, color: "bg-purple-500" },
-      { name: "Adaptability", level: 78, color: "bg-teal-500" },
-      { name: "Collaboration", level: 75, color: "bg-pink-400" },
-    ],
-  },
-  {
-    title: "Currently learning",
+    title: "State, Data & Rendering",
     icon: Server,
     description:
-      "While my primary focus is frontend, I'm also exploring backend and database tools to understand full-stack development",
+      "Managing async data, rendering strategies, and predictable client-side state in real-world applications.",
     skills: [
-      { name: "Node.js", level: 55, color: "bg-green-600" },
-      { name: "Express.js", level: 55, color: "bg-gray-700" },
-      { name: "MongoDB", level: 60, color: "bg-green-800" },
-      { name: "Firebase", level: 45, color: "bg-yellow-500" },
+      { name: "Server Components" },
+      { name: "Client Components" },
+      { name: "SSR / CSR" },
+      { name: "REST APIs" },
+      { name: "Pagination & Search State" },
+    ],
+  },
+  {
+    title: "Performance, UX & Quality",
+    icon: Users,
+    description:
+      "Focused on delivering fast, resilient, and user-friendly interfaces that hold up in production.",
+    skills: [
+      { name: "Accessibility (ARIA)" },
+      { name: "Responsive Design" },
+      { name: "Loading & Error States" },
+      { name: "Code Splitting" },
+      { name: "Reusable Component Patterns" },
+    ],
+  },
+  {
+    title: "Backend Exposure",
+    icon: Wrench,
+    description:
+      "Hands-on experience integrating frontend systems with backend services and authentication flows.",
+    skills: [
+      { name: "Node.js" },
+      { name: "Express.js" },
+      { name: "MongoDB" },
+      { name: "JWT Authentication" },
+      { name: "API Integration" },
     ],
   },
 ];
 
 export const TECH_STACK: TechItem[] = [
   { name: "JavaScript", icon: SiJavascript, color: "text-yellow-500" },
-  { name: "TypeScript", icon: SiTypescript, color: "text-blue-700" },
-  { name: "NextJS", icon: SiNextdotjs, color: "text-black/70" },
+  { name: "TypeScript", icon: SiTypescript, color: "text-blue-600" },
+  { name: "Next.js", icon: SiNextdotjs, color: "text-black/70" },
   { name: "React", icon: SiReact, color: "text-cyan-500" },
-  { name: "TailwindCSS", icon: SiTailwindcss, color: "text-teal-400" },
+  { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-teal-400" },
+  { name: "Redux Toolkit", icon: SiRedux, color: "text-violet-600" },
   { name: "HTML5", icon: SiHtml5, color: "text-orange-500" },
-  { name: "NPM", icon: SiNpm, color: "text-red-800" },
   { name: "CSS3", icon: SiCss3, color: "text-blue-500" },
-  { name: "Redux", icon: SiRedux, color: "text-violet-600" },
+  { name: "NPM", icon: SiNpm, color: "text-red-700" },
   { name: "Vite", icon: VscRocket, color: "text-purple-500" },
 ];
 
