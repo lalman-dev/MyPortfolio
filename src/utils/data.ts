@@ -23,7 +23,17 @@ import { FiGithub, FiLinkedin } from "react-icons/fi";
 import type { LucideIcon } from "lucide-react";
 import type { IconType } from "react-icons";
 import { FaXTwitter } from "react-icons/fa6";
-import { SiCss3, SiHtml5, SiJavascript, SiNextdotjs, SiNpm, SiReact, SiRedux, SiTailwindcss, SiTypescript } from "react-icons/si";
+import {
+  SiCss3,
+  SiHtml5,
+  SiJavascript,
+  SiNextdotjs,
+  SiNpm,
+  SiReact,
+  SiRedux,
+  SiTailwindcss,
+  SiTypescript,
+} from "react-icons/si";
 import { VscRocket } from "react-icons/vsc";
 
 // -------------------- Interfaces --------------------
@@ -48,6 +58,7 @@ export interface Project {
   category: string;
   featured?: boolean;
   image: string;
+  keyFocus: string;
 }
 
 export interface TechItem {
@@ -154,15 +165,15 @@ export const TECH_STACK: TechItem[] = [
   { name: "NPM", icon: SiNpm, color: "text-red-700" },
   { name: "Vite", icon: VscRocket, color: "text-purple-500" },
 ];
-
 export const PROJECTS: Project[] = [
   {
     id: 1,
     title: "HackerNews Search Portal",
     image: hnNews_bg,
     description:
-      "A Next.js-based news platform with real-time API integration, search functionality, trending news cards, and category navigation. Built with reusable components and dynamic routing for scalability.",
-    tag: ["Next.js", "React", "TailwindCSS", "REST API"],
+      "A production-style Hacker News client built with Next.js App Router, focusing on rendering strategy and predictable UI behavior. Uses server-side rendering for fast initial load and SEO, with client-side state for search, pagination, and category filtering. Designed with clear component boundaries, resilient loading and error states, and reusable UI patterns to handle unreliable external APIs.",
+    keyFocus: "Rendering Strategy • SSR / CSR",
+    tag: ["Next.js", "React", "TailwindCSS", "REST API", "SSR", "CSR"],
     liveUrl: "https://hn-news-two.vercel.app/",
     gitHubUrl: "https://github.com/lalman-dev/hn-news",
     category: "Frontend",
@@ -173,7 +184,8 @@ export const PROJECTS: Project[] = [
     title: "AI Resume Studio",
     image: resume_bg,
     description:
-      "A full-stack AI-powered resume builder designed to generate ATS-friendly resumes. Built with secure JWT-based authentication, protected routes, file uploads, and centralized state management using Redux Toolkit. Integrated OpenAI APIs to enhance resume summaries and tailor content to job descriptions, with a focus on usability, data flow, and real-world application structure.",
+      "A full-stack resume builder with a strong emphasis on frontend architecture, data flow, and real-world form complexity. Built with React, TypeScript, and Redux Toolkit to manage multi-step workflows and predictable state transitions. Includes JWT-based authentication, protected routes, and AI-assisted content generation using OpenAI APIs, with a focus on usability, stability, and production-ready UI behavior.",
+    keyFocus: "State Management • Auth • Forms",
     tag: [
       "React",
       "TypeScript",
@@ -189,10 +201,11 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 3,
-    title: "Netflix Clone",
+    title: "Netflix UI Clone",
     image: netflix_bg,
     description:
-      "A responsive Netflix-inspired UI built with React and TailwindCSS. Integrates the TMDb API to render dynamic movie cards and trailers, with a strong focus on component reusability, responsive layouts, and mobile-first design principles.",
+      "A responsive, API-driven streaming UI inspired by Netflix, built to practice scalable component design and real data rendering. Integrates the TMDb API to fetch and display dynamic content, with attention to responsive layouts, reusable components, and smooth UI interactions across screen sizes.",
+    keyFocus: "Responsive UI • Component Design",
     tag: ["React", "TailwindCSS", "TMDb API", "Responsive Design"],
     liveUrl: "https://netfliaxapp.netlify.app/",
     gitHubUrl: "https://github.com/lalman-dev/NetflixClone-react-tailwind",

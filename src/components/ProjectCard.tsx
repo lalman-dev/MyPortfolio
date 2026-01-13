@@ -11,7 +11,6 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, theme }) => {
-  
   return (
     <motion.div
       variants={cardVariant}
@@ -81,6 +80,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, theme }) => {
               <span>GitHub</span>
             </motion.a>
           </motion.div>
+        </div>
+
+        {/* Key Focus */}
+        <div
+          className={`my-3 text-center text-xs font-medium tracking-wide ${
+            theme === "dark" ? "text-gray-400" : "text-gray-500"
+          }`}
+        >
+          <span className="uppercase">Key Focus:</span>{" "}
+          <span className="text-blue-500">
+            {project.keyFocus}
+          </span>
         </div>
 
         {/* Project description */}
