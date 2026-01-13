@@ -63,13 +63,22 @@ const Projects = () => {
               theme === "dark" ? "text-gray-400" : "text-gray-600"
             }`}
           >
-            A showcase of modern web applications that demonstrate my ability to
-            deliver clean, responsive designs and solve complex problems with
-            practical, effective solutions.
+            Selected projects that demonstrate how I design frontend
+            architecture, make rendering and state decisions, and ship
+            production-ready features using modern React and Next.js.
           </motion.p>
         </motion.div>
 
         {/* Projects Grid */}
+        <motion.div
+          variants={itemVariants}
+          className={`text-sm text-center mb-8 ${
+            theme === "dark" ? "text-gray-500" : "text-gray-600"
+          }`}
+        >
+          Each project focuses on real-world data, UX states, and maintainable
+          frontend structure.
+        </motion.div>
         <motion.div
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
