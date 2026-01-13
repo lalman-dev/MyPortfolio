@@ -141,29 +141,39 @@ const HeroSection = () => {
                     theme === "dark" ? "text-white" : "text-gray-900"
                   }`}
                 >
-                  Crafting digital
+                  Building Production-grade
                 </span>
                 <span className="bg-linear-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-medium ml-2">
-                  experience
+                  React & Next.js
                 </span>
+
                 <br />
                 <span
                   className={`${
                     theme === "dark" ? "text-white" : "text-gray-900"
                   }`}
                 >
-                  that inspire & engage
+                  Applications
                 </span>
               </motion.h1>
-
+              <motion.p
+                variants={itemVariants}
+                className={`text-base md:text-lg mb-4 max-w-xl mx-auto font-light leading-relaxed ${
+                  theme === "dark" ? "text-gray-400" : "text-gray-600"
+                }`}
+              >
+                I build performant, accessible web experiences using React,
+                Next.js, TypeScript, and Tailwind CSS, with a strong focus on
+                real-world data and production-ready architecture.
+              </motion.p>
               <motion.p
                 variants={itemVariants}
                 className={`text-base md:text-lg mb-8 max-w-xl mx-auto font-light leading-relaxed ${
                   theme === "dark" ? "text-gray-400" : "text-gray-600"
                 }`}
               >
-                I design and build modern , responsive web applications that
-                blends clean aesthetics with seamless user experiences.
+                Worked with real-world APIs, authentication flows, and
+                production-style UI systems.
               </motion.p>
               {/* CTA Buttons - for mobile */}
               <motion.div
@@ -176,7 +186,7 @@ const HeroSection = () => {
                   onClick={() => scrollToSection("work")}
                   className="bg-linear-to-r from-blue-400 to-pink-400 hover:bg-blue-400 hover:from-blue-500 hover:to-pink-500 text-white px-8 py-3 rounded-full text-sm uppercase tracking-wider font-medium transition-all duration-300"
                 >
-                  View Work
+                  View Projects
                 </motion.button>
                 <motion.button
                   whileHover={{ y: -2 }}
@@ -264,7 +274,7 @@ const HeroSection = () => {
             </motion.div>
           </div>
           {/* Desktop Layout- Split */}
-          <div className="hidden lg:grid lg:grid-cols-2 lg:gap-16 lg:items-center">
+          <div className="hidden lg:grid lg:grid-cols-2 lg:gap-14 lg:items-center">
             {/* Left sidebar */}
             <motion.div
               initial="hidden"
@@ -283,48 +293,59 @@ const HeroSection = () => {
               </motion.div>
               <motion.h1
                 variants={itemVariants}
-                className="text-5xl xl:text-7xl font-light leading-tight"
+                className="text-5xl xl:text-6xl font-medium leading-tight"
               >
                 <span
                   className={`${
-                    theme === "dark" ? "text-white" : "text-gray-900"
+                    theme === "dark" ? "text-white" : "text-gray-700"
                   }`}
                 >
-                  Crafting digital
+                  Building Production-grade
                 </span>
-                <span className="bg-linear-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-medium ml-2">
-                  experience
+                <br />
+                <span className="bg-linear-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-semibold">
+                  React & Next.js
                 </span>
                 <br />
                 <span
                   className={`${
-                    theme === "dark" ? "text-white" : "text-gray-900"
+                    theme === "dark" ? "text-white" : "text-gray-700"
                   }`}
                 >
-                  that inspire & engage
+                  Applications
                 </span>
               </motion.h1>
               <motion.p
                 variants={itemVariants}
-                className={`text-xl mb-12 font-light leading-relaxed max-w-lg  ${
+                className={`text-xl mb-5 font-light leading-relaxed max-w-lg  ${
                   theme === "dark" ? "text-gray-400" : "text-gray-600"
                 }`}
               >
-                I design and build modern , responsive web applications that
-                blends clean aesthetics with seamless user experiences.
+                I build performant, accessible web experiences using React,
+                Next.js, TypeScript, and Tailwind CSS, with a strong focus on
+                real-world data and production-ready architecture.
+              </motion.p>
+              <motion.p
+                variants={itemVariants}
+                className={`text-lg mb-12 font-light leading-relaxed max-w-lg  ${
+                  theme === "dark" ? "text-gray-400" : "text-gray-600"
+                }`}
+              >
+                Worked with real-world APIs, authentication flows, and
+                production-style UI systems.
               </motion.p>
               {/* CTA Buttons - for desktop  */}
               <motion.div variants={itemVariants} className="flex gap-6 mb-8">
                 <motion.button
-                  whileHover={{ y: -2 }}
+                  whileHover={{ y: -6 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={() => scrollToSection("work")}
                   className="bg-linear-to-r from-blue-400 to-pink-400 hover:bg-blue-400 hover:from-blue-500 hover:to-pink-500 text-white px-8 py-3 rounded-full text-sm uppercase tracking-wider font-medium transition-all duration-300"
                 >
-                  View Work
+                  View Projects
                 </motion.button>
                 <motion.button
-                  whileHover={{ y: -2 }}
+                  whileHover={{ y: -6 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={() => scrollToSection("contact")}
                   className={`px-8 py-4 rounded-full text-sm uppercase tracking-wider font-medium transition-all duration-300 border ${
