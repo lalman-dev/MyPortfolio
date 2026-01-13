@@ -6,7 +6,14 @@ import { useState } from "react";
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const NAV_ITEMS: string[] = ["Home", "Skills", "Work", "About", "Contact"];
+  const NAV_ITEMS: string[] = [
+    "Home",
+    "Skills",
+    "Architecture",
+    "Work",
+    "About",
+    "Contact",
+  ];
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);

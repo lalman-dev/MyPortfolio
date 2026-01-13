@@ -1,4 +1,5 @@
 import AboutMe from "./components/AboutMe";
+import ArchitecturePrinciples from "./components/ArchitecturalPrinciples";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 import HeroSection from "./components/HeroSection";
@@ -13,6 +14,7 @@ const App = () => {
       <Navbar />
       <HeroSection />
       <Skills />
+      <ArchitecturePrinciples />
       <Projects />
       <AboutMe />
       <ContactSection />
