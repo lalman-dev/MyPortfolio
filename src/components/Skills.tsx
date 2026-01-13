@@ -40,7 +40,7 @@ const Skills = () => {
 
           <motion.h2
             variants={itemVariants}
-            className="text-3xl md:text-5xl font-medium mb-6"
+            className="text-3xl md:text-5xl font-light mb-6"
           >
             Frontend Engineering
             <span className="ml-2 bg-linear-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-medium">
