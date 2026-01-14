@@ -26,6 +26,7 @@ import type { IconType } from "react-icons";
 import { FaXTwitter } from "react-icons/fa6";
 import {
   SiCss3,
+  SiFramer,
   SiHtml5,
   SiJavascript,
   SiNextdotjs,
@@ -160,8 +161,9 @@ export const TECH_STACK: TechItem[] = [
   { name: "Next.js", icon: SiNextdotjs, color: "text-black/70" },
   { name: "React", icon: SiReact, color: "text-cyan-500" },
   { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-teal-400" },
-  { name: "Redux Toolkit", icon: SiRedux, color: "text-violet-600" },
+  { name: "Framer Motion", icon: SiFramer, color: "text-slate-700" },
   { name: "HTML5", icon: SiHtml5, color: "text-orange-500" },
+  { name: "Redux Toolkit", icon: SiRedux, color: "text-violet-600" },
   { name: "CSS3", icon: SiCss3, color: "text-blue-500" },
   { name: "NPM", icon: SiNpm, color: "text-red-700" },
   { name: "Vite", icon: VscRocket, color: "text-purple-500" },

@@ -31,7 +31,7 @@ const AboutMe = () => {
       id="about"
       ref={sectionRef}
       className={`py-24 px-6 relative overflow-hidden ${
-        theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-gray-900"
+        theme === "dark" ? "bg-gray-950 text-white" : "bg-white text-gray-900"
       }`}
     >
       {/* Background Elements */}
