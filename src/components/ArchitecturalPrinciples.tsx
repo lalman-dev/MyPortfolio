@@ -55,7 +55,7 @@ const ArchitecturePrinciples = () => {
       ref={sectionRef}
       id="architecture"
       className={`py-24 px-6 ${
-        theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"
+        theme === "dark" ? "bg-gray-950 text-white" : "bg-gray-50 text-gray-900"
       }`}
     >
       <div className="max-w-5xl mx-auto">
@@ -103,7 +103,7 @@ const ArchitecturePrinciples = () => {
               className={`p-8 rounded-2xl border ${
                 theme === "dark"
                   ? "bg-gray-900/60 border-gray-800"
-                  : "bg-white border-gray-200"
+                  : "bg-gray-200/50 border-gray-200"
               }`}
             >
               <h3 className="text-xl font-medium mb-3">{item.title}</h3>

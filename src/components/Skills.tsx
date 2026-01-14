@@ -73,7 +73,7 @@ const Skills = () => {
               className={`p-8 rounded-2xl border transition-colors ${
                 theme === "dark"
                   ? "bg-gray-900/60 border-gray-800"
-                  : "bg-white border-gray-200"
+                  : "bg-gray-200/50 border-gray-300"
               }`}
             >
               {/* Category header */}
@@ -127,7 +127,6 @@ const Skills = () => {
           >
             Also Working With
           </motion.h3>
-
           <motion.div
             variants={itemVariants}
             className="flex flex-wrap justify-center gap-3"
@@ -140,7 +139,7 @@ const Skills = () => {
                 className={`flex items-center gap-2 px-4 py-2 text-sm rounded-full border ${
                   theme === "dark"
                     ? "bg-gray-900 border-gray-700 text-gray-300"
-                    : "bg-white border-gray-300 text-gray-700"
+                    : "bg-gray-200/50 border-gray-300 text-gray-700"
                 }`}
               >
                 {tech.icon && <tech.icon className={tech.color} size={18} />}

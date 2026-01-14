@@ -15,7 +15,7 @@ const Projects = () => {
       id="work"
       ref={sectionRef}
       className={`py-24 px-6 relative overflow-hidden ${
-        theme === "dark" ? "bg-gray-950 text-white" : "bg-gray-50 text-gray-900"
+        theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"
       }`}
     >
       {/* Backgroung Elements */}

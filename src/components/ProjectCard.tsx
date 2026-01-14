@@ -24,7 +24,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, theme }) => {
         className={`rounded-2xl overflow-hidden border transition-all duration-500 ${
           theme === "dark"
             ? "bg-gray-900/50 border-gray-800 hover:border-gray-700 hover:shadow-2xl hover:shadow-blue-500/10"
-            : "bg-white/80 border-gray-200 hover:border-gray-300 hover:shadow-2xl hover:shadow-blue-500/10"
+            : "bg-gray-200/80 border-gray-300 hover:border-gray-400 hover:shadow-2xl hover:shadow-blue-500/10"
         } backdrop-blur-sm`}
       >
         {/* Project Image */}
@@ -89,9 +89,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, theme }) => {
           }`}
         >
           <span className="uppercase">Key Focus:</span>{" "}
-          <span className="text-blue-500">
-            {project.keyFocus}
-          </span>
+          <span className="text-blue-500">{project.keyFocus}</span>
         </div>
 
         {/* Project description */}
