@@ -62,16 +62,16 @@ const AboutMe = () => {
               theme === "dark" ? "text-gray-500" : "text-gray-600"
             }`}
           >
-            Get to Know Me
+            How I Think About Frontend Engineering
           </motion.div>
 
           <motion.h2
             variants={itemVariants}
             className="text-3xl md:text-5xl font-light mb-6"
           >
-            About
+            Get to
             <span className="bg-linear-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-medium ml-2">
-              Me
+              Know Me
             </span>
           </motion.h2>
         </motion.div>
@@ -89,13 +89,13 @@ const AboutMe = () => {
               className={`p-8 rounded-2xl border ${
                 theme === "dark"
                   ? "bg-gray-800/50 border-gray-700 backdrop-blur-sm"
-                  : "bg-gray-50/80 border-gray-200 backdrop-blur-sm"
+                  : "bg-gray-200/50 border-gray-200 backdrop-blur-sm"
               }`}
             >
               <h3 className="text-2xl font-medium mb-6">
                 My
                 <span className="bg-linear-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-medium ml-2">
-                  Goal
+                  Approach
                 </span>
               </h3>
               <p
@@ -103,20 +103,19 @@ const AboutMe = () => {
                   theme === "dark" ? "text-gray-300" : "text-gray-700"
                 }`}
               >
-                Technology, to me, is a bridge between people and solutions. My
-                passion lies in designing digital experiences that go beyond
-                utility, making them delightful, meaningful, and accessible to
-                all.
+                I focus on building frontend systems that remain maintainable as
+                they grow — from component structure and state boundaries to
+                rendering strategy and UX performance.
               </p>
               <p
                 className={`text-base leading-relaxed ${
                   theme === "dark" ? "text-gray-400" : "text-gray-600"
                 }`}
               >
-                Beyond coding, I'm passionate about experimenting with emerging
-                frameworks and supporting open-source communities. The constant
-                evolution of web technologies inspires me to create digital
-                experiences that are both meaningful and innovative.
+                I care deeply about how architectural decisions affect user
+                experience, developer velocity, and long-term scalability. Most
+                of my learning comes from shipping real projects, debugging real
+                issues, and refining solutions through iteration.
               </p>
             </motion.div>
 
@@ -129,15 +128,15 @@ const AboutMe = () => {
                       key={passion.title}
                       variants={itemVariants}
                       whileHover={{ x: 4 }}
-                      className={`flex items-center space-x-4 p-4 rounded-xl ${
+                      className={`flex items-center border space-x-4 p-4 rounded-xl ${
                         theme === "dark"
-                          ? "bg-gray-800/30 hover:bg-gray-800/50"
-                          : "bg-gray-50/50 hover:bg-gray-100/50"
+                          ? "bg-gray-800/30 hover:bg-gray-800/50 border-gray-700"
+                          : "bg-gray-200/50 hover:bg-gray-300/50 border-gray-200"
                       } transition-all duration-300`}
                     >
                       <div
                         className={`p-3 rounded-lg ${
-                          theme === "dark" ? "bg-gray-700" : "bg-white"
+                          theme === "dark" ? "bg-gray-700" : "bg-gray-300"
                         }`}
                       >
                         <passion.icon size={20} className="text-blue-400" />
@@ -157,20 +156,6 @@ const AboutMe = () => {
                 </div>
               </h3>
             </motion.div>
-
-            {/* signature */}
-            <motion.div variants={itemVariants} className="text-center mt-15">
-              <div
-                className={`text-sm mb-4 ${
-                  theme === "dark" ? "text-gray-400" : "text-gray-600"
-                }`}
-              >
-                Made with vision and purpose by
-              </div>
-              <div className="text-xl bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-medium ">
-                Lalman
-              </div>
-            </motion.div>
           </motion.div>
 
           {/* Developer Journey Timeline */}
@@ -182,7 +167,7 @@ const AboutMe = () => {
             className="relative "
           >
             <h3 className="text-2xl font-medium my-8 ml-8 text-center lg:text-left">
-              My developer Journey
+              Professional Development Milestones
             </h3>
             {/* Timeline  */}
             <div
@@ -209,7 +194,7 @@ const AboutMe = () => {
                     className={`grow p-6 rounded-xl border transition-all duration-300 ${
                       theme === "dark"
                         ? "bg-gray-800/50 border-gray-700 group-hover:border-gray-600 group-hover:bg-gray-800/70"
-                        : "bg-white border-gray-200 group-hover:border-gray-300 group-hover:bg-white"
+                        : "bg-gray-200/50 border-gray-200 group-hover:border-gray-300 group-hover:bg-gray-200"
                     }
                   backdrop-blur-sm`}
                   >
@@ -262,7 +247,7 @@ const AboutMe = () => {
                 theme === "dark" ? "text-gray-400" : "text-gray-600"
               }`}
             >
-              Ready to bring your vision to reality?
+              Let's Build Something Solid
             </p>
             <motion.button
               onClick={() =>
@@ -274,8 +259,16 @@ const AboutMe = () => {
               whileTap={{ scale: 0.95 }}
               className="bg-linear-to-r from-cyan-400 via-blue-600 to-purple-600 text-white hover:from-cyan-500 hover:to-purple-500 px-8 py-3 rounded-full text-sm uppercase tracking-wider font-medium transition-all duration-300"
             >
-              Let's build something great together
+              Start a Conversation
             </motion.button>
+            <p
+              className={`text-xs ${
+                theme === "dark" ? "text-gray-400" : "text-gray-600"
+              }`}
+            >
+              Prefer clear problem statements and async communication. I usually
+              respond within 24-48 hours.
+            </p>
           </motion.div>
         </motion.div>
       </div>

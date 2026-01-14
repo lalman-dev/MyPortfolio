@@ -1,9 +1,6 @@
 import {
   GraduationCap,
   Briefcase,
-  Heart,
-  Coffee,
-  BookOpen,
   Mail,
   MapPin,
   Phone,
@@ -13,6 +10,10 @@ import {
   Code2,
   Server,
   Wrench,
+  GitBranch,
+  Accessibility,
+  Zap,
+  Layers,
 } from "lucide-react";
 
 import hnNews_bg from "/hackernews.png";
@@ -213,70 +214,68 @@ export const PROJECTS: Project[] = [
     featured: true,
   },
 ];
-
 export const JOURNEY_STEPS: JourneyStep[] = [
   {
-    year: "Feb-2025",
-    title: "Started exploring coding journey",
-    company: "self-taught",
+    year: "Feb 2025",
+    title: "Foundation in Web Development",
+    company: "Self-directed",
     description:
-      "Experimented with HTML out of curiosity and quickly discovered a passion for building on the web, inspiring a decision to pursue coding full-time.",
+      "Established a strong foundation in HTML, CSS, and core web fundamentals, developing an early understanding of how structure, semantics, and layout impact user experience.",
     icon: Briefcase,
     color: "bg-green-500",
   },
   {
-    year: "May-2025",
-    title: "Frontend development journey",
-    company: "self-taught",
+    year: "May 2025",
+    title: "Frontend Engineering Focus",
+    company: "Self-directed",
     description:
-      "Transitioned into structured learning with React, TypeScript, and TailwindCSS, focusing on creating responsive interfaces and modern web applications.",
+      "Focused on building frontend applications using React, TypeScript, and Tailwind CSS, with emphasis on component structure, state management, and responsive design.",
     icon: GraduationCap,
     color: "bg-pink-500",
   },
   {
-    year: "Late-2025",
-    title: "Projects & Portfolio",
-    company: "community / self-taught",
+    year: "Late 2025",
+    title: "Production-Oriented Projects",
+    company: "Independent / Community",
     description:
-      "Built multiple projects, gained experience in problem-solving, and refined a personal portfolio emphasizing accessibility, recruiter appeal, and cohesive branding.",
+      "Designed and built multiple production-style projects, prioritizing accessibility, performance, and maintainable UI architecture while refining a cohesive personal portfolio.",
     icon: User,
     color: "bg-blue-500",
   },
   {
-    year: "Future",
-    title: "Professional Opportunities",
-    company: "aspiring",
+    year: "Jan 2026",
+    title: "Professional Contribution",
+    company: "Open to opportunities",
     description:
-      "Excited to apply my skills in real-world projects, join a team, and continue crafting meaningful digital experiences.",
+      "Seeking to contribute to real-world products, collaborate with experienced teams, and continue growing through ownership, feedback, and production-scale challenges.",
     icon: Rocket,
     color: "bg-yellow-500",
   },
 ];
-
 export const PASSION: Passion[] = [
   {
-    icon: Heart,
-    title: "User Experience",
+    icon: Layers,
+    title: "Frontend Architecture",
     description:
-      "Crafting clean, responsive interfaces from Figma to code, ensuring usability and visual appeal.",
+      "Designing scalable component structures, clear data flow, and predictable state boundaries that remain maintainable as applications grow.",
   },
   {
-    icon: Coffee,
-    title: "Problem Solving",
+    icon: Zap,
+    title: "Performance & UX",
     description:
-      "Breaking down complex challenges into practical solutions with clear logic and maintainable code.",
+      "Optimizing rendering behavior, minimizing unnecessary re-renders, and ensuring smooth, responsive user interactions.",
   },
   {
-    icon: BookOpen,
-    title: "Continuous Learning",
+    icon: Accessibility,
+    title: "Accessibility & Semantics",
     description:
-      "Exploring new frameworks and best practices to stay adaptable, innovative, and future-ready.",
+      "Building inclusive interfaces using semantic HTML, ARIA roles, and keyboard-friendly navigation patterns.",
   },
   {
-    icon: Users,
-    title: "Collaboration",
+    icon: GitBranch,
+    title: "Iterative Development",
     description:
-      "Excited to contribute in team environments, share ideas openly, and learn from peers while building meaningful products.",
+      "Shipping early, debugging real issues, and refining implementations through feedback and continuous improvement.",
   },
 ];
 
