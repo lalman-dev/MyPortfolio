@@ -10,9 +10,17 @@ import {
   textVariants,
 } from "../utils/variants";
 
+const social_link = [
+  { icon: FiGithub, href: "https://github.com/lalman-dev/" },
+  {
+    icon: FiLinkedin,
+    href: "https://linkedin.com/in/lalman-dev/",
+  },
+  { icon: Mail, href: "mailto:lalman.dev7@gmail.com" },
+];
+
 const HeroSection = () => {
   const { theme } = useTheme();
-
   const { scrollY } = useScroll();
   const heroY = useTransform(scrollY, [0, 500], [0, -100]);
   const scrollToSection = (sectionId: string) => {
@@ -143,10 +151,10 @@ const HeroSection = () => {
                 >
                   Building Production-grade
                 </span>
+                <br />
                 <span className="bg-linear-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-medium ml-2">
                   React & Next.js
                 </span>
-
                 <br />
                 <span
                   className={`${
@@ -207,14 +215,7 @@ const HeroSection = () => {
                 variants={itemVariants}
                 className="flex justify-center space-x-6 mb-8"
               >
-                {[
-                  { icon: FiGithub, href: "https://github.com/lalman-dev/" },
-                  {
-                    icon: FiLinkedin,
-                    href: "https://linkedin.com/in/lalman-dev/",
-                  },
-                  { icon: Mail, href: "mailto:lalman.dev7@gmail.com" },
-                ].map((social, index) => (
+                {social_link.map((social, index) => (
                   <motion.a
                     key={index}
                     href={social.href}
@@ -293,7 +294,7 @@ const HeroSection = () => {
               </motion.div>
               <motion.h1
                 variants={itemVariants}
-                className="text-5xl xl:text-6xl font-medium leading-tight"
+                className="text-5xl xl:text-6xl font-light leading-tight"
               >
                 <span
                   className={`${
@@ -303,7 +304,7 @@ const HeroSection = () => {
                   Building Production-grade
                 </span>
                 <br />
-                <span className="bg-linear-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-semibold">
+                <span className="bg-linear-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-medium">
                   React & Next.js
                 </span>
                 <br />
@@ -362,14 +363,7 @@ const HeroSection = () => {
                 variants={itemVariants}
                 className="flex space-x-6 mb-12"
               >
-                {[
-                  { icon: FiGithub, href: "https://github.com/lalman-dev/" },
-                  {
-                    icon: FiLinkedin,
-                    href: "https://linkedin.com/in/lalman-dev/",
-                  },
-                  { icon: Mail, href: "mailto:lalman.dev7@gmail.com" },
-                ].map((social, index) => (
+                {social_link.map((social, index) => (
                   <motion.a
                     key={index}
                     href={social.href}
@@ -387,7 +381,6 @@ const HeroSection = () => {
             </motion.div>
 
             {/* Right side -Profile Image */}
-
             <motion.div
               initial="hidden"
               animate="visible"
