@@ -1,4 +1,4 @@
-🚀 Lalman — Frontend Engineer Portfolio
+## 🚀 Lalman — Frontend Engineer Portfolio
 
 A production-ready frontend portfolio showcasing modern React engineering, UI craftsmanship, and real-world application patterns.
 
@@ -8,44 +8,43 @@ Designed and built to reflect how I approach frontend development in professiona
 
 ---
 
-🧭 Overview
+## 🧭 Overview
 
-This portfolio is not just a visual showcase—it’s an engineering artifact.
-It demonstrates how I design interactive interfaces, manage UI state, apply animations responsibly, and ship maintainable React applications.
+This portfolio demonstrates how I design interactive interfaces, manage UI state, apply animations responsibly, and ship maintainable React applications.
 
 Key goals behind this project:
 
-Showcase real frontend engineering depth, not just visuals
+  -  Showcase real frontend engineering depth, not just visuals
 
-Apply clean component architecture
+  -  Apply clean component architecture
 
-Balance delightful UX with performance
+  -  Balance delightful UX with performance
 
-Follow accessible, scalable UI practices
+  -  Follow accessible, scalable UI practices
 
 ---
 
-✨ Key Features
+## ✨ Key Features
 
-Modern Frontend Stack
+  -  Modern Frontend Stack
 Built with React + TypeScript, focused on predictable state and maintainable components.
 
-Desktop-Inspired UI Experience
+  -  Desktop-Inspired UI Experience
 A Windows-style interface with draggable, layered windows—demonstrating advanced UI interaction patterns.
 
-Motion with Purpose
+  -  Motion with Purpose
 Smooth, intentional animations powered by Framer Motion (no unnecessary effects).
 
-Theme System
+  -  Theme System
 Light / Dark mode with persistent state for consistent user experience.
 
-Project-Driven Architecture
+  -  Project-Driven Architecture
 Projects are treated as first-class features with custom branding and structure.
 
-Accessible & Responsive
+  -  Accessible & Responsive
 Keyboard navigation, semantic markup, and layouts optimized for all screen sizes.
 
-Production-grade Contact Flow
+  -  Production-grade Contact Flow
 Functional contact form integrated using EmailJS.
 
 ---
@@ -64,7 +63,7 @@ Functional contact form integrated using EmailJS.
 
 ```
 
-🧪 Testing Strategy
+## 🧪 Testing Strategy
 
 The project includes unit and UI-level tests using:
 
@@ -75,29 +74,29 @@ React Testing Library
 Coverage: ~72%
 Focus Areas:
 
-Component behavior
+  -  Component behavior
 
-UI state transitions
+  -  UI state transitions
 
-Interaction reliability
+  -  Interaction reliability
 
 Tests are written to validate user behavior, not implementation details.
 
 ---
 
-📬 Contact & Links
+## 📬 Contact & Links
 
-Portfolio: https://lalman.dev
+  -  Portfolio: https://lalman.dev
 
-Email: lalman.dev7@gmail.com
+  -  Email: lalman.dev7@gmail.com
 
-GitHub: https://github.com/lalman-dev
+  -  GitHub: https://github.com/lalman-dev
 
-LinkedIn: https://linkedin.com/in/lalman-dev
+  -  LinkedIn: https://linkedin.com/in/lalman-dev
 
 ---
 
-⚡ Run Locally
+## ⚡ Run Locally
 
 ```bash
 git clone https://github.com/lalman-dev/myportfolio.git
@@ -108,17 +107,17 @@ npm run dev
 
 ---
 
-📌 Notes
+## 📌 Notes
 
 This portfolio will continue evolving as I explore:
 
-Better accessibility patterns
+  - Better accessibility patterns
 
-Improved animation orchestration
+  -  Improved animation orchestration
 
-Performance optimizations
+  -  Performance optimizations
 
-Design system abstractions
+  -  Design system abstractions
 
 Feedback and discussions are always welcome.
 
