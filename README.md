@@ -1,37 +1,60 @@
-🚀 Lalman — Frontend Developer Portfolio
+🚀 Lalman — Frontend Engineer Portfolio
 
-A modern, interactive portfolio showcasing frontend engineering skills, real-world projects, and UI craftsmanship.
-Built to demonstrate production-ready React applications with strong UX, performance, and accessibility.
+A production-ready frontend portfolio showcasing modern React engineering, UI craftsmanship, and real-world application patterns.
 
-🔗 Live Demo: https://lalman.dev
+Designed and built to reflect how I approach frontend development in professional environments: clarity, performance, accessibility, and maintainability.
+
+🔗 Live: https://lalman.dev
 
 ---
 
-## ✨ Highlights
+🧭 Overview
 
-  - **Modern Frontend Stack** — React, TypeScript, Tailwind CSS
+This portfolio is not just a visual showcase—it’s an engineering artifact.
+It demonstrates how I design interactive interfaces, manage UI state, apply animations responsibly, and ship maintainable React applications.
 
-  - **Interactive Desktop-style UI** — Windows-inspired layout with draggable windows
+Key goals behind this project:
 
-  - **Smooth Animations** — Powered by Framer Motion
+Showcase real frontend engineering depth, not just visuals
 
-  - **Light / Dark Mode** — Theme toggle with persistent state
+Apply clean component architecture
 
-  - **Project Showcase** — Custom thumbnails and branding
+Balance delightful UX with performance
 
-  - **Contact Integration** — Functional contact form using EmailJS
+Follow accessible, scalable UI practices
 
-  - **Responsive & Accessible** — Optimized for all screen sizes
+---
+
+✨ Key Features
+
+Modern Frontend Stack
+Built with React + TypeScript, focused on predictable state and maintainable components.
+
+Desktop-Inspired UI Experience
+A Windows-style interface with draggable, layered windows—demonstrating advanced UI interaction patterns.
+
+Motion with Purpose
+Smooth, intentional animations powered by Framer Motion (no unnecessary effects).
+
+Theme System
+Light / Dark mode with persistent state for consistent user experience.
+
+Project-Driven Architecture
+Projects are treated as first-class features with custom branding and structure.
+
+Accessible & Responsive
+Keyboard navigation, semantic markup, and layouts optimized for all screen sizes.
+
+Production-grade Contact Flow
+Functional contact form integrated using EmailJS.
 
 ---
 
 ## 🛠 Tech Stack
-
 ```
-
 | Category   | Tools                         |
 | ---------- | ----------------------------- |
-| Framework  | React + TypeScript            |
+| Framework  | React, TypeScript             |
 | Styling    | Tailwind CSS                  |
 | Animations | Framer Motion                 |
 | Icons      | Lucide React, React Icons     |
@@ -40,26 +63,33 @@ Built to demonstrate production-ready React applications with strong UX, perform
 | Testing    | Vitest, React Testing Library |
 
 ```
-🧪 Testing
 
-This project includes unit and UI tests using Vitest + React Testing Library.
-Current coverage: ~72%, with focus on UI behavior and component reliability.
+🧪 Testing Strategy
+
+The project includes unit and UI-level tests using:
+
+Vitest
+
+React Testing Library
+
+Coverage: ~72%
+Focus Areas:
+
+Component behavior
+
+UI state transitions
+
+Interaction reliability
+
+Tests are written to validate user behavior, not implementation details.
 
 ---
 
-📸 Screenshots
-
-Desktop-style portfolio interface
-
-<p align="center"> <img src="https://github.com/user-attachments/assets/bc84d58a-b32b-4a2c-8376-99cba043f21f" width="420" style="border-radius:12px;border:1px solid #e5e7eb" /> <img src="https://github.com/user-attachments/assets/998352d5-cfc7-4c99-b7a4-b08949c9e82d" width="420" style="border-radius:12px;border:1px solid #e5e7eb" /> </p> <p align="center"> <img src="https://github.com/user-attachments/assets/6c2c4e7e-9b61-436d-a17b-0e34288d697c" width="420" style="border-radius:12px;border:1px solid #e5e7eb" /> <img src="https://github.com/user-attachments/assets/c8e6f80f-1739-4d5c-91a4-eb6172801da8" width="420" style="border-radius:12px;border:1px solid #e5e7eb" /> </p>
-
----
-
-📬 Contact
-
-Email: lalman.dev7@gmail.com
+📬 Contact & Links
 
 Portfolio: https://lalman.dev
+
+Email: lalman.dev7@gmail.com
 
 GitHub: https://github.com/lalman-dev
 
@@ -76,4 +106,23 @@ npm install
 npm run dev
 ```
 
-© Lalman · Built with React, TypeScript, Tailwind & Motion
+---
+
+📌 Notes
+
+This portfolio will continue evolving as I explore:
+
+Better accessibility patterns
+
+Improved animation orchestration
+
+Performance optimizations
+
+Design system abstractions
+
+Feedback and discussions are always welcome.
+
+---
+
+© Lalman
+Built with React, TypeScript, Tailwind CSS & Framer Motion
