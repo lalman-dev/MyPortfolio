@@ -174,7 +174,7 @@ export const PROJECTS: Project[] = [
     title: "HackerNews Search Portal",
     image: hnNews_bg,
     description:
-      "A production-style Hacker News client built with Next.js App Router, focusing on rendering strategy and predictable UI behavior. Uses server-side rendering for fast initial load and SEO, with client-side state for search, pagination, and category filtering. Designed with clear component boundaries, resilient loading and error states, and reusable UI patterns to handle unreliable external APIs.",
+      "A production-grade Next.js application built to explore real-world rendering, performance, and reliability tradeoffs. Uses server-side rendering for fast initial load and SEO, with client-side state for search, pagination, and category filtering. Designed with clear component boundaries, resilient loading and error states, and reusable UI patterns to handle unreliable external APIs.",
     keyFocus: "Rendering Strategy • SSR / CSR",
     tag: ["Next.js", "React", "TailwindCSS", "REST API", "SSR", "CSR" , "Framer Motion"],
     liveUrl: "https://hn-news-two.vercel.app/",
