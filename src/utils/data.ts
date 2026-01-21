@@ -17,7 +17,6 @@ import {
 } from "lucide-react";
 
 import hnNews_bg from "/hackernews.png";
-import netflix_bg from "/netflix.png";
 import resume_bg from "/resume.png";
 
 import { FiGithub, FiLinkedin } from "react-icons/fi";
@@ -202,20 +201,7 @@ export const PROJECTS: Project[] = [
     gitHubUrl: "https://github.com/lalman-dev/AI-Resume-Studio",
     category: "Full-Stack",
     featured: true,
-  },
-  {
-    id: 3,
-    title: "Netflix UI Clone",
-    image: netflix_bg,
-    description:
-      "A responsive, API-driven streaming UI inspired by Netflix, built to practice scalable component design and real data rendering. Integrates the TMDb API to fetch and display dynamic content, with attention to responsive layouts, reusable components, and smooth UI interactions across screen sizes.",
-    keyFocus: "Responsive UI • Component Design",
-    tag: ["React", "TailwindCSS", "TMDb API", "Responsive Design"],
-    liveUrl: "https://netfliaxapp.netlify.app/",
-    gitHubUrl: "https://github.com/lalman-dev/NetflixClone-react-tailwind",
-    category: "Frontend",
-    featured: true,
-  },
+  }
 ];
 export const JOURNEY_STEPS: JourneyStep[] = [
   {
@@ -232,7 +218,7 @@ export const JOURNEY_STEPS: JourneyStep[] = [
     title: "Frontend Engineering Focus",
     company: "Self-directed",
     description:
-      "Focused on building frontend applications using React, TypeScript, and Tailwind CSS, with emphasis on component structure, state management, and responsive design.",
+      "Focused on building frontend applications using Reaind CSS, with emphasis on component structure, state management, and responsive design.",
     icon: GraduationCap,
     color: "bg-pink-500",
   },
