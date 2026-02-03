@@ -47,7 +47,7 @@ const ContactSection = () => {
           from_email: formData.email,
           message: formData.message,
         },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string,
       );
       if (result.status === 200) {
         setShowSuccess(true);
@@ -65,12 +65,17 @@ const ContactSection = () => {
     <section
       ref={sectionRef}
       id="contact"
+      aria-labelledby="contact-heading"
       className={`py-24 px-6 transition-colors duration-500 ${
         theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-gray-900"
       } relative overflow-hidden`}
     >
       {/* Background Element */}
-      <motion.div style={{ y }} className="absolute inset-0 overflow-hidden">
+      <motion.div
+        style={{ y }}
+        className="absolute inset-0 overflow-hidden"
+        aria-hidden="true"
+      >
         <div
           className={`absolute top-20 left-1/4 w-72 h-72 rounded-full opacity-5 ${
             theme === "dark" ? "bg-blue-500" : "bg-blue-400"
@@ -101,6 +106,7 @@ const ContactSection = () => {
           </motion.div>
           <motion.h2
             variants={itemVariants}
+            id="contact-heading"
             className="text-3xl md:text-5xl font-light mb-6"
           >
             Get in{" "}
@@ -136,7 +142,7 @@ const ContactSection = () => {
               }`}
             >
               <h3 className="text-2xl font-medium mb-8">Send me a message</h3>
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid md:grid-cols-2 gap-6">
                   <TextInput
                     theme={theme}
@@ -166,15 +172,19 @@ const ContactSection = () => {
                 />
 
                 <motion.button
+                  type="submit"
                   disabled={isSubmitting}
+                  aria-disabled={isSubmitting}
                   whileHover={{ y: -2, scale: 1.03 }}
                   whileTap={{ scale: 0.95 }}
-                  onClick={handleSubmit}
                   className="w-full bg-linear-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700  disabled:from-blue-400 disabled:to-purple-400  text-white py-4 rounded-xl uppercase tracking-wider font-medium transition-all duration-300 flex items-center justify-center space-x-2  "
                 >
                   {isSubmitting ? (
                     <>
                       <motion.div
+                        role="status"
+                        aria-live="polite"
+                        aria-label="Sending message"
                         animate={{ rotate: 360 }}
                         transition={{
                           duration: 1,
