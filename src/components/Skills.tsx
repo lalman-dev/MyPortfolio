@@ -15,6 +15,7 @@ const Skills = () => {
 
   return (
     <section
+      aria-labelledby="skills-heading"
       ref={sectionRef}
       id="skills"
       className={`py-24 px-6 ${
@@ -39,6 +40,7 @@ const Skills = () => {
           </motion.div>
 
           <motion.h2
+            id="skills-heading"
             variants={itemVariants}
             className="text-3xl md:text-5xl font-light mb-6"
           >
@@ -79,7 +81,7 @@ const Skills = () => {
               {/* Category header */}
               <div className="flex items-start gap-4 mb-6">
                 <div className="p-3 rounded-xl bg-linear-to-r from-blue-500/40 to-purple-500/40 text-purple-600">
-                  <category.icon size={22} />
+                  <category.icon size={22} aria-hidden="true" />
                 </div>
                 <div>
                   <h3 className="text-xl font-medium mb-1">{category.title}</h3>
@@ -127,12 +129,12 @@ const Skills = () => {
           >
             Also Working With
           </motion.h3>
-          <motion.div
+          <motion.ul
             variants={itemVariants}
             className="flex flex-wrap justify-center gap-3"
           >
             {TECH_STACK.map((tech) => (
-              <motion.span
+              <motion.li
                 key={tech.name}
                 whileHover={{ y: -2, scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
@@ -142,11 +144,17 @@ const Skills = () => {
                     : "bg-gray-200/50 border-gray-300 text-gray-700"
                 }`}
               >
-                {tech.icon && <tech.icon className={tech.color} size={18} />}
+                {tech.icon && (
+                  <tech.icon
+                    aria-hidden="true"
+                    className={tech.color}
+                    size={18}
+                  />
+                )}
                 {tech.name}
-              </motion.span>
+              </motion.li>
             ))}
-          </motion.div>
+          </motion.ul>
         </motion.div>
       </div>
     </section>
