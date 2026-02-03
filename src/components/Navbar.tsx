@@ -24,6 +24,7 @@ const Navbar = () => {
   };
   return (
     <motion.nav
+      aria-label="Primary navigation"
       style={{ opacity: 1 }}
       className={`fixed w-screen top-0 z-50 px-6 py-4 ${
         theme === "dark" ? "bg-gray-950/80" : "bg-gray-50/80"
@@ -32,7 +33,9 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <motion.div
+        <motion.a
+          href="#home"
+          aria-label="Go to home section"
           whileHover={{ scale: 1.05 }}
           className="flex items-center space-x-2"
         >
@@ -40,7 +43,7 @@ const Navbar = () => {
           <span className="text-lg ml-1 bg-linear-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
             Lalman
           </span>
-        </motion.div>
+        </motion.a>
 
         {/* Desktop Navigation */}
         <ul className="hidden md:flex items-center space-x-6">
@@ -61,6 +64,7 @@ const Navbar = () => {
           ))}
           {/* theme toggle */}
           <motion.button
+            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
             whileTap={{ scale: 0.9 }}
             onClick={toggleTheme}
             className={`relative flex items-center w-16 h-7 rounded-full transition-all duration-900 
@@ -82,8 +86,8 @@ const Navbar = () => {
             />
           </motion.button>
         </ul>
-        {/* Mobile Menu Button */}
-        <li className="md:hidden flex items-center space-x-4 ">
+        {/* Mobile theme toggle */}
+        <div className="md:hidden flex items-center space-x-4 ">
           <motion.button
             whileTap={{ scale: 0.9 }}
             onClick={toggleTheme}
@@ -105,8 +109,11 @@ const Navbar = () => {
       ${theme === "dark" ? "bg-gray-900 right-0.5" : "bg-white left-0.5"}`}
             />
           </motion.button>
-
+          {/* Mobile Menu toggle Button */}
           <motion.button
+            aria-label={
+              isMenuOpen ? "Close navigation menu" : "Open navigation menu"
+            }
             aria-expanded={isMenuOpen}
             aria-controls="mobile-menu"
             whileHover={{ scale: 1.05 }}
@@ -120,13 +127,15 @@ const Navbar = () => {
           >
             {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </motion.button>
-        </li>
+        </div>
       </div>
 
       {/* Mobile Menu */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.ul
+            id="mobile-menu"
+            role="menu"
             initial={{ opacity: 0, x: 50, y: -50 }}
             animate={{ opacity: 1, x: 0, y: 0 }}
             exit={{ opacity: 0, x: 50, y: -50 }}
@@ -139,6 +148,7 @@ const Navbar = () => {
             {NAV_ITEMS.map((item) => (
               <li key={item}>
                 <motion.a
+                  aria-label={`Go to ${item} section`}
                   href={`#${item.toLowerCase()}`}
                   whileHover={{ x: 5 }}
                   onClick={() => scrollToSection(item.toLowerCase())}
