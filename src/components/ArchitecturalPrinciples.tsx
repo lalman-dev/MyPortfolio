@@ -54,6 +54,7 @@ const ArchitecturePrinciples = () => {
     <section
       ref={sectionRef}
       id="architecture"
+      aria-labelledby="architecture-heading"
       className={`py-24 px-6 ${
         theme === "dark" ? "bg-gray-950 text-white" : "bg-gray-50 text-gray-900"
       }`}
@@ -68,6 +69,7 @@ const ArchitecturePrinciples = () => {
         >
           <motion.h2
             variants={itemVariants}
+            id="architecture-heading"
             className="text-3xl md:text-5xl font-light mb-6"
           >
             Architecture
@@ -88,14 +90,14 @@ const ArchitecturePrinciples = () => {
         </motion.div>
 
         {/* Principles Grid */}
-        <motion.div
+        <motion.ul
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={containerVariants}
           className="grid md:grid-cols-2 gap-8"
         >
           {PRINCIPLES.map((item) => (
-            <motion.div
+            <motion.li
               key={item.title}
               variants={itemVariants}
               whileHover={{ y: -4 }}
@@ -107,7 +109,6 @@ const ArchitecturePrinciples = () => {
               }`}
             >
               <h3 className="text-xl font-medium mb-3">{item.title}</h3>
-
               <p
                 className={`text-sm leading-relaxed mb-4 ${
                   theme === "dark" ? "text-gray-400" : "text-gray-600"
@@ -121,12 +122,12 @@ const ArchitecturePrinciples = () => {
                   theme === "dark" ? "text-gray-500" : "text-gray-500"
                 }`}
               >
-                <span className="font-medium not-italic">Example:</span>{" "}
+                <strong className="font-medium not-italic">Example:</strong>{" "}
                 {item.example}
               </p>
-            </motion.div>
+            </motion.li>
           ))}
-        </motion.div>
+        </motion.ul>
       </div>
     </section>
   );
