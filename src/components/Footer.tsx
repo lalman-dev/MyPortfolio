@@ -74,15 +74,21 @@ const Footer = () => {
   return (
     <footer
       id="footer"
+      role="contentinfo"
+      aria-labelledby="footer-heading"
       ref={footerRef}
       className={`relative ${
         theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-gray-900"
       }overflow-hidden`}
     >
+      <h2 id="footer-heading" className="sr-only">
+        Footer
+      </h2>
       {/* Animated gradient line */}
       <AnimatedGradientLine />
       {/* Background elements */}
       <motion.div
+        aria-hidden="true"
         style={{ y: scrollY }}
         className="absolute inset-0 pointer-events-none"
       >
@@ -94,7 +100,7 @@ const Footer = () => {
         />
       </motion.div>
 
-      <div className="raltive z-10 px-6 py-16">
+      <div className="relative z-10 px-6 py-16">
         <div className="max-w-6xl mx-auto">
           {/* Main Footer Content  */}
           <motion.div
@@ -122,7 +128,7 @@ const Footer = () => {
                   }}
                   className="text-blue-600"
                 >
-                  <Code2 size={28} />
+                  <Code2 size={28} aria-hidden="true" />
                 </motion.div>
                 <span className="bg-linear-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent font-medium ml-2">
                   Lalman
@@ -149,6 +155,7 @@ const Footer = () => {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={`Visit my ${social.name} profile`}
                   className={`p-3 rounded-full transition-all duration-300 ${
                     theme === "dark"
                       ? "bg-gray-700/50 hover:bg-gray-600/50"
@@ -185,7 +192,7 @@ const Footer = () => {
                 transition={{ duration: 2, repeat: Infinity }}
                 className="text-red-300"
               >
-                <Heart size={16} fill="currentColor" />
+                <Heart size={16} fill="currentColor" aria-hidden="true" />
               </motion.div>
               <div
                 className={`h-px w-26 ${
@@ -216,14 +223,15 @@ const Footer = () => {
             <motion.div variants={itemVariants}>
               <motion.button
                 onClick={scrollToTop}
+                aria-label="Scroll back to top of page"
                 className={`inline-flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300
               ${
                 theme === "dark"
                   ? "bg-gray-800/50 hover:bg-gray-700/50 text-gray-400 hover:text-white"
                   : "bg-gray-100/50 hover:bg-gray-200/50 text-gray-600 hover:text-gray-900"
               } backdrop-blur-sm border ${
-                  theme === "dark" ? "border-gray-700" : "border-gray-300"
-                }`}
+                theme === "dark" ? "border-gray-700" : "border-gray-300"
+              }`}
                 whileHover={{
                   y: -2,
                   scale: 1.05,
