@@ -94,7 +94,7 @@ const HeroSection = () => {
                   >
                     <img
                       src={PROFILE_PIC}
-                      alt="Profile_pic"
+                      alt="Portrait of Lalman, Frontend Engineer"
                       className="w-full h-full object-cover"
                     />
                   </motion.div>
@@ -219,7 +219,10 @@ const HeroSection = () => {
                   <motion.a
                     key={index}
                     href={social.href}
+                    aria-label={`Open ${social.icon} profile`}
                     whileHover={{ y: -3, scale: 1.1 }}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`p-3 rounded-full transition-colors ${
                       theme === "dark"
                         ? "text-gray-400 hover:text-white hover:bg-gray-800"
@@ -367,7 +370,10 @@ const HeroSection = () => {
                   <motion.a
                     key={index}
                     href={social.href}
+                    aria-label={`Open ${social.icon} profile`}
                     whileHover={{ y: -3, scale: 1.1 }}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`p-3 rounded-full transition-colors ${
                       theme === "dark"
                         ? "text-gray-400 hover:text-white hover:bg-gray-800"
@@ -456,7 +462,7 @@ const HeroSection = () => {
                   >
                     <img
                       src={PROFILE_PIC}
-                      alt="Profile_pic"
+                      alt="Portrait of Lalman, Frontend Engineer"
                       className="w-full h-full object-cover"
                     />
                   </motion.div>
@@ -498,7 +504,9 @@ const HeroSection = () => {
 
           {/* Scroll Indicator */}
 
-          <motion.div
+          <motion.button
+            type="button"
+            aria-label="Scroll to footer section"
             animate={{
               y: [0, 8, 0],
             }}
@@ -513,7 +521,7 @@ const HeroSection = () => {
               size={20}
               className={theme === "dark" ? "text-gray-600" : "text-gray-400"}
             />
-          </motion.div>
+          </motion.button>
         </div>
       </motion.section>
     </div>
