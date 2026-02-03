@@ -9,14 +9,22 @@ import {
   itemVariants,
   textVariants,
 } from "../utils/variants";
+import type { IconType } from "react-icons";
 
-const social_link = [
-  { icon: FiGithub, href: "https://github.com/lalman-dev/" },
+interface social_link {
+  name: string;
+  icon: IconType;
+  href: string;
+}
+
+const social_link: social_link[] = [
+  { name: "GitHub", icon: FiGithub, href: "https://github.com/lalman-dev/" },
   {
+    name: "LinkedIn",
     icon: FiLinkedin,
     href: "https://linkedin.com/in/lalman-dev/",
   },
-  { icon: Mail, href: "mailto:lalman.dev7@gmail.com" },
+  { name: "Email", icon: Mail, href: "mailto:lalman.dev7@gmail.com" },
 ];
 
 const HeroSection = () => {
@@ -219,7 +227,7 @@ const HeroSection = () => {
                   <motion.a
                     key={index}
                     href={social.href}
-                    aria-label={`Open ${social.icon} profile`}
+                    aria-label={`Open ${social.name} profile`}
                     whileHover={{ y: -3, scale: 1.1 }}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -370,7 +378,7 @@ const HeroSection = () => {
                   <motion.a
                     key={index}
                     href={social.href}
-                    aria-label={`Open ${social.icon} profile`}
+                    aria-label={`Open ${social.name} profile`}
                     whileHover={{ y: -3, scale: 1.1 }}
                     target="_blank"
                     rel="noopener noreferrer"
