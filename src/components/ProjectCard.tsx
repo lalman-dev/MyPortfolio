@@ -14,6 +14,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, theme }) => {
   return (
     <motion.div
       variants={cardVariant}
+      tabIndex={0}
       whileHover={{
         y: -8,
         transition: { duration: 0.3, ease: "easeOut" },
@@ -31,12 +32,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, theme }) => {
         <div className="relative overflow-hidden">
           <img
             src={project.image}
-            alt={project.title}
+            alt={`${project.title} project preview`}
             className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
           />
           {/* Featured Badge */}
           {project.featured && (
-            <div className="absolute top-4 left-4 opacity-50 hover:opacity-0">
+            <div
+              aria-hidden="true"
+              className="absolute top-4 left-4 opacity-50 hover:opacity-0"
+            >
               <span className="bg-gray-400 text-xs px-3 py-1 rounded-full font-medium">
                 Hover to explore
               </span>
@@ -45,6 +49,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, theme }) => {
           {/* Category Badge */}
           <div className="absolute top-4 right-4">
             <span
+              aria-label={`Project category: ${project.category}`}
               className={`text-sm px-3 py-1 rounded-full font-medium bg-white/80 text-gray-700 backdrop-blur-sm`}
             >
               {project.category}
@@ -55,11 +60,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, theme }) => {
           <motion.div
             initial={{ opacity: 0 }}
             whileHover={{ opacity: 1 }}
+            whileFocus={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
             className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center space-x-4"
           >
             <motion.a
               href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Open live demo of ${project.title}`}
               initial={{ y: 10, opacity: 0.5 }}
               whileHover={{ y: 0, opacity: 1, scale: 1.05 }}
               transition={{ duration: 0.3, delay: 0.1 }}
@@ -71,6 +80,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, theme }) => {
 
             <motion.a
               href={project.gitHubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`View source code of ${project.title} on GitHub`}
               initial={{ y: 10, opacity: 0.5 }}
               whileHover={{ y: 0, opacity: 1, scale: 1.05 }}
               transition={{ duration: 0.3, delay: 0.2 }}
@@ -105,9 +117,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, theme }) => {
             {project.description}
           </p>
           {/* tech stack */}
-          <div className="flex flex-wrap gap-2">
+          <ul className="flex flex-wrap gap-2">
             {project.tag.map((tag, tagIndex) => (
-              <span
+              <li
                 key={tagIndex}
                 className={`text-xs px-3 py-1 rounded-full ${
                   theme === "dark"
@@ -116,9 +128,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, theme }) => {
                 }`}
               >
                 {tag}
-              </span>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     </motion.div>
