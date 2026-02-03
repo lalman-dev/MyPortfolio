@@ -188,7 +188,7 @@ const Footer = () => {
                 } `}
               />
               <motion.div
-                animate={{ scale: [1, 1.5, 1] }}
+                animate={{ scale: [1.3, 1.5, 1.3] }}
                 transition={{ duration: 2, repeat: Infinity }}
                 className="text-red-300"
               >
