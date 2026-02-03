@@ -30,12 +30,17 @@ const AboutMe = () => {
     <section
       id="about"
       ref={sectionRef}
+      aria-labelledby="about-heading"
       className={`py-24 px-6 relative overflow-hidden ${
         theme === "dark" ? "bg-gray-950 text-white" : "bg-white text-gray-900"
       }`}
     >
       {/* Background Elements */}
-      <motion.div style={{ y }} className="absolute inset-0 overflow-hidden">
+      <motion.div
+        aria-hidden="true"
+        style={{ y }}
+        className="absolute inset-0 overflow-hidden"
+      >
         <div
           className={`absolute top-40 right-1/3 w-80 h-80 rounded-full blur-3xl opacity-5 ${
             theme === "dark" ? "bg-blue-500" : "bg-blue-300"
@@ -121,10 +126,10 @@ const AboutMe = () => {
 
             {/* What i love making */}
             <motion.div variants={itemVariants} className="space-y-4">
-              <h3 className="text-xl font-medium mb-6">
-                <div className="grid gap-4">
+              <div className="text-xl font-medium mb-6">
+                <ul className="grid gap-4">
                   {PASSION.map((passion) => (
-                    <motion.div
+                    <motion.li
                       key={passion.title}
                       variants={itemVariants}
                       whileHover={{ x: 4 }}
@@ -139,7 +144,11 @@ const AboutMe = () => {
                           theme === "dark" ? "bg-gray-700" : "bg-gray-300"
                         }`}
                       >
-                        <passion.icon size={20} className="text-blue-400" />
+                        <passion.icon
+                          size={20}
+                          className="text-blue-400"
+                          aria-hidden="true"
+                        />
                       </div>
                       <div>
                         <h4 className="font-medium mb-1">{passion.title}</h4>
@@ -151,10 +160,10 @@ const AboutMe = () => {
                           {passion.description}
                         </p>
                       </div>
-                    </motion.div>
+                    </motion.li>
                   ))}
-                </div>
-              </h3>
+                </ul>
+              </div>
             </motion.div>
           </motion.div>
 
@@ -175,10 +184,11 @@ const AboutMe = () => {
                 theme === "dark" ? "bg-gray-700" : "bg-gray-300"
               }`}
             />
-            <div className="space-y-8">
+            <ul className="space-y-8">
               {JOURNEY_STEPS.map((step) => (
-                <motion.div
+                <motion.li
                   key={step.year}
+                  aria-label={`Year ${step.year}`}
                   variants={stepVariants}
                   whileHover={{ x: 4 }}
                   className="relative flex items-start space-x-6 group"
@@ -187,7 +197,11 @@ const AboutMe = () => {
                   <div
                     className={`relative z-10 shrink-0 w-16 h-16 rounded-full ${step.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
                   >
-                    <step.icon size={24} className="text-white" />
+                    <step.icon
+                      size={24}
+                      className="text-white"
+                      aria-hidden="true"
+                    />
                   </div>
                   {/* content*/}
                   <div
@@ -225,9 +239,9 @@ const AboutMe = () => {
                       {step.description}
                     </p>
                   </div>
-                </motion.div>
+                </motion.li>
               ))}
-            </div>
+            </ul>
           </motion.div>
         </div>
 
