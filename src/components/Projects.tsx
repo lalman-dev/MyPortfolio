@@ -14,12 +14,13 @@ const Projects = () => {
     <section
       id="work"
       ref={sectionRef}
+      aria-labelledby="projects-heading"
       className={`py-24 px-6 relative overflow-hidden ${
         theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"
       }`}
     >
       {/* Backgroung Elements */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
         <div
           className={`absolute top-20 left-1/4 w-96 h-96 rounded-full blur-3xl opacity-5 ${
             theme === "dark" ? " bg-blue-500" : "bg-blue-300"
@@ -48,6 +49,7 @@ const Projects = () => {
             Notable Work
           </motion.div>
           <motion.h2
+            id="projects-heading"
             variants={itemVariants}
             className="
         text-3xl md:text-5xl font-light mb-6"
@@ -79,21 +81,18 @@ const Projects = () => {
           Each project focuses on real-world data, UX states, and maintainable
           frontend structure.
         </motion.div>
-        <motion.div
+        <motion.ul
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={containerVariants}
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {PROJECTS.map((project, index) => (
-            <ProjectCard
-              key={project.id}
-              project={project}
-              index={index}
-              theme={theme}
-            />
+            <li key={project.id} className="list-none">
+              <ProjectCard project={project} index={index} theme={theme} />
+            </li>
           ))}
-        </motion.div>
+        </motion.ul>
       </div>
     </section>
   );
