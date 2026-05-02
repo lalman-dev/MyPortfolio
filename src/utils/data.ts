@@ -178,7 +178,7 @@ export const PROJECTS: Project[] = [
     tag: ["React", "TypeScript", "Tailwind CSS", "Vite", "State Machine"],
     liveUrl: "https://agent-visualizer.vercel.app/",
     gitHubUrl: "https://github.com/lalman-dev/agent-visualizer",
-    image: "/src/assets/agent-visualizer.png", // drop your screenshot here
+    image: "/src/assets/agent-visualizer.png",
   },
   {
     id: 2,
