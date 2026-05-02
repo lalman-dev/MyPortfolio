@@ -1,535 +1,355 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowDown, Mail } from "lucide-react";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
-import { useTheme } from "./../context/ThemeContext";
 import PROFILE_PIC from "/src/assets/profilePIc.jpeg";
-import {
-  containerVariants,
-  imageVariants,
-  itemVariants,
-  textVariants,
-} from "../utils/variants";
-import type { IconType } from "react-icons";
+import { useEffect, useRef, useState } from "react";
 
-interface social_link {
-  name: string;
-  icon: IconType;
-  href: string;
-}
-
-const social_link: social_link[] = [
-  { name: "GitHub", icon: FiGithub, href: "https://github.com/lalman-dev/" },
-  {
-    name: "LinkedIn",
-    icon: FiLinkedin,
-    href: "https://linkedin.com/in/lalman-dev/",
-  },
-  { name: "Email", icon: Mail, href: "mailto:lalman.dev7@gmail.com" },
+const ROLES = [
+  "Frontend Engineer",
+  "React Developer",
+  "Next.js Builder",
+  "UI Craftsman",
 ];
 
 const HeroSection = () => {
-  const { theme } = useTheme();
   const { scrollY } = useScroll();
-  const heroY = useTransform(scrollY, [0, 500], [0, -100]);
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+  const y = useTransform(scrollY, [0, 600], [0, -80]);
+  const opacity = useTransform(scrollY, [0, 400], [1, 0]);
+
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [displayed, setDisplayed] = useState("");
+  const [typing, setTyping] = useState(true);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    const current = ROLES[roleIndex];
+    if (typing) {
+      if (displayed.length < current.length) {
+        timeoutRef.current = setTimeout(
+          () => setDisplayed(current.slice(0, displayed.length + 1)),
+          60,
+        );
+      } else {
+        timeoutRef.current = setTimeout(() => setTyping(false), 2000);
+      }
+    } else {
+      if (displayed.length > 0) {
+        timeoutRef.current = setTimeout(
+          () => setDisplayed(displayed.slice(0, -1)),
+          30,
+        );
+      } else {
+        setRoleIndex((prev) => (prev + 1) % ROLES.length);
+        setTyping(true);
+      }
     }
+    return () => {
+      if (timeoutRef.current !== null) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, [displayed, typing, roleIndex]);
+
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
+
+  const stats = [
+    { value: "5+", label: "Projects Shipped" },
+    { value: "10+", label: "Technologies" },
+    { value: "∞", label: "Problems Solved" },
+  ];
 
   return (
     <div
-      className={`min-h-screen transition-all duration-500 ${
-        theme === "dark" ? "bg-gray-950 text-white" : "bg-gray-50 text-gray-900"
-      }`}
+      id="home"
+      className="min-h-screen relative overflow-hidden"
+      style={{ background: "var(--bg-primary)" }}
     >
-      {/* Hero Section */}
+      {/* Background grid */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-30"
+        style={{
+          backgroundImage: `linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px)`,
+          backgroundSize: "60px 60px",
+          maskImage:
+            "radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%)",
+        }}
+      />
+
+      {/* Accent circle blur */}
+      <div
+        className="absolute top-1/4 right-0 w-[500px] h-[500px] rounded-full pointer-events-none"
+        style={{
+          background: "var(--accent)",
+          filter: "blur(180px)",
+          opacity: 0.06,
+        }}
+      />
+
       <motion.section
-        id="home"
-        style={{ y: heroY }}
-        className="min-h-screen flex items-center justify-center relative px-6 pt-10"
+        style={{ y, opacity }}
+        className="min-h-screen flex items-center px-6 pt-24 pb-16 max-w-7xl mx-auto"
       >
-        <div className="absolute inset-0 overflow-hidden">
+        <div className="w-full">
+          {/* Top label row */}
           <motion.div
-            animate={{
-              scale: [1, 1.1, 1],
-              rotate: [0, 180, 360],
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-            className={`absolute top-20 right-20 w-64 h-64 rounded-full blur-3xl opacity-10 ${
-              theme === "dark" ? "bg-blue-500" : "bg-blue-300"
-            }`}
-          />
-          <motion.div
-            animate={{
-              scale: [1.1, 1, 1.1],
-              rotate: [360, 180, 0],
-            }}
-            transition={{
-              duration: 25,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-            className={`absolute bottom-20 left-20 w-48 h-48 rounded-full blur-3xl opacity-10 ${
-              theme === "dark" ? "bg-purple-500" : "bg-purple-300"
-            }`}
-          />
-        </div>
-        <div className="max-w-7xl mx-auto w-full z-10 mt-20">
-          {/* Mobile Layout */}
-          <div className="block lg:hidden">
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={containerVariants}
-              className="text-center"
-            >
-              {/* Profile Image - Mobile */}
-              <motion.div variants={imageVariants} className="mb-8">
-                <div className="w-32 h-32 mx-auto relative">
-                  <motion.div
-                    whileHover={{
-                      scale: 1.05,
-                    }}
-                    className={`z-10 absolute w-full h-32 rounded-2xl overflow-hidden border-4 ${
-                      theme === "dark" ? "border-gray-800" : " border-gray-300"
-                    } shadow-2xl`}
-                  >
-                    <img
-                      src={PROFILE_PIC}
-                      alt="Portrait of Lalman, Frontend Engineer"
-                      className="w-full h-full object-cover"
-                    />
-                  </motion.div>
-                  {/* Decorative Rings */}
-                  <motion.div
-                    animate={{
-                      rotate: 360,
-                    }}
-                    transition={{
-                      duration: 20,
-                      repeat: Infinity,
-                      ease: "linear",
-                    }}
-                    className={`absolute -inset-5 rounded-2xl border ${
-                      theme === "dark"
-                        ? "border-blue-600/40"
-                        : "text-pink-400/40"
-                    }`}
-                  />
-                  <motion.div
-                    animate={{
-                      rotate: -360,
-                    }}
-                    transition={{
-                      duration: 30,
-                      repeat: Infinity,
-                      ease: "linear",
-                    }}
-                    className={`absolute -inset-5 rounded-2xl border ${
-                      theme === "dark"
-                        ? "border-pink-400/40"
-                        : "text-blue-600/40"
-                    }`}
-                  />
-                </div>
-              </motion.div>
-              {/* Content - Mobile */}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="flex items-center gap-4 mb-10"
+          >
+            <div className="w-8 h-px" style={{ background: "var(--accent)" }} />
+            <span className="section-label">
+              Available for work · Based in India
+            </span>
+            <div
+              className="w-2 h-2 rounded-full animate-pulse"
+              style={{ background: "#22c55e" }}
+            />
+          </motion.div>
+
+          {/* Main split layout */}
+          <div className="grid lg:grid-cols-[1fr_auto] gap-12 lg:gap-20 items-start">
+            {/* Left — Big text */}
+            <div>
+              {/* Typing role */}
               <motion.div
-                variants={textVariants}
-                className={`text-sm uppercase tracking-widest ${
-                  theme === "dark" ? "text-gray-500" : "text-gray-600"
-                } mb-4`}
-              >
-                Frontend Engineer
-              </motion.div>
-              <motion.h1
-                variants={itemVariants}
-                className="text-3xl md:text-5xl font-light mb-6 leading-tight"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="mb-5 h-6 flex items-center"
               >
                 <span
-                  className={`${
-                    theme === "dark" ? "text-white" : "text-gray-900"
-                  }`}
+                  className="text-sm"
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    color: "var(--accent)",
+                  }}
                 >
-                  Building Production-grade
+                  {displayed}
+                  <span className="animate-pulse">_</span>
                 </span>
-                <br />
-                <span className="bg-linear-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-medium ml-2">
-                  React & Next.js
-                </span>
-                <br />
-                <span
-                  className={`${
-                    theme === "dark" ? "text-white" : "text-gray-900"
-                  }`}
+              </motion.div>
+
+              {/* Big headline */}
+              <div className="overflow-hidden mb-6">
+                <motion.h1
+                  initial={{ y: "100%" }}
+                  animate={{ y: 0 }}
+                  transition={{
+                    duration: 0.8,
+                    ease: [0.16, 1, 0.3, 1],
+                    delay: 0.1,
+                  }}
+                  className="leading-[0.9] tracking-tight"
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontSize: "clamp(3.5rem, 9vw, 8rem)",
+                    fontWeight: 700,
+                    color: "var(--text-primary)",
+                  }}
                 >
-                  Applications
-                </span>
-              </motion.h1>
+                  Building
+                  <br />
+                  <span style={{ color: "var(--accent)" }}>Production</span>
+                  <br />
+                  Interfaces.
+                </motion.h1>
+              </div>
+
+              {/* Sub text */}
               <motion.p
-                variants={itemVariants}
-                className={`text-base md:text-lg mb-4 max-w-xl mx-auto font-light leading-relaxed ${
-                  theme === "dark" ? "text-gray-400" : "text-gray-600"
-                }`}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+                className="max-w-lg text-base leading-relaxed mb-10"
+                style={{
+                  color: "var(--text-secondary)",
+                  fontFamily: "var(--font-body)",
+                }}
               >
-                I build performant, accessible web experiences using React,
-                Next.js, TypeScript, and Tailwind CSS, with a strong focus on
-                real-world data and production-ready architecture.
+                I design and ship performant, accessible web experiences using
+                React, Next.js, and TypeScript — with strong opinions on
+                architecture, state, and rendering strategy.
               </motion.p>
-              <motion.p
-                variants={itemVariants}
-                className={`text-base md:text-lg mb-8 max-w-xl mx-auto font-light leading-relaxed ${
-                  theme === "dark" ? "text-gray-400" : "text-gray-600"
-                }`}
-              >
-                Worked with real-world APIs, authentication flows, and
-                production-style UI systems.
-              </motion.p>
-              {/* CTA Buttons - for mobile */}
+
+              {/* CTAs */}
               <motion.div
-                variants={itemVariants}
-                className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.65 }}
+                className="flex flex-wrap gap-4 mb-12"
               >
                 <motion.button
-                  whileHover={{ y: -2 }}
-                  whileTap={{ scale: 0.9 }}
+                  whileHover={{ scale: 1.03, y: -2 }}
+                  whileTap={{ scale: 0.97 }}
                   onClick={() => scrollToSection("work")}
-                  className="bg-linear-to-r from-blue-400 to-pink-400 hover:bg-blue-400 hover:from-blue-500 hover:to-pink-500 text-white px-8 py-3 rounded-full text-sm uppercase tracking-wider font-medium transition-all duration-300"
+                  className="group flex items-center gap-2 px-6 py-3 rounded-full text-white text-sm font-medium"
+                  style={{
+                    background: "var(--accent)",
+                    fontFamily: "var(--font-display)",
+                  }}
                 >
                   View Projects
+                  <ArrowUpRight
+                    size={15}
+                    className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                  />
                 </motion.button>
                 <motion.button
-                  whileHover={{ y: -2 }}
-                  whileTap={{ scale: 0.9 }}
+                  whileHover={{ scale: 1.03, y: -2 }}
+                  whileTap={{ scale: 0.97 }}
                   onClick={() => scrollToSection("contact")}
-                  className={`px-8 py-3 rounded-full text-sm uppercase tracking-wider font-medium transition-all duration-300 border ${
-                    theme === "dark"
-                      ? "border-gray-700 hover:border-gray-500 text-gray-300"
-                      : "border-gray-300 hover:border-gray-400 text-gray-700"
-                  }`}
+                  className="px-6 py-3 rounded-full text-sm font-medium transition-all"
+                  style={{
+                    border: "1px solid var(--border)",
+                    color: "var(--text-secondary)",
+                    background: "var(--bg-card)",
+                    fontFamily: "var(--font-display)",
+                  }}
                 >
                   Get in Touch
                 </motion.button>
               </motion.div>
 
-              {/* Social Links - Mobile */}
+              {/* Social row */}
               <motion.div
-                variants={itemVariants}
-                className="flex justify-center space-x-6 mb-8"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.8 }}
+                className="flex items-center gap-5"
               >
-                {social_link.map((social, index) => (
+                {[
+                  {
+                    icon: FiGithub,
+                    href: "https://github.com/lalman-dev/",
+                    label: "GitHub",
+                  },
+                  {
+                    icon: FiLinkedin,
+                    href: "https://linkedin.com/in/lalman-dev/",
+                    label: "LinkedIn",
+                  },
+                ].map(({ icon: Icon, href, label }) => (
                   <motion.a
-                    key={index}
-                    href={social.href}
-                    aria-label={`Open ${social.name} profile`}
-                    whileHover={{ y: -3, scale: 1.1 }}
+                    key={label}
+                    href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`p-3 rounded-full transition-colors ${
-                      theme === "dark"
-                        ? "text-gray-400 hover:text-white hover:bg-gray-800"
-                        : "text-gray-600 hover:text-gray-900 hover:bg-gray-200"
-                    }`}
+                    aria-label={label}
+                    whileHover={{ y: -2 }}
+                    className="flex items-center gap-2 text-sm transition-colors"
+                    style={{
+                      color: "var(--text-muted)",
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "0.72rem",
+                    }}
+                    onMouseEnter={(e) =>
+                      ((e.currentTarget as HTMLElement).style.color =
+                        "var(--text-primary)")
+                    }
+                    onMouseLeave={(e) =>
+                      ((e.currentTarget as HTMLElement).style.color =
+                        "var(--text-muted)")
+                    }
                   >
-                    <social.icon size={20} />
+                    <Icon size={16} />
+                    {label}
                   </motion.a>
                 ))}
               </motion.div>
-              {/* Tech Stack - Mobile */}
-              <motion.div
-                variants={itemVariants}
-                className="flex justify-center items-center space-x-6 text-xs uppercase tracking-widest flex-wrap"
-              >
-                <span
-                  className={
-                    theme === "dark" ? "text-gray-600" : "text-gray-500"
-                  }
-                >
-                  React
-                </span>
-                <span
-                  className={
-                    theme === "dark" ? "text-gray-700" : "text-gray-400"
-                  }
-                >
-                  .
-                </span>
+            </div>
 
-                <span
-                  className={
-                    theme === "dark" ? "text-gray-600" : "text-gray-500"
-                  }
-                >
-                  NextJs
-                </span>
-                <span
-                  className={
-                    theme === "dark" ? "text-gray-700" : "text-gray-400"
-                  }
-                >
-                  .
-                </span>
-                <span
-                  className={
-                    theme === "dark" ? "text-gray-600" : "text-gray-500"
-                  }
-                >
-                  TypeScript
-                </span>
-              </motion.div>
-            </motion.div>
-          </div>
-          {/* Desktop Layout- Split */}
-          <div className="hidden lg:grid lg:grid-cols-2 lg:gap-14 lg:items-center">
-            {/* Left sidebar */}
+            {/* Right — Profile image + stats */}
             <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={containerVariants}
-              className="text-left"
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{
+                delay: 0.4,
+                duration: 0.8,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="hidden lg:flex flex-col items-center gap-6"
             >
-              <motion.div
-                variants={textVariants}
-                className={`text-sm uppercase tracking-widest ${
-                  theme === "dark" ? "text-gray-500" : "text-gray-600"
-                } mb-6`}
-              >
-                {" "}
-                Frontend Engineer
-              </motion.div>
-              <motion.h1
-                variants={itemVariants}
-                className="text-5xl xl:text-6xl font-light leading-tight"
-              >
-                <span
-                  className={`${
-                    theme === "dark" ? "text-white" : "text-gray-700"
-                  }`}
-                >
-                  Building Production-grade
-                </span>
-                <br />
-                <span className="bg-linear-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-medium">
-                  React & Next.js
-                </span>
-                <br />
-                <span
-                  className={`${
-                    theme === "dark" ? "text-white" : "text-gray-700"
-                  }`}
-                >
-                  Applications
-                </span>
-              </motion.h1>
-              <motion.p
-                variants={itemVariants}
-                className={`text-xl mb-5 font-light leading-relaxed max-w-lg  ${
-                  theme === "dark" ? "text-gray-400" : "text-gray-600"
-                }`}
-              >
-                I build performant, accessible web experiences using React,
-                Next.js, TypeScript, and Tailwind CSS, with a strong focus on
-                real-world data and production-ready architecture.
-              </motion.p>
-              <motion.p
-                variants={itemVariants}
-                className={`text-lg mb-12 font-light leading-relaxed max-w-lg  ${
-                  theme === "dark" ? "text-gray-400" : "text-gray-600"
-                }`}
-              >
-                Worked with real-world APIs, authentication flows, and
-                production-style UI systems.
-              </motion.p>
-              {/* CTA Buttons - for desktop  */}
-              <motion.div variants={itemVariants} className="flex gap-6 mb-8">
-                <motion.button
-                  whileHover={{ y: -6 }}
-                  whileTap={{ scale: 0.9 }}
-                  onClick={() => scrollToSection("work")}
-                  className="bg-linear-to-r from-blue-400 to-pink-400 hover:bg-blue-400 hover:from-blue-500 hover:to-pink-500 text-white px-8 py-3 rounded-full text-sm uppercase tracking-wider font-medium transition-all duration-300"
-                >
-                  View Projects
-                </motion.button>
-                <motion.button
-                  whileHover={{ y: -6 }}
-                  whileTap={{ scale: 0.9 }}
-                  onClick={() => scrollToSection("contact")}
-                  className={`px-8 py-4 rounded-full text-sm uppercase tracking-wider font-medium transition-all duration-300 border ${
-                    theme === "dark"
-                      ? "border-gray-700 hover:border-gray-500 text-gray-300"
-                      : "border-gray-300 hover:border-gray-400 text-gray-700"
-                  }`}
-                >
-                  Get in Touch
-                </motion.button>
-              </motion.div>
-              {/* Social Links - desktop */}
-              <motion.div
-                variants={itemVariants}
-                className="flex space-x-6 mb-12"
-              >
-                {social_link.map((social, index) => (
-                  <motion.a
-                    key={index}
-                    href={social.href}
-                    aria-label={`Open ${social.name} profile`}
-                    whileHover={{ y: -3, scale: 1.1 }}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`p-3 rounded-full transition-colors ${
-                      theme === "dark"
-                        ? "text-gray-400 hover:text-white hover:bg-gray-800"
-                        : "text-gray-600 hover:text-gray-900 hover:bg-gray-200"
-                    }`}
-                  >
-                    <social.icon size={20} />
-                  </motion.a>
-                ))}
-              </motion.div>
-            </motion.div>
-
-            {/* Right side -Profile Image */}
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={imageVariants}
-              className="flex justify-center lg:justify-end"
-            >
+              {/* Profile image */}
               <div className="relative">
-                {/* Tech Stack Desktop */}
                 <motion.div
-                  variants={itemVariants}
-                  className="flex items-center space-x-8 text-sm uppercase tracking-widest absolute -top-20 -left-21"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 200 }}
+                  className="w-64 h-80 rounded-2xl overflow-hidden"
+                  style={{ border: "1px solid var(--border)" }}
                 >
-                  <span
-                    className={
-                      theme === "dark" ? "text-gray-600" : "text-gray-500"
-                    }
-                  >
-                    React
-                  </span>
-                  <span
-                    className={
-                      theme === "dark" ? "text-gray-700" : "text-gray-400"
-                    }
-                  >
-                    .
-                  </span>
-                  <span
-                    className={
-                      theme === "dark" ? "text-gray-600" : "text-gray-500"
-                    }
-                  >
-                    NextJS
-                  </span>
-                  <span
-                    className={
-                      theme === "dark" ? "text-gray-700" : "text-gray-400"
-                    }
-                  >
-                    .
-                  </span>
-                  <span
-                    className={
-                      theme === "dark" ? "text-gray-600" : "text-gray-500"
-                    }
-                  >
-                    TypeScript
-                  </span>
-                  <span
-                    className={
-                      theme === "dark" ? "text-gray-700" : "text-gray-400"
-                    }
-                  >
-                    .
-                  </span>
-                  <span
-                    className={
-                      theme === "dark" ? "text-gray-600" : "text-gray-500"
-                    }
-                  >
-                    Tailwind
-                  </span>
+                  <img
+                    src={PROFILE_PIC}
+                    alt="Lalman — Frontend Engineer"
+                    className="w-full h-full object-cover"
+                  />
                 </motion.div>
-                <div className="relative mr-12">
+                {/* Accent corner */}
+                <div
+                  className="absolute -bottom-3 -right-3 w-16 h-16 rounded-xl -z-10"
+                  style={{ background: "var(--accent)", opacity: 0.3 }}
+                />
+                <div
+                  className="absolute -top-3 -left-3 w-10 h-10 rounded-lg -z-10"
+                  style={{ border: "2px solid var(--accent)", opacity: 0.4 }}
+                />
+              </div>
+
+              {/* Stats */}
+              <div className="w-full space-y-2">
+                {stats.map((stat, i) => (
                   <motion.div
-                    whileHover={{
-                      scale: 1.02,
+                    key={stat.label}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.6 + i * 0.1 }}
+                    className="flex items-center justify-between px-4 py-3 rounded-xl"
+                    style={{
+                      background: "var(--bg-card)",
+                      border: "1px solid var(--border)",
                     }}
-                    className={` relative z-10 w-80 h-96 rounded-3xl overflow-hidden border-4 ${
-                      theme === "dark"
-                        ? "border-gray-600"
-                        : " border-gray-500/50"
-                    } shadow-2xl`}
                   >
-                    <img
-                      src={PROFILE_PIC}
-                      alt="Portrait of Lalman, Frontend Engineer"
-                      className="w-full h-full object-cover"
-                    />
+                    <span
+                      className="text-sm"
+                      style={{
+                        color: "var(--text-muted)",
+                        fontFamily: "var(--font-mono)",
+                        fontSize: "0.7rem",
+                      }}
+                    >
+                      {stat.label}
+                    </span>
+                    <span
+                      className="font-bold text-lg"
+                      style={{
+                        fontFamily: "var(--font-display)",
+                        color: "var(--accent)",
+                      }}
+                    >
+                      {stat.value}
+                    </span>
                   </motion.div>
-
-                  {/* Decorative elements */}
-
-                  <motion.div
-                    animate={{
-                      rotate: 360,
-                    }}
-                    transition={{
-                      duration: 20,
-                      repeat: Infinity,
-                      ease: "linear",
-                    }}
-                    className={`absolute -inset-5 rounded-3xl border ${
-                      theme === "dark"
-                        ? "border-blue-500/50"
-                        : "text-pink-400/90"
-                    }`}
-                  />
-                  <motion.div
-                    animate={{ rotate: -360 }}
-                    transition={{
-                      duration: 30,
-                      repeat: Infinity,
-                      ease: "linear",
-                    }}
-                    className={`absolute -inset-5 rounded-4xl border ${
-                      theme === "dark"
-                        ? "border-pink-500/30"
-                        : "text-blue-400/50"
-                    }`}
-                  />
-                </div>
+                ))}
               </div>
             </motion.div>
           </div>
 
-          {/* Scroll Indicator */}
-
-          <motion.button
-            type="button"
-            aria-label="Scroll to footer section"
-            animate={{
-              y: [0, 8, 0],
-            }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="absolute bottom-4 left-1/2 transform -translate-x-1/2"
-            onClick={() => {
-              const section = document.getElementById("footer");
-              section?.scrollIntoView({ behavior: "smooth" });
-            }}
+          {/* Bottom scroll cue */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2 }}
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
           >
-            <ArrowDown
-              size={20}
-              className={theme === "dark" ? "text-gray-600" : "text-gray-400"}
-            />
-          </motion.button>
+            <motion.div
+              animate={{ y: [0, 5, 0] }}
+              transition={{ repeat: Infinity, duration: 2 }}
+            >
+              <ArrowDown size={16} style={{ color: "var(--text-muted)" }} />
+            </motion.div>
+          </motion.div>
         </div>
       </motion.section>
     </div>

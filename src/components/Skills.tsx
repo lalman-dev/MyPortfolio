@@ -1,112 +1,130 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { useTheme } from "../context/ThemeContext";
 import { SKILL_CATEGORY, TECH_STACK } from "../utils/data";
-import {
-  containerVariants,
-  itemVariants,
-  textVariants,
-} from "../utils/variants";
 
 const Skills = () => {
-  const { theme } = useTheme();
   const sectionRef = useRef<HTMLElement | null>(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
 
   return (
     <section
-      aria-labelledby="skills-heading"
-      ref={sectionRef}
       id="skills"
-      className={`py-24 px-6 ${
-        theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"
-      }`}
+      ref={sectionRef}
+      aria-labelledby="skills-heading"
+      className="py-28 px-6"
+      style={{ background: "var(--bg-secondary)" }}
     >
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={containerVariants}
-          className="text-center mb-20"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="mb-16"
         >
-          <motion.div
-            variants={itemVariants}
-            className={`text-lg uppercase tracking-widest mb-4 ${
-              theme === "dark" ? "text-gray-400" : "text-gray-600"
-            }`}
-          >
-            Skills & Capabilities
-          </motion.div>
-
-          <motion.h2
-            id="skills-heading"
-            variants={itemVariants}
-            className="text-3xl md:text-5xl font-light mb-6"
-          >
-            Frontend Engineering
-            <span className="ml-2 bg-linear-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-medium">
-              Toolkit
-            </span>
-          </motion.h2>
-
-          <motion.p
-            variants={textVariants}
-            className={`text-lg max-w-2xl mx-auto font-light ${
-              theme === "dark" ? "text-gray-400" : "text-gray-600"
-            }`}
-          >
-            Technologies and tools I use to design, build, and ship
-            production-ready frontend applications with real-world constraints.
-          </motion.p>
+          <div className="flex items-center gap-3 mb-4">
+            <div
+              className="w-6 h-px"
+              style={{ background: "var(--accent)" }}
+            />
+            <span className="section-label">02 / Skills</span>
+          </div>
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
+            <h2
+              id="skills-heading"
+              className="text-4xl md:text-5xl font-bold leading-tight"
+              style={{
+                fontFamily: "var(--font-display)",
+                color: "var(--text-primary)",
+              }}
+            >
+              What I Work
+              <br />
+              <span style={{ color: "var(--accent)" }}>With</span>
+            </h2>
+            <p
+              className="max-w-sm text-sm leading-relaxed"
+              style={{ color: "var(--text-secondary)" }}
+            >
+              Technologies and tools I use to design, build, and ship
+              production-ready frontend applications.
+            </p>
+          </div>
         </motion.div>
 
+        {/* Divider */}
+        <div className="divider mb-16" />
+
         {/* Skill Categories */}
-        <motion.div
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={containerVariants}
-          className="grid md:grid-cols-2 gap-8 lg:gap-12"
+        <div
+          className="grid md:grid-cols-2 gap-px"
+          style={{ background: "var(--border)" }}
         >
-          {SKILL_CATEGORY.map((category) => (
+          {SKILL_CATEGORY.map((category, i) => (
             <motion.div
               key={category.title}
-              variants={itemVariants}
-              className={`p-8 rounded-2xl border transition-colors ${
-                theme === "dark"
-                  ? "bg-gray-900/60 border-gray-800"
-                  : "bg-gray-200/50 border-gray-300"
-              }`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="p-8 group"
+              style={{ background: "var(--bg-secondary)" }}
             >
               {/* Category header */}
               <div className="flex items-start gap-4 mb-6">
-                <div className="p-3 rounded-xl bg-linear-to-r from-blue-500/40 to-purple-500/40 text-purple-600">
-                  <category.icon size={22} aria-hidden="true" />
+                <div
+                  className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 mt-0.5"
+                  style={{
+                    background: "var(--accent-subtle)",
+                    border: "1px solid var(--border)",
+                  }}
+                >
+                  <category.icon size={18} style={{ color: "var(--accent)" }} />
                 </div>
                 <div>
-                  <h3 className="text-xl font-medium mb-1">{category.title}</h3>
+                  <h3
+                    className="font-semibold mb-1"
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      color: "var(--text-primary)",
+                    }}
+                  >
+                    {category.title}
+                  </h3>
                   <p
-                    className={`text-sm leading-relaxed ${
-                      theme === "dark" ? "text-gray-400" : "text-gray-600"
-                    }`}
+                    className="text-xs leading-relaxed"
+                    style={{ color: "var(--text-muted)" }}
                   >
                     {category.description}
                   </p>
                 </div>
               </div>
 
-              {/* Skill chips */}
-              <ul className="flex flex-wrap gap-3">
+              {/* Skills */}
+              <ul className="flex flex-wrap gap-2">
                 {category.skills.map((skill) => (
                   <motion.li
                     key={skill.name}
-                    whileHover={{ y: -2 }}
+                    whileHover={{ y: -2, scale: 1.03 }}
                     transition={{ type: "spring", stiffness: 300 }}
-                    className={`px-4 py-2 text-sm rounded-full border cursor-default ${
-                      theme === "dark"
-                        ? "border-gray-700 text-gray-300 hover:border-purple-500/60"
-                        : "border-gray-300 text-gray-700 hover:border-purple-500/60"
-                    }`}
+                    className="px-3 py-1.5 rounded-md text-xs cursor-default transition-all"
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      border: "1px solid var(--border)",
+                      color: "var(--text-secondary)",
+                      background: "var(--bg-card)",
+                    }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLElement).style.borderColor =
+                        "var(--accent)";
+                      (e.currentTarget as HTMLElement).style.color =
+                        "var(--accent)";
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLElement).style.borderColor =
+                        "var(--border)";
+                      (e.currentTarget as HTMLElement).style.color =
+                        "var(--text-secondary)";
+                    }}
                   >
                     {skill.name}
                   </motion.li>
@@ -114,47 +132,51 @@ const Skills = () => {
               </ul>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
-        {/* Supporting stack */}
+        {/* Tech stack row */}
         <motion.div
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={containerVariants}
-          className="mt-20 text-center"
+          initial={{ opacity: 0, y: 16 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.5, duration: 0.6 }}
+          className="mt-16"
         >
-          <motion.h3
-            variants={itemVariants}
-            className="text-xl font-medium mb-6"
-          >
-            Also Working With
-          </motion.h3>
-          <motion.ul
-            variants={itemVariants}
-            className="flex flex-wrap justify-center gap-3"
-          >
-            {TECH_STACK.map((tech) => (
+          <div className="flex items-center gap-3 mb-6">
+            <span
+              className="text-xs"
+              style={{
+                fontFamily: "var(--font-mono)",
+                color: "var(--text-muted)",
+              }}
+            >
+              Also Working With
+            </span>
+            <div
+              className="flex-1 h-px"
+              style={{ background: "var(--border)" }}
+            />
+          </div>
+          <ul className="flex flex-wrap gap-2">
+            {TECH_STACK.map((tech, i) => (
               <motion.li
                 key={tech.name}
-                whileHover={{ y: -2, scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className={`flex items-center gap-2 px-4 py-2 text-sm rounded-full border ${
-                  theme === "dark"
-                    ? "bg-gray-900 border-gray-700 text-gray-300"
-                    : "bg-gray-200/50 border-gray-300 text-gray-700"
-                }`}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ delay: 0.55 + i * 0.04 }}
+                whileHover={{ y: -2 }}
+                className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs cursor-default"
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  border: "1px solid var(--border)",
+                  background: "var(--bg-card)",
+                  color: "var(--text-secondary)",
+                }}
               >
-                {tech.icon && (
-                  <tech.icon
-                    aria-hidden="true"
-                    className={tech.color}
-                    size={18}
-                  />
-                )}
+                {tech.icon && <tech.icon size={13} className={tech.color} />}
                 {tech.name}
               </motion.li>
             ))}
-          </motion.ul>
+          </ul>
         </motion.div>
       </div>
     </section>

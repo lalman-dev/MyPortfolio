@@ -1,20 +1,27 @@
 import { useState, useRef, type FormEvent } from "react";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useTheme } from "../context/ThemeContext";
-import { Send } from "lucide-react";
-import { CONTACT_INFO, SOCIAL_LINKS } from "../utils/data";
-import { containerVariants, itemVariants } from "../utils/variants";
-import TextInput from "./TextInput";
+import { Send, MapPin, Mail, Phone } from "lucide-react";
+import { SOCIAL_LINKS } from "../utils/data";
 import SuccessModel from "./SuccessModel";
 import emailjs from "emailjs-com";
 
 type FormKeys = "name" | "email" | "message";
-
 interface FormData {
   name: string;
   email: string;
   message: string;
 }
+
+const inputStyles = () => ({
+  background: "var(--bg-primary)",
+  border: "1px solid var(--border)",
+  color: "var(--text-primary)",
+  fontFamily: "var(--font-body)",
+  outline: "none",
+  transition: "border-color 0.2s",
+});
+
 const ContactSection = () => {
   const { theme } = useTheme();
   const [formData, setFormData] = useState<FormData>({
@@ -22,19 +29,15 @@ const ContactSection = () => {
     email: "",
     message: "",
   });
-
   const [showSuccess, setShowSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [focused, setFocused] = useState<string | null>(null);
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-  const y = useTransform(scrollYProgress, [0, 1], [50, -50]);
-  const handleInputChange = (key: FormKeys, value: string) => {
+  const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
+
+  const handleInputChange = (key: FormKeys, value: string) =>
     setFormData({ ...formData, [key]: value });
-  };
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -54,290 +57,333 @@ const ContactSection = () => {
         setFormData({ name: "", email: "", message: "" });
         setTimeout(() => setShowSuccess(false), 3000);
       }
-    } catch (error) {
-      console.error("EmailJS error:", error);
-      alert("There was an error sending your message. Please try again later.");
+    } catch (err) {
+      console.error("EmailJS error:", err);
+      alert("Error sending message. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
   };
+
+  const CONTACT_INFO = [
+    { icon: MapPin, label: "Location", value: "Uttar Pradesh, India" },
+    { icon: Mail, label: "Email", value: "lalman.dev7@gmail.com" },
+    { icon: Phone, label: "Phone", value: "+91-8858274145" },
+  ];
+
   return (
     <section
-      ref={sectionRef}
       id="contact"
+      ref={sectionRef}
       aria-labelledby="contact-heading"
-      className={`py-24 px-6 transition-colors duration-500 ${
-        theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-gray-900"
-      } relative overflow-hidden`}
+      className="py-28 px-6"
+      style={{ background: "var(--bg-secondary)" }}
     >
-      {/* Background Element */}
-      <motion.div
-        style={{ y }}
-        className="absolute inset-0 overflow-hidden"
-        aria-hidden="true"
-      >
-        <div
-          className={`absolute top-20 left-1/4 w-72 h-72 rounded-full opacity-5 ${
-            theme === "dark" ? "bg-blue-500" : "bg-blue-400"
-          }`}
-        />
-        <div
-          className={`absolute bottom-40 right-1/4 h-80 w-80 rounded-full blur-3xl opacity-5 ${
-            theme === "dark" ? "bg-purple-500" : "bg-purple-400"
-          }`}
-        />
-      </motion.div>
-
-      <div className="max-w-6xl mx-auto relative z-10">
-        {/* Section Header */}
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
         <motion.div
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={containerVariants}
-          className="text-center mb-20"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="mb-16"
         >
-          <motion.div
-            variants={itemVariants}
-            className={`text-sm uppercase tracking-widest ${
-              theme === "dark" ? "text-gray-500" : "text-gray-600"
-            } mb-4`}
-          >
-            Let's connect
-          </motion.div>
-          <motion.h2
-            variants={itemVariants}
-            id="contact-heading"
-            className="text-3xl md:text-5xl font-light mb-6"
-          >
-            Get in{" "}
-            <span className="bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-medium">
-              Touch
-            </span>
-          </motion.h2>
-          <motion.p
-            variants={itemVariants}
-            className={`text-xl max-w-2xl mx-auto ${
-              theme === "dark" ? "text-gray-400" : "text-gray-600"
-            }`}
-          >
-            I'm always open to discuss new projects, creative ideas, or
-            opportunities to be part of your visions. Feel free to reach out
-            using the form below or through my social media channels.
-          </motion.p>
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-6 h-px" style={{ background: "var(--accent)" }} />
+            <span className="section-label">06 / Contact</span>
+          </div>
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
+            <h2
+              id="contact-heading"
+              className="text-4xl md:text-5xl font-bold leading-tight"
+              style={{
+                fontFamily: "var(--font-display)",
+                color: "var(--text-primary)",
+              }}
+            >
+              Let's Build
+              <br />
+              <span style={{ color: "var(--accent)" }}>Something</span>
+            </h2>
+            <div className="flex items-center gap-2">
+              <div
+                className="w-2 h-2 rounded-full animate-pulse"
+                style={{ background: "#22c55e" }}
+              />
+              <span
+                className="text-sm font-medium"
+                style={{
+                  color: "#22c55e",
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "0.72rem",
+                }}
+              >
+                Available for opportunities
+              </span>
+            </div>
+          </div>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          {/* Contact Form */}
+        <div className="divider mb-14" />
+
+        <div className="grid lg:grid-cols-[1fr_380px] gap-14">
+          {/* Form */}
           <motion.div
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            variants={containerVariants}
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.2 }}
           >
-            <motion.div
-              variants={itemVariants}
-              className={`p-8 rounded-2xl border ${
-                theme === "dark"
-                  ? "bg-gray-800/50 border-gray-700 backdrop-blur-sm"
-                  : "bg-gray-50/80 border-gray-200 backdrop-blur-sm"
-              }`}
-            >
-              <h3 className="text-2xl font-medium mb-8">Send me a message</h3>
-              <form className="space-y-6" onSubmit={handleSubmit}>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <TextInput
-                    theme={theme}
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="grid sm:grid-cols-2 gap-5">
+                {/* Name */}
+                <div>
+                  <label
+                    className="block text-xs mb-2"
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      color: "var(--text-muted)",
+                      letterSpacing: "0.08em",
+                    }}
+                  >
+                    Your Name
+                  </label>
+                  <input
+                    type="text"
                     value={formData.name}
-                    handleInputChange={(text: string) =>
-                      handleInputChange("name", text)
-                    }
-                    label="Your Name"
-                  />
-                  <TextInput
-                    theme={theme}
-                    value={formData.email}
-                    handleInputChange={(text: string) =>
-                      handleInputChange("email", text)
-                    }
-                    label="Email Address"
+                    onChange={(e) => handleInputChange("name", e.target.value)}
+                    onFocus={() => setFocused("name")}
+                    onBlur={() => setFocused(null)}
+                    required
+                    placeholder="Lalman"
+                    className="w-full px-4 py-3 rounded-xl text-sm"
+                    style={{
+                      ...inputStyles(),
+                      borderColor:
+                        focused === "name" ? "var(--accent)" : "var(--border)",
+                    }}
                   />
                 </div>
-                <TextInput
-                  theme={theme}
-                  value={formData.message}
-                  textarea
-                  handleInputChange={(text: string) =>
-                    handleInputChange("message", text)
-                  }
-                  label="Your Message"
-                />
+                {/* Email */}
+                <div>
+                  <label
+                    className="block text-xs mb-2"
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      color: "var(--text-muted)",
+                      letterSpacing: "0.08em",
+                    }}
+                  >
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => handleInputChange("email", e.target.value)}
+                    onFocus={() => setFocused("email")}
+                    onBlur={() => setFocused(null)}
+                    required
+                    placeholder="you@example.com"
+                    className="w-full px-4 py-3 rounded-xl text-sm"
+                    style={{
+                      ...inputStyles(),
+                      borderColor:
+                        focused === "email" ? "var(--accent)" : "var(--border)",
+                    }}
+                  />
+                </div>
+              </div>
 
-                <motion.button
-                  type="submit"
-                  disabled={isSubmitting}
-                  aria-disabled={isSubmitting}
-                  whileHover={{ y: -2, scale: 1.03 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-full bg-linear-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700  disabled:from-blue-400 disabled:to-purple-400  text-white py-4 rounded-xl uppercase tracking-wider font-medium transition-all duration-300 flex items-center justify-center space-x-2  "
+              {/* Message */}
+              <div>
+                <label
+                  className="block text-xs mb-2"
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    color: "var(--text-muted)",
+                    letterSpacing: "0.08em",
+                  }}
                 >
-                  {isSubmitting ? (
-                    <>
-                      <motion.div
-                        role="status"
-                        aria-live="polite"
-                        aria-label="Sending message"
-                        animate={{ rotate: 360 }}
-                        transition={{
-                          duration: 1,
-                          repeat: Infinity,
-                          ease: "linear",
-                        }}
-                        className="w-4 h-4 border-white border-t-transparent rounded-full"
-                      />
-                      <span>Sending...</span>
-                    </>
-                  ) : (
-                    <>
-                      <Send size={18} />
-                      <span>Send Message</span>
-                    </>
-                  )}
-                </motion.button>
-              </form>
-            </motion.div>
-          </motion.div>
-          {/* Contact Info & Social Links */}
+                  Message
+                </label>
+                <textarea
+                  value={formData.message}
+                  onChange={(e) => handleInputChange("message", e.target.value)}
+                  onFocus={() => setFocused("message")}
+                  onBlur={() => setFocused(null)}
+                  required
+                  rows={6}
+                  placeholder="Tell me about your project, idea, or opportunity..."
+                  className="w-full px-4 py-3 rounded-xl text-sm resize-none"
+                  style={{
+                    ...inputStyles(),
+                    borderColor:
+                      focused === "message" ? "var(--accent)" : "var(--border)",
+                  }}
+                />
+              </div>
 
+              {/* Submit */}
+              <motion.button
+                type="submit"
+                disabled={isSubmitting}
+                whileHover={{ scale: 1.02, y: -1 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full flex items-center justify-center gap-2 py-4 rounded-xl text-white text-sm font-semibold transition-all disabled:opacity-60"
+                style={{
+                  background: "var(--accent)",
+                  fontFamily: "var(--font-display)",
+                  letterSpacing: "0.04em",
+                }}
+              >
+                {isSubmitting ? (
+                  <>
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{
+                        duration: 0.8,
+                        repeat: Infinity,
+                        ease: "linear",
+                      }}
+                      className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
+                    />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send size={15} />
+                    Send Message
+                  </>
+                )}
+              </motion.button>
+            </form>
+          </motion.div>
+
+          {/* Right — Info */}
           <motion.div
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            variants={containerVariants}
-            className="space-y-8"
+            initial={{ opacity: 0, x: 16 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ delay: 0.3 }}
+            className="space-y-6"
           >
-            {/* Contact information */}
-            <motion.div variants={itemVariants}>
-              <h3 className="text-2xl font-medium mb-6">Contact Information</h3>
-              <div className="space-y-4">
+            {/* Contact info */}
+            <div>
+              <h3
+                className="text-xs mb-4"
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  color: "var(--text-muted)",
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                }}
+              >
+                Contact Info
+              </h3>
+              <div className="space-y-3">
                 {CONTACT_INFO.map((info) => (
-                  <motion.div
+                  <div
                     key={info.label}
-                    variants={itemVariants}
-                    whileHover={{ x: 4 }}
-                    className={`flex items-center space-x-4 p-4 rounded-xl ${
-                      theme === "dark"
-                        ? "bg-gray-800/30 hover:bg-gray-800/50"
-                        : "bg-gray-50/50 hover:bg-gray-100/50"
-                    } transition-all duration-300`}
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl"
+                    style={{
+                      background: "var(--bg-card)",
+                      border: "1px solid var(--border)",
+                    }}
                   >
                     <div
-                      className={`p-3 rounded-lg ${
-                        theme === "dark" ? "bg-gray-700" : "bg-white"
-                      }`}
+                      className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
+                      style={{ background: "var(--accent-subtle)" }}
                     >
-                      <info.icon size={20} className="text-blue-500" />
+                      <info.icon size={14} style={{ color: "var(--accent)" }} />
                     </div>
-                    <div
-                      className={`text-sm ${
-                        theme === "dark" ? "text-gray-500" : "text-gray-600"
-                      }`}
-                    >
-                      {info.label}
+                    <div>
+                      <div
+                        className="text-xs"
+                        style={{
+                          color: "var(--text-muted)",
+                          fontFamily: "var(--font-mono)",
+                          fontSize: "0.65rem",
+                        }}
+                      >
+                        {info.label}
+                      </div>
+                      <div
+                        className="text-sm font-medium"
+                        style={{ color: "var(--text-primary)" }}
+                      >
+                        {info.value}
+                      </div>
                     </div>
-                    <div className="font-medium">{info.value}</div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
-            </motion.div>
-            {/* Social Links */}
-            <motion.div variants={itemVariants}>
-              <h3 className="text-xl font-medium mb-6">Follow Me</h3>
-              <div className="grid grid-cols-2 gap-4">
+            </div>
+
+            {/* Socials */}
+            <div>
+              <h3
+                className="text-xs mb-4"
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  color: "var(--text-muted)",
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                }}
+              >
+                Find Me Online
+              </h3>
+              <div className="grid grid-cols-2 gap-3">
                 {SOCIAL_LINKS.map((social) => (
                   <motion.a
                     key={social.name}
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                    className={`flex items-center space-x-3 p-4 rounded-xl border transition-all duration-300 ${
-                      theme === "dark"
-                        ? "bg-gray-800/50 border-gray-700 hover:border-gray-600"
-                        : "bg-white/80 border-gray-200 hover:border-gray-300"
-                    } ${social.bgColor} ${social.color}`}
+                    whileHover={{ y: -2 }}
+                    className="flex items-center gap-2 px-3 py-3 rounded-xl text-sm transition-all"
+                    style={{
+                      background: "var(--bg-card)",
+                      border: "1px solid var(--border)",
+                      color: "var(--text-secondary)",
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "0.72rem",
+                    }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLElement).style.borderColor =
+                        "var(--accent)";
+                      (e.currentTarget as HTMLElement).style.color =
+                        "var(--accent)";
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLElement).style.borderColor =
+                        "var(--border)";
+                      (e.currentTarget as HTMLElement).style.color =
+                        "var(--text-secondary)";
+                    }}
                   >
-                    <social.icon size={20} />
-                    <span className="font-medium">{social.name}</span>
+                    <social.icon size={14} />
+                    {social.name}
                   </motion.a>
                 ))}
               </div>
-            </motion.div>
+            </div>
 
-            {/* Availability Status */}
-            <motion.div
-              variants={itemVariants}
-              className={`p-6 rounded-xl border ${
-                theme === "dark"
-                  ? "bg-green-500/10 border-green-500/20"
-                  : "bg-green-50 border-green-200"
-              }`}
+            {/* Note */}
+            <div
+              className="p-4 rounded-xl text-xs leading-relaxed"
+              style={{
+                background: "var(--accent-subtle)",
+                border: "1px solid var(--accent)",
+                color: "var(--text-secondary)",
+                fontFamily: "var(--font-mono)",
+                borderColor: "var(--accent)",
+                opacity: 0.8,
+              }}
             >
-              <div className="flex items-center space-x-3 mb-2">
-                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                <span className="font-medium text-green-500">
-                  Available for Work
-                </span>
-              </div>
-              <p
-                className={`text-sm ${
-                  theme === "dark" ? "text-gray-400" : "text-gray-600"
-                }`}
-              >
-                I'm currently available for freelance project and full-time
-                opportunities.
-              </p>
-            </motion.div>
+              Prefer clear problem statements and async comms. Usually respond
+              within 24–48 hours.
+            </div>
           </motion.div>
         </div>
-
-        {/* Bottom CTA */}
-        <motion.div
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={containerVariants}
-          className="text-center mt-20"
-        >
-          <motion.div
-            variants={itemVariants}
-            className={`max-w-2xl max-auto p-8 rounded-2xl text-sm border ${
-              theme === "dark"
-                ? "tbg-gray-800 border-gray-700"
-                : "bg-gray-50/50 border-gray-200"
-            }`}
-          >
-            <h3 className="text-xl font-medium mb-4">Prefer a quick call?</h3>
-            <p
-              className={`mb-6 ${
-                theme === "dark" ? "text-gray-400" : "text-gray-600"
-              }`}
-            >
-              Sometime a conversation is worth a thousand messages . Feel free
-              to reach out via email or social media to schedule a call. I'm
-              happy to discuss your project needs and how I can help.
-            </p>
-            <motion.button
-              whileHover={{ y: -2, scale: 1.03 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() =>
-                (window.location.href =
-                  "mailto:lalman.dev7@gmail.com?subject=Schedule a Call")
-              }
-              className={`px-6 py-3 rounded-full border font-medium transition-all duration-300 bg-linear-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white`}
-            >
-              Schedule a Call
-            </motion.button>
-          </motion.div>
-        </motion.div>
       </div>
+
       <SuccessModel
         showSuccess={showSuccess}
         setShowSuccess={setShowSuccess}
@@ -346,4 +392,5 @@ const ContactSection = () => {
     </section>
   );
 };
+
 export default ContactSection;

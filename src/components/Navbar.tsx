@@ -1,171 +1,231 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { Code2, Sun, Moon, Menu, X } from "lucide-react";
+import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
+import { Menu, X } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Sun, Moon } from "lucide-react";
+
+const NAV_ITEMS = [
+  { label: "Skills", id: "skills" },
+  { label: "Principles", id: "architecture" },
+  { label: "Work", id: "work" },
+  { label: "About", id: "about" },
+  { label: "Contact", id: "contact" },
+];
 
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const NAV_ITEMS: string[] = [
-    "Home",
-    "Skills",
-    "Architecture",
-    "Work",
-    "About",
-    "Contact",
-  ];
+  const [scrolled, setScrolled] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsMenuOpen(false);
-    }
+  useEffect(() => {
+    const unsub = scrollYProgress.on("change", (v) => setScrolled(v > 0.01));
+    return unsub;
+  }, [scrollYProgress]);
+
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    setIsMenuOpen(false);
   };
+
+  const isDark = theme === "dark";
+
   return (
-    <motion.nav
-      aria-label="Primary navigation"
-      style={{ opacity: 1 }}
-      className={`fixed w-screen top-0 z-50 px-6 py-4 ${
-        theme === "dark" ? "bg-gray-950/80" : "bg-gray-50/80"
-      } backdrop-blur-md border-b ${
-        theme === "dark" ? "border-gray-800" : "border-gray-200"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <motion.a
-          href="#home"
-          aria-label="Go to home section"
-          whileHover={{ scale: 1.05 }}
-          className="flex items-center space-x-2"
-        >
-          <Code2 size={24} className="text-blue-600" />
-          <span className="text-lg ml-1 bg-linear-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
-            Lalman
-          </span>
-        </motion.a>
+    <>
+      {/* Scroll Progress Bar */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-0.5 z-60"
+        style={{ scaleX, transformOrigin: "0%", background: "var(--accent)" }}
+      />
 
-        {/* Desktop Navigation */}
-        <ul className="hidden md:flex items-center space-x-6">
-          {NAV_ITEMS.map((item) => (
-            <li key={item}>
-              <motion.button
-                whileHover={{ y: -2 }}
-                onClick={() => scrollToSection(item.toLocaleLowerCase())}
-                className={`text-sm uppercase tracking-wider transition-colors duration-300 ${
-                  theme === "dark"
-                    ? "text-gray-400 hover:text-white"
-                    : "text-gray-600 hover:text-gray-900"
-                }`}
-              >
-                {item}
-              </motion.button>
-            </li>
-          ))}
-          {/* theme toggle */}
-          <motion.button
-            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-            whileTap={{ scale: 0.9 }}
-            onClick={toggleTheme}
-            className={`relative flex items-center w-16 h-7 rounded-full transition-all duration-900 
-    ${theme === "dark" ? "bg-gray-600" : "bg-gray-500"}`}
-          >
-            <Sun
-              size={16}
-              className={`absolute left-2 transition-colors duration-300 `}
-            />
-            <Moon
-              size={16}
-              className={`absolute right-2 transition-colors duration-300`}
-            />
-            <motion.div
-              layout
-              transition={{ type: "spring", stiffness: 200, damping: 20 }}
-              className={`absolute w-8 h-6 rounded-full 
-      ${theme === "dark" ? "bg-gray-900 right-0.5" : "bg-white left-0.5"}`}
-            />
-          </motion.button>
-        </ul>
-        {/* Mobile theme toggle */}
-        <div className="md:hidden flex items-center space-x-4 ">
-          <motion.button
-            whileTap={{ scale: 0.9 }}
-            onClick={toggleTheme}
-            className={`relative flex items-center w-16 h-7 rounded-full transition-all duration-900 
-    ${theme === "dark" ? "bg-gray-600" : "bg-gray-500"}`}
-          >
-            <Sun
-              size={16}
-              className={`absolute left-2 transition-colors duration-300 `}
-            />
-            <Moon
-              size={16}
-              className={`absolute right-2 transition-colors duration-300`}
-            />
-            <motion.div
-              layout
-              transition={{ type: "spring", stiffness: 200, damping: 7 }}
-              className={`absolute w-7 h-5 rounded-full shadow-md 
-      ${theme === "dark" ? "bg-gray-900 right-0.5" : "bg-white left-0.5"}`}
-            />
-          </motion.button>
-          {/* Mobile Menu toggle Button */}
-          <motion.button
-            aria-label={
-              isMenuOpen ? "Close navigation menu" : "Open navigation menu"
-            }
-            aria-expanded={isMenuOpen}
-            aria-controls="mobile-menu"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`p-2 rounded-full transition-colors duration-300 ${
-              theme === "dark"
-                ? "text-gray-400 hover:text-white hover:bg-gray-800"
-                : "text-gray-600 hover:text-gray-900 hover:bg-gray-200"
-            }`}
-          >
-            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
-          </motion.button>
-        </div>
-      </div>
+      <motion.nav
+        aria-label="Primary navigation"
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="fixed w-full top-0 z-50 px-6 py-4"
+        style={{
+          background: scrolled
+            ? isDark
+              ? "rgba(10,9,8,0.92)"
+              : "rgba(245,242,236,0.92)"
+            : "transparent",
+          backdropFilter: scrolled ? "blur(12px)" : "none",
+          borderBottom: scrolled
+            ? `1px solid var(--border)`
+            : "1px solid transparent",
+          transition: "all 0.4s ease",
+        }}
+      >
+        {/* progress bar */}
+        <motion.div
+          style={{ scaleX, transformOrigin: "0%" }}
+          className="absolute top-0 left-0 right-0 h-0.5"
+        />
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.ul
-            id="mobile-menu"
-            role="menu"
-            initial={{ opacity: 0, x: 50, y: -50 }}
-            animate={{ opacity: 1, x: 0, y: 0 }}
-            exit={{ opacity: 0, x: 50, y: -50 }}
-            className={`md:hidden mt-4 p-4 rounded-lg ${
-              theme === "dark" ? "bg-gray-900" : " bg-white"
-            } border ${
-              theme === "dark" ? "border-gray-800" : "border-gray-200"
-            }`}
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          {/* Logo */}
+          <motion.button
+            onClick={() => scrollToSection("home")}
+            whileHover={{ scale: 1.02 }}
+            className="flex items-center gap-3 group"
           >
+            <div
+              className="w-8 h-8 rounded-sm flex items-center justify-center text-white text-xs font-bold"
+              style={{
+                background: "var(--accent)",
+                fontFamily: "var(--font-display)",
+              }}
+            >
+              L
+            </div>
+            <span
+              className="text-base font-semibold tracking-tight"
+              style={{
+                fontFamily: "var(--font-display)",
+                color: "var(--text-primary)",
+              }}
+            >
+              lalman.dev
+            </span>
+          </motion.button>
+
+          {/* Desktop Nav */}
+          <ul className="hidden md:flex items-center gap-1">
             {NAV_ITEMS.map((item) => (
-              <li key={item}>
-                <motion.a
-                  aria-label={`Go to ${item} section`}
-                  href={`#${item.toLowerCase()}`}
-                  whileHover={{ x: 5 }}
-                  onClick={() => scrollToSection(item.toLowerCase())}
-                  className={`block w-full text-left py-2 text-sm uppercase tracking-wider transition-colors duration-300 ${
-                    theme === "dark"
-                      ? "text-gray-400 hover:text-white"
-                      : "text-gray-600 hover:text-gray-900"
-                  }`}
+              <li key={item.id}>
+                <motion.button
+                  whileHover={{ y: -1 }}
+                  onClick={() => scrollToSection(item.id)}
+                  className="px-4 py-2 text-sm rounded-md transition-colors duration-200"
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "0.72rem",
+                    letterSpacing: "0.05em",
+                    color: "var(--text-secondary)",
+                  }}
+                  onMouseEnter={(e) =>
+                    ((e.target as HTMLElement).style.color =
+                      "var(--text-primary)")
+                  }
+                  onMouseLeave={(e) =>
+                    ((e.target as HTMLElement).style.color =
+                      "var(--text-secondary)")
+                  }
                 >
-                  {item}
-                </motion.a>
+                  {item.label}
+                </motion.button>
               </li>
             ))}
-          </motion.ul>
-        )}
-      </AnimatePresence>
-    </motion.nav>
+          </ul>
+
+          {/* Right controls */}
+          <div className="flex items-center gap-3">
+            {/* Hire me CTA */}
+            <motion.button
+              onClick={() => scrollToSection("contact")}
+              whileHover={{ scale: 1.03, y: -1 }}
+              whileTap={{ scale: 0.97 }}
+              className="hidden md:flex items-center gap-2 px-4 py-2 rounded-full text-white text-xs font-medium"
+              style={{
+                background: "var(--accent)",
+                fontFamily: "var(--font-mono)",
+                letterSpacing: "0.08em",
+              }}
+            >
+              Hire Me
+            </motion.button>
+
+            {/* Theme toggle */}
+            <motion.button
+              aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
+              whileTap={{ scale: 0.9 }}
+              onClick={toggleTheme}
+              className="p-2 rounded-md transition-colors"
+              style={{
+                color: "var(--text-muted)",
+                border: "1px solid var(--border)",
+                background: "var(--bg-card)",
+              }}
+            >
+              {isDark ? <Sun size={15} /> : <Moon size={15} />}
+            </motion.button>
+
+            {/* Mobile menu toggle */}
+            <motion.button
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden p-2 rounded-md"
+              style={{
+                color: "var(--text-secondary)",
+                border: "1px solid var(--border)",
+                background: "var(--bg-card)",
+              }}
+            >
+              {isMenuOpen ? <X size={16} /> : <Menu size={16} />}
+            </motion.button>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.2 }}
+              className="md:hidden mt-3 rounded-xl overflow-hidden"
+              style={{
+                border: "1px solid var(--border)",
+                background: isDark
+                  ? "rgba(22,20,16,0.98)"
+                  : "rgba(245,242,236,0.98)",
+                backdropFilter: "blur(20px)",
+              }}
+            >
+              <ul className="p-3 space-y-1">
+                {NAV_ITEMS.map((item, i) => (
+                  <motion.li
+                    key={item.id}
+                    initial={{ opacity: 0, x: -8 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.04 }}
+                  >
+                    <button
+                      onClick={() => scrollToSection(item.id)}
+                      className="w-full text-left px-4 py-3 rounded-lg text-sm transition-colors"
+                      style={{
+                        fontFamily: "var(--font-mono)",
+                        fontSize: "0.75rem",
+                        letterSpacing: "0.08em",
+                        color: "var(--text-secondary)",
+                      }}
+                    >
+                      {item.label}
+                    </button>
+                  </motion.li>
+                ))}
+                <li className="pt-1 pb-1">
+                  <button
+                    onClick={() => scrollToSection("contact")}
+                    className="w-full py-3 rounded-lg text-white text-xs font-medium"
+                    style={{
+                      background: "var(--accent)",
+                      fontFamily: "var(--font-mono)",
+                    }}
+                  >
+                    Hire Me
+                  </button>
+                </li>
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.nav>
+    </>
   );
 };
 

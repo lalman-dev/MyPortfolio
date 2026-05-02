@@ -3,96 +3,107 @@ import { motion, useInView } from "framer-motion";
 import { useTheme } from "../context/ThemeContext";
 import { PROJECTS } from "../utils/data";
 import ProjectCard from "./ProjectCard";
-import { containerVariants, itemVariants } from "../utils/variants";
 
 const Projects = () => {
   const { theme } = useTheme();
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
 
   return (
     <section
       id="work"
       ref={sectionRef}
       aria-labelledby="projects-heading"
-      className={`py-24 px-6 relative overflow-hidden ${
-        theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"
-      }`}
+      className="py-28 px-6"
+      style={{ background: "var(--bg-secondary)" }}
     >
-      {/* Backgroung Elements */}
-      <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
-        <div
-          className={`absolute top-20 left-1/4 w-96 h-96 rounded-full blur-3xl opacity-5 ${
-            theme === "dark" ? " bg-blue-500" : "bg-blue-300"
-          }`}
-        />
-        <div
-          className={`absolute bottom-20 left-1/4 w-80 h-80 rounded-full blur-3xl opacity-5 ${
-            theme === "dark" ? " bg-purple-500" : "bg-purple-300"
-          }`}
-        />
-      </div>
-      <div className="max-w-7xl mx-auto relative z-10 ">
-        {/* Sect0in Header */}
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
         <motion.div
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={containerVariants}
-          className="text-center mb-20"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="mb-16"
         >
-          <motion.div
-            variants={itemVariants}
-            className={`text-sm uppercase tracking-widest mb-4 ${
-              theme === "dark" ? "text-gray-500" : "text-gray-600"
-            }`}
-          >
-            Notable Work
-          </motion.div>
-          <motion.h2
-            id="projects-heading"
-            variants={itemVariants}
-            className="
-        text-3xl md:text-5xl font-light mb-6"
-          >
-            Showcased
-            <span className="bg-linear-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-medium ml-2">
-              Projects
-            </span>
-          </motion.h2>
-          <motion.p
-            variants={itemVariants}
-            className={`text-lg max-w-2xl mx-auto font-light ${
-              theme === "dark" ? "text-gray-400" : "text-gray-600"
-            }`}
-          >
-            Selected projects that demonstrate how I design frontend
-            architecture, make rendering and state decisions, and ship
-            production-ready features using modern React and Next.js.
-          </motion.p>
+          <div className="flex items-center gap-3 mb-4">
+            <div
+              className="w-6 h-px"
+              style={{ background: "var(--accent)" }}
+            />
+            <span className="section-label">04 / Work</span>
+          </div>
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
+            <h2
+              id="projects-heading"
+              className="text-4xl md:text-5xl font-bold leading-tight"
+              style={{
+                fontFamily: "var(--font-display)",
+                color: "var(--text-primary)",
+              }}
+            >
+              Selected
+              <br />
+              <span style={{ color: "var(--accent)" }}>Projects</span>
+            </h2>
+            <p
+              className="max-w-sm text-sm leading-relaxed"
+              style={{ color: "var(--text-secondary)" }}
+            >
+              Projects that demonstrate frontend architecture decisions,
+              rendering strategy, and production-ready UI patterns.
+            </p>
+          </div>
         </motion.div>
 
+        <div className="divider mb-12" />
+
         {/* Projects Grid */}
-        <motion.div
-          variants={itemVariants}
-          className={`text-sm text-center mb-8 ${
-            theme === "dark" ? "text-gray-500" : "text-gray-600"
-          }`}
-        >
-          Each project focuses on real-world data, UX states, and maintainable
-          frontend structure.
-        </motion.div>
-        <motion.ul
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={containerVariants}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
+        <ul className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
           {PROJECTS.map((project, index) => (
-            <li key={project.id} className="list-none">
+            <li key={project.id} className="list-none flex">
               <ProjectCard project={project} index={index} theme={theme} />
             </li>
           ))}
-        </motion.ul>
+        </ul>
+
+        {/* More on GitHub CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.4 }}
+          className="mt-14 text-center"
+        >
+          <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
+            More projects on GitHub
+          </p>
+          <motion.a
+            href="https://github.com/lalman-dev/"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.03, y: -2 }}
+            whileTap={{ scale: 0.97 }}
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all"
+            style={{
+              border: "1px solid var(--border)",
+              color: "var(--text-secondary)",
+              background: "var(--bg-card)",
+              fontFamily: "var(--font-display)",
+            }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLElement).style.borderColor =
+                "var(--accent)";
+              (e.currentTarget as HTMLElement).style.color = "var(--accent)";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLElement).style.borderColor =
+                "var(--border)";
+              (e.currentTarget as HTMLElement).style.color =
+                "var(--text-secondary)";
+            }}
+          >
+            View GitHub Profile →
+          </motion.a>
+        </motion.div>
       </div>
     </section>
   );

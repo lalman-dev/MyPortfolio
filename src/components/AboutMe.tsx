@@ -1,290 +1,270 @@
 import { useRef } from "react";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import { useTheme } from "../context/ThemeContext";
+import { motion, useInView } from "framer-motion";
 import { JOURNEY_STEPS, PASSION } from "../utils/data";
 
-import {
-  containerVariants,
-  itemVariants,
-  timelineVariants,
-  stepVariants,
-} from "../utils/variants";
-
 const AboutMe = () => {
-  const { theme } = useTheme();
   const sectionRef = useRef(null);
-  const timelineRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
-  const timelineInView = useInView(timelineRef, {
-    once: true,
-    margin: "-50px",
-  });
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [50, -50]);
+  const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
 
   return (
     <section
       id="about"
       ref={sectionRef}
       aria-labelledby="about-heading"
-      className={`py-24 px-6 relative overflow-hidden ${
-        theme === "dark" ? "bg-gray-950 text-white" : "bg-white text-gray-900"
-      }`}
+      className="py-28 px-6"
+      style={{ background: "var(--bg-primary)" }}
     >
-      {/* Background Elements */}
-      <motion.div
-        aria-hidden="true"
-        style={{ y }}
-        className="absolute inset-0 overflow-hidden"
-      >
-        <div
-          className={`absolute top-40 right-1/3 w-80 h-80 rounded-full blur-3xl opacity-5 ${
-            theme === "dark" ? "bg-blue-500" : "bg-blue-300"
-          }`}
-        />
-        <div
-          className={`absolute bottom-20 left-1/3 w-96 h-96 rounded-full blur-3xl opacity-5 ${
-            theme === "dark" ? "bg-purple-500" : "bg-purple-300"
-          }`}
-        />
-      </motion.div>
-      <div className="max-w-6xl mx-auto relative z-10">
-        {/* Section Header */}
-
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
         <motion.div
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={containerVariants}
-          className="text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="mb-16"
         >
-          <motion.div
-            variants={itemVariants}
-            className={`text-sm uppercase tracking-widest mb-6 ${
-              theme === "dark" ? "text-gray-500" : "text-gray-600"
-            }`}
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-6 h-px" style={{ background: "var(--accent)" }} />
+            <span className="section-label">05 / About</span>
+          </div>
+          <h2
+            id="about-heading"
+            className="text-4xl md:text-5xl font-bold leading-tight"
+            style={{
+              fontFamily: "var(--font-display)",
+              color: "var(--text-primary)",
+            }}
           >
-            How I Think About Frontend Engineering
-          </motion.div>
-
-          <motion.h2
-            variants={itemVariants}
-            className="text-3xl md:text-5xl font-light mb-6"
-          >
-            Get to
-            <span className="bg-linear-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-medium ml-2">
-              Know Me
-            </span>
-          </motion.h2>
+            The Engineer
+            <br />
+            <span style={{ color: "var(--accent)" }}>Behind the Code</span>
+          </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          {/* My Story */}
-          <motion.div
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            variants={containerVariants}
-            className="space-y-8"
-          >
+        <div className="divider mb-16" />
+
+        <div className="grid lg:grid-cols-2 gap-16">
+          {/* Left — Approach + passions */}
+          <div>
             <motion.div
-              variants={itemVariants}
-              className={`p-8 rounded-2xl border ${
-                theme === "dark"
-                  ? "bg-gray-800/50 border-gray-700 backdrop-blur-sm"
-                  : "bg-gray-200/50 border-gray-200 backdrop-blur-sm"
-              }`}
+              initial={{ opacity: 0, y: 16 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.2 }}
+              className="mb-10 p-6 rounded-xl"
+              style={{
+                background: "var(--bg-card)",
+                border: "1px solid var(--border)",
+              }}
             >
-              <h3 className="text-2xl font-medium mb-6">
-                My
-                <span className="bg-linear-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-medium ml-2">
-                  Approach
-                </span>
+              <h3
+                className="text-lg font-bold mb-4"
+                style={{
+                  fontFamily: "var(--font-display)",
+                  color: "var(--text-primary)",
+                }}
+              >
+                My Approach
               </h3>
               <p
-                className={`text-lg leading-relaxed mb-6 ${
-                  theme === "dark" ? "text-gray-300" : "text-gray-700"
-                }`}
+                className="text-sm leading-relaxed mb-4"
+                style={{ color: "var(--text-secondary)" }}
               >
                 I focus on building frontend systems that remain maintainable as
                 they grow — from component structure and state boundaries to
                 rendering strategy and UX performance.
               </p>
               <p
-                className={`text-base leading-relaxed ${
-                  theme === "dark" ? "text-gray-400" : "text-gray-600"
-                }`}
+                className="text-sm leading-relaxed"
+                style={{ color: "var(--text-muted)" }}
               >
                 I care deeply about how architectural decisions affect user
                 experience, developer velocity, and long-term scalability. Most
-                of my learning comes from shipping real projects, debugging real
-                issues, and refining solutions through iteration.
+                of my learning comes from shipping real projects and refining
+                through iteration.
               </p>
             </motion.div>
 
-            {/* What i love making */}
-            <motion.div variants={itemVariants} className="space-y-4">
-              <div className="text-xl font-medium mb-6">
-                <ul className="grid gap-4">
-                  {PASSION.map((passion) => (
-                    <motion.li
-                      key={passion.title}
-                      variants={itemVariants}
-                      whileHover={{ x: 4 }}
-                      className={`flex items-center border space-x-4 p-4 rounded-xl ${
-                        theme === "dark"
-                          ? "bg-gray-800/30 hover:bg-gray-800/50 border-gray-700"
-                          : "bg-gray-200/50 hover:bg-gray-300/50 border-gray-200"
-                      } transition-all duration-300`}
+            {/* What I love making */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.3 }}
+            >
+              <h3
+                className="text-sm font-semibold mb-4"
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  color: "var(--text-muted)",
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                }}
+              >
+                What I Build For
+              </h3>
+              <ul className="grid gap-3">
+                {PASSION.map((passion, i) => (
+                  <motion.li
+                    key={passion.title}
+                    initial={{ opacity: 0, x: -12 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ delay: 0.35 + i * 0.08 }}
+                    whileHover={{ x: 4 }}
+                    className="flex items-start gap-4 p-4 rounded-xl group cursor-default transition-all"
+                    style={{
+                      border: "1px solid var(--border)",
+                      background: "var(--bg-card)",
+                    }}
+                    onMouseEnter={(e) =>
+                      ((e.currentTarget as HTMLElement).style.borderColor =
+                        "var(--accent)")
+                    }
+                    onMouseLeave={(e) =>
+                      ((e.currentTarget as HTMLElement).style.borderColor =
+                        "var(--border)")
+                    }
+                  >
+                    <div
+                      className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
+                      style={{ background: "var(--accent-subtle)" }}
+                    >
+                      <passion.icon
+                        size={15}
+                        style={{ color: "var(--accent)" }}
+                      />
+                    </div>
+                    <div>
+                      <h4
+                        className="text-sm font-semibold mb-0.5"
+                        style={{
+                          fontFamily: "var(--font-display)",
+                          color: "var(--text-primary)",
+                        }}
+                      >
+                        {passion.title}
+                      </h4>
+                      <p
+                        className="text-xs leading-relaxed"
+                        style={{ color: "var(--text-muted)" }}
+                      >
+                        {passion.description}
+                      </p>
+                    </div>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+
+          {/* Right — Timeline */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ delay: 0.25, duration: 0.6 }}
+          >
+            <h3
+              className="text-sm font-semibold mb-8"
+              style={{
+                fontFamily: "var(--font-mono)",
+                color: "var(--text-muted)",
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+              }}
+            >
+              Journey
+            </h3>
+
+            <div className="relative">
+              {/* Timeline line */}
+              <div
+                className="absolute left-4 top-0 bottom-0 w-px"
+                style={{ background: "var(--border)" }}
+              />
+
+              <ul className="space-y-6">
+                {JOURNEY_STEPS.map((step, i) => (
+                  <motion.li
+                    key={step.year}
+                    initial={{ opacity: 0, x: -12 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ delay: 0.4 + i * 0.1 }}
+                    whileHover={{ x: 4 }}
+                    className="relative flex items-start gap-6 group"
+                  >
+                    {/* Dot */}
+                    <div
+                      className="relative z-10 w-8 h-8 rounded-full flex items-center justify-center shrink-0"
+                      style={{
+                        background: "var(--bg-primary)",
+                        border: "2px solid var(--border)",
+                      }}
                     >
                       <div
-                        className={`p-3 rounded-lg ${
-                          theme === "dark" ? "bg-gray-700" : "bg-gray-300"
-                        }`}
-                      >
-                        <passion.icon
-                          size={20}
-                          className="text-blue-400"
-                          aria-hidden="true"
-                        />
-                      </div>
-                      <div>
-                        <h4 className="font-medium mb-1">{passion.title}</h4>
-                        <p
-                          className={`text-sm ${
-                            theme === "dark" ? "text-gray-400" : "text-gray-600"
-                          }`}
-                        >
-                          {passion.description}
-                        </p>
-                      </div>
-                    </motion.li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
-          </motion.div>
+                        className="w-2 h-2 rounded-full transition-colors"
+                        style={{ background: "var(--text-muted)" }}
+                      />
+                    </div>
 
-          {/* Developer Journey Timeline */}
-          <motion.div
-            ref={timelineRef}
-            initial="hidden"
-            animate={timelineInView ? "visible" : "hidden"}
-            variants={timelineVariants}
-            className="relative "
-          >
-            <h3 className="text-2xl font-medium my-8 ml-8 text-center lg:text-left">
-              Professional Development Milestones
-            </h3>
-            {/* Timeline  */}
-            <div
-              className={`absolute left-8 top-16 bottom-0 w-px ${
-                theme === "dark" ? "bg-gray-700" : "bg-gray-300"
-              }`}
-            />
-            <ul className="space-y-8">
-              {JOURNEY_STEPS.map((step) => (
-                <motion.li
-                  key={step.year}
-                  aria-label={`Year ${step.year}`}
-                  variants={stepVariants}
-                  whileHover={{ x: 4 }}
-                  className="relative flex items-start space-x-6 group"
-                >
-                  {/* Timeline Dot */}
-                  <div
-                    className={`relative z-10 shrink-0 w-16 h-16 rounded-full ${step.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    <step.icon
-                      size={24}
-                      className="text-white"
-                      aria-hidden="true"
-                    />
-                  </div>
-                  {/* content*/}
-                  <div
-                    className={`grow p-6 rounded-xl border transition-all duration-300 ${
-                      theme === "dark"
-                        ? "bg-gray-800/50 border-gray-700 group-hover:border-gray-600 group-hover:bg-gray-800/70"
-                        : "bg-gray-200/50 border-gray-200 group-hover:border-gray-300 group-hover:bg-gray-200"
-                    }
-                  backdrop-blur-sm`}
-                  >
-                    <div className="flex items-center justify-between mb-2">
-                      <h4 className="text-xl font-medium">{step.title}</h4>
-                      <span
-                        className={`text-sm px-3 py-1 rounded-full ${
-                          theme === "dark"
-                            ? "bg-gray-700 text-gray-300"
-                            : "bg-gray-100 text-gray-700"
-                        }`}
-                      >
-                        {step.year}
-                      </span>
-                    </div>
+                    {/* Content */}
                     <div
-                      className={`text-sm font-medium ${
-                        theme === "dark" ? "text-blue-400" : "text-blue-600"
-                      } mb-3`}
+                      className="flex-1 p-5 rounded-xl transition-all"
+                      style={{
+                        background: "var(--bg-card)",
+                        border: "1px solid var(--border)",
+                      }}
+                      onMouseEnter={(e) =>
+                        ((e.currentTarget as HTMLElement).style.borderColor =
+                          "var(--accent)")
+                      }
+                      onMouseLeave={(e) =>
+                        ((e.currentTarget as HTMLElement).style.borderColor =
+                          "var(--border)")
+                      }
                     >
-                      {step.company}
+                      <div className="flex items-start justify-between gap-3 mb-1">
+                        <h4
+                          className="font-semibold text-sm"
+                          style={{
+                            fontFamily: "var(--font-display)",
+                            color: "var(--text-primary)",
+                          }}
+                        >
+                          {step.title}
+                        </h4>
+                        <span
+                          className="shrink-0 text-xs px-2 py-0.5 rounded-full"
+                          style={{
+                            fontFamily: "var(--font-mono)",
+                            fontSize: "0.65rem",
+                            background: "var(--accent-subtle)",
+                            color: "var(--accent)",
+                            border: "1px solid var(--accent)",
+                            opacity: 0.8,
+                          }}
+                        >
+                          {step.year}
+                        </span>
+                      </div>
+                      <div
+                        className="text-xs mb-2"
+                        style={{
+                          color: "var(--accent)",
+                          fontFamily: "var(--font-mono)",
+                        }}
+                      >
+                        {step.company}
+                      </div>
+                      <p
+                        className="text-xs leading-relaxed"
+                        style={{ color: "var(--text-muted)" }}
+                      >
+                        {step.description}
+                      </p>
                     </div>
-                    <p
-                      className={`text-sm leading-relaxed ${
-                        theme === "dark" ? "text-gray-400" : "text-gray-600"
-                      }`}
-                    >
-                      {step.description}
-                    </p>
-                  </div>
-                </motion.li>
-              ))}
-            </ul>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
           </motion.div>
         </div>
-
-        {/* Call to action */}
-        <motion.div
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={containerVariants}
-          className="text-center mt-20"
-        >
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-col items-center space-y-6"
-          >
-            <p
-              className={`text-lg ${
-                theme === "dark" ? "text-gray-400" : "text-gray-600"
-              }`}
-            >
-              Let's Build Something Solid
-            </p>
-            <motion.button
-              onClick={() =>
-                (window.location.href = "mailto:lalman.dev7@gmail.com")
-              }
-              type="button"
-              aria-label="Start collaboration"
-              whileHover={{ y: -2, scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-linear-to-r from-cyan-400 via-blue-600 to-purple-600 text-white hover:from-cyan-500 hover:to-purple-500 px-8 py-3 rounded-full text-sm uppercase tracking-wider font-medium transition-all duration-300"
-            >
-              Start a Conversation
-            </motion.button>
-            <p
-              className={`text-xs ${
-                theme === "dark" ? "text-gray-400" : "text-gray-600"
-              }`}
-            >
-              Prefer clear problem statements and async communication. I usually
-              respond within 24-48 hours.
-            </p>
-          </motion.div>
-        </motion.div>
       </div>
     </section>
   );
