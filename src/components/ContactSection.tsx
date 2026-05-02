@@ -378,7 +378,7 @@ const ContactSection = () => {
               }}
             >
               Prefer clear problem statements and async comms. Usually respond
-              within 24–48 hours.
+              within 24-48 hours.
             </div>
           </motion.div>
         </div>
