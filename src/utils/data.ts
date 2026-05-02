@@ -37,7 +37,7 @@ import {
 } from "react-icons/si";
 import { VscRocket } from "react-icons/vsc";
 
-// -------------------- Interfaces --------------------
+// Interfaces
 
 export interface Skill {
   name: string;
@@ -96,7 +96,7 @@ export interface ContactInfo {
   label: string;
   value: string;
 }
-// -------------------- Data --------------------
+// Data
 
 export const SKILL_CATEGORY: SkillCategory[] = [
   {
@@ -170,19 +170,39 @@ export const TECH_STACK: TechItem[] = [
 export const PROJECTS: Project[] = [
   {
     id: 1,
+    title: "Agent Run Visualizer",
+    category: "Frontend",
+    keyFocus: "State Machines · Real-time UI · Parallel Execution",
+    description:
+      "A real-time execution panel that makes multi-agent AI workflows legible — tasks spawning in parallel, tools firing, failures retrying mid-flight, and partial outputs streaming in before completion. Built for financial analysts watching an AI research agent work through SEC filings and earnings data. The core challenge: modeling non-linear agent state (parallel groups, cancellations, retries) in a single reducer-based state machine where every event transition is predictable and the UI never contradicts actual execution order.",
+    tag: ["React", "TypeScript", "Tailwind CSS", "Vite", "State Machine"],
+    liveUrl: "https://agent-visualizer.vercel.app/",
+    gitHubUrl: "https://github.com/lalman-dev/agent-visualizer",
+    image: "/src/assets/agent-visualizer.png", // drop your screenshot here
+  },
+  {
+    id: 2,
     title: "HackerNews Search Portal",
     image: hnNews_bg,
     description:
       "A production-grade Next.js application built to explore real-world rendering, performance, and reliability tradeoffs. Uses server-side rendering for fast initial load and SEO, with client-side state for search, pagination, and category filtering. Designed with clear component boundaries, resilient loading and error states, and reusable UI patterns to handle unreliable external APIs.",
     keyFocus: "Rendering Strategy • SSR / CSR",
-    tag: ["Next.js", "React", "TailwindCSS", "REST API", "SSR", "CSR" , "Framer Motion"],
+    tag: [
+      "Next.js",
+      "React",
+      "TailwindCSS",
+      "REST API",
+      "SSR",
+      "CSR",
+      "Framer Motion",
+    ],
     liveUrl: "https://hn-news-two.vercel.app/",
     gitHubUrl: "https://github.com/lalman-dev/hn-news",
     category: "Frontend",
     featured: true,
   },
   {
-    id: 2,
+    id: 3,
     title: "AI Resume Studio",
     image: resume_bg,
     description:
@@ -201,7 +221,7 @@ export const PROJECTS: Project[] = [
     gitHubUrl: "https://github.com/lalman-dev/AI-Resume-Studio",
     category: "Full-Stack",
     featured: true,
-  }
+  },
 ];
 export const JOURNEY_STEPS: JourneyStep[] = [
   {
