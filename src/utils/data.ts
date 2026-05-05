@@ -18,6 +18,7 @@ import {
 
 import hnNews_bg from "/hackernews.png";
 import resume_bg from "/resume.png";
+import agentBg from "/agent-visualizer.png";
 
 import { FiGithub, FiLinkedin } from "react-icons/fi";
 import type { LucideIcon } from "lucide-react";
@@ -178,7 +179,7 @@ export const PROJECTS: Project[] = [
     tag: ["React", "TypeScript", "Tailwind CSS", "Vite", "State Machine"],
     liveUrl: "https://agent-visualizer.vercel.app/",
     gitHubUrl: "https://github.com/lalman-dev/agent-visualizer",
-    image: "/src/assets/agent-visualizer.png",
+    image: agentBg,
   },
   {
     id: 2,
