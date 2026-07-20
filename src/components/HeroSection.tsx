@@ -6,9 +6,9 @@ import { useEffect, useRef, useState } from "react";
 
 const ROLES = [
   "Frontend Engineer",
-  "React Developer",
-  "Next.js Builder",
-  "UI Craftsman",
+  "Full Stack Engineer",
+  "AI Powered Web Developer",
+  "React Specialist",
 ];
 
 const HeroSection = () => {
@@ -55,9 +55,18 @@ const HeroSection = () => {
   };
 
   const stats = [
-    { value: "5+", label: "Projects Shipped" },
-    { value: "10+", label: "Technologies" },
-    { value: "∞", label: "Problems Solved" },
+    {
+      value: "10+",
+      label: "Technologies",
+    },
+    {
+      value: "3+",
+      label: "Production Projects",
+    },
+    {
+      value: "AI",
+      label: "Applications Built",
+    },
   ];
 
   return (
@@ -101,7 +110,7 @@ const HeroSection = () => {
           >
             <div className="w-8 h-px" style={{ background: "var(--accent)" }} />
             <span className="section-label">
-              Available for work · Based in India
+              Available for Frontend or Fullstack roles and UAE Relocation
             </span>
             <div
               className="w-2 h-2 rounded-full animate-pulse"
@@ -154,7 +163,7 @@ const HeroSection = () => {
                   <br />
                   <span style={{ color: "var(--accent)" }}>Production</span>
                   <br />
-                  Interfaces.
+                  Software.
                 </motion.h1>
               </div>
 
@@ -169,9 +178,10 @@ const HeroSection = () => {
                   fontFamily: "var(--font-body)",
                 }}
               >
-                I design and ship performant, accessible web experiences using
-                React, Next.js, and TypeScript — with strong opinions on
-                architecture, state, and rendering strategy.
+                Frontend-first Full Stack Engineer building scalable web
+                applications with React, Next.js, TypeScript, Node.js, Express,
+                and MongoDB. Experienced in AI integration, authentication, REST
+                APIs, and modern application architecture.
               </motion.p>
 
               {/* CTAs */}
@@ -191,7 +201,7 @@ const HeroSection = () => {
                     fontFamily: "var(--font-display)",
                   }}
                 >
-                  View Projects
+                  Explore My Work
                   <ArrowUpRight
                     size={15}
                     className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
