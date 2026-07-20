@@ -65,7 +65,7 @@ const HeroSection = () => {
     },
     {
       value: "AI",
-      label: "Applications Built",
+      label: "Applications Built with",
     },
   ];
 
