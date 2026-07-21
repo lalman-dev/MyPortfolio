@@ -62,24 +62,26 @@ const AboutMe = () => {
                   color: "var(--text-primary)",
                 }}
               >
-                My Approach
+                Engineering Philosophy
               </h3>
               <p
                 className="text-sm leading-relaxed mb-4"
                 style={{ color: "var(--text-secondary)" }}
               >
-                I focus on building frontend systems that remain maintainable as
-                they grow — from component structure and state boundaries to
-                rendering strategy and UX performance.
+                I build modern full-stack applications that balance user
+                experience, scalability, and maintainability. My approach
+                combines thoughtful frontend architecture with reliable backend
+                services, clean APIs, and AI-powered workflows.
               </p>
               <p
                 className="text-sm leading-relaxed"
                 style={{ color: "var(--text-muted)" }}
               >
-                I care deeply about how architectural decisions affect user
-                experience, developer velocity, and long-term scalability. Most
-                of my learning comes from shipping real projects and refining
-                through iteration.
+                I enjoy solving real engineering problems—from designing
+                intuitive user interfaces to building secure backend systems and
+                integrating AI into production-ready applications. Every project
+                is an opportunity to improve performance, architecture, and
+                developer experience.
               </p>
             </motion.div>
 
@@ -98,7 +100,7 @@ const AboutMe = () => {
                   textTransform: "uppercase",
                 }}
               >
-                What I Build For
+                Engineering Focus
               </h3>
               <ul className="grid gap-3">
                 {PASSION.map((passion, i) => (
@@ -169,7 +171,7 @@ const AboutMe = () => {
                 textTransform: "uppercase",
               }}
             >
-              Journey
+              Career Journey
             </h3>
 
             <div className="relative">

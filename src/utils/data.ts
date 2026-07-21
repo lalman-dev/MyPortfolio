@@ -4,16 +4,15 @@ import {
   Mail,
   MapPin,
   Phone,
-  Users,
   User,
   Rocket,
   Code2,
   Server,
-  Wrench,
   GitBranch,
   Accessibility,
   Zap,
   Layers,
+  BrainCircuit,
 } from "lucide-react";
 
 import hnNews_bg from "/hackernews.png";
@@ -25,18 +24,22 @@ import type { LucideIcon } from "lucide-react";
 import type { IconType } from "react-icons";
 import { FaXTwitter } from "react-icons/fa6";
 import {
-  SiCss3,
+  SiExpress,
   SiFramer,
-  SiHtml5,
+  SiGit,
+  SiGithub,
   SiJavascript,
+  SiMongodb,
   SiNextdotjs,
-  SiNpm,
+  SiNodedotjs,
+  SiOpenai,
+  SiPostman,
   SiReact,
   SiRedux,
   SiTailwindcss,
   SiTypescript,
+  SiVercel,
 } from "react-icons/si";
-import { VscRocket } from "react-icons/vsc";
 
 // Interfaces
 
@@ -104,7 +107,7 @@ export const SKILL_CATEGORY: SkillCategory[] = [
     title: "Frontend Engineering",
     icon: Code2,
     description:
-      "Designing and building scalable, accessible, and maintainable UI systems using modern React and Next.js.",
+      "Building fast, accessible, and scalable user interfaces with modern React, Next.js, and TypeScript.",
     skills: [
       { name: "React" },
       { name: "Next.js (App Router)" },
@@ -115,64 +118,72 @@ export const SKILL_CATEGORY: SkillCategory[] = [
     ],
   },
   {
-    title: "State, Data & Rendering",
-    icon: Server,
+    title: "Application Architecture",
+    icon: Layers,
     description:
-      "Managing async data, rendering strategies, and predictable client-side state in real-world applications.",
+      "Designing maintainable application architecture with efficient rendering, predictable state, and reusable patterns.",
     skills: [
       { name: "Server Components" },
       { name: "Client Components" },
       { name: "SSR / CSR" },
       { name: "REST APIs" },
-      { name: "Pagination & Search State" },
-    ],
-  },
-  {
-    title: "Performance, UX & Quality",
-    icon: Users,
-    description:
-      "Focused on delivering fast, resilient, and user-friendly interfaces that hold up in production.",
-    skills: [
-      { name: "Accessibility (ARIA)" },
-      { name: "Responsive Design" },
-      { name: "Loading & Error States" },
-      { name: "Code Splitting" },
-      { name: "Reusable Component Patterns" },
+      { name: "State Management" },
+      { name: "Routing & Navigation" },
     ],
   },
   {
     title: "Backend & APIs",
-    icon: Wrench,
+    icon: Server,
     description:
-      "Developing secure REST APIs, authentication flows, and scalable server-side services using Node.js and Express.",
+      "Building secure backend services, authentication systems, and scalable REST APIs for modern web applications.",
     skills: [
       { name: "Node.js" },
       { name: "Express.js" },
       { name: "MongoDB" },
       { name: "JWT Authentication" },
       { name: "API Integration" },
+      { name: "CRUD Operations" },
+    ],
+  },
+  {
+    title: "Performance & Quality",
+    icon: Zap,
+    description:
+      "Delivering production-ready applications with a focus on performance, accessibility, responsiveness, and reliability.",
+    skills: [
+      { name: "Accessibility (ARIA)" },
+      { name: "Responsive Design" },
+      { name: "Code Splitting" },
+      { name: "Loading & Error States" },
+      { name: "Performance Optimization" },
+      { name: "Reusable Components" },
     ],
   },
 ];
 
 export const TECH_STACK: TechItem[] = [
-  { name: "JavaScript", icon: SiJavascript, color: "text-yellow-500" },
-  { name: "TypeScript", icon: SiTypescript, color: "text-blue-600" },
-  { name: "Next.js", icon: SiNextdotjs, color: "text-black/70" },
   { name: "React", icon: SiReact, color: "text-cyan-500" },
+  { name: "Next.js", icon: SiNextdotjs, color: "text-black/70" },
+  { name: "TypeScript", icon: SiTypescript, color: "text-blue-600" },
+  { name: "JavaScript", icon: SiJavascript, color: "text-yellow-500" },
+  { name: "Node.js", icon: SiNodedotjs, color: "text-green-600" },
+  { name: "Express.js", icon: SiExpress, color: "text-gray-700" },
+  { name: "MongoDB", icon: SiMongodb, color: "text-green-500" },
   { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-teal-400" },
-  { name: "Framer Motion", icon: SiFramer, color: "text-slate-700" },
-  { name: "HTML5", icon: SiHtml5, color: "text-orange-500" },
   { name: "Redux Toolkit", icon: SiRedux, color: "text-violet-600" },
-  { name: "CSS3", icon: SiCss3, color: "text-blue-500" },
-  { name: "NPM", icon: SiNpm, color: "text-red-700" },
-  { name: "Vite", icon: VscRocket, color: "text-purple-500" },
+  { name: "Framer Motion", icon: SiFramer, color: "text-slate-700" },
+  { name: "Git", icon: SiGit, color: "text-orange-600" },
+  { name: "GitHub", icon: SiGithub, color: "text-gray-800" },
+  { name: "Vercel", icon: SiVercel, color: "text-black" },
+  { name: "Postman", icon: SiPostman, color: "text-orange-500" },
+  { name: "OpenAI API", icon: SiOpenai, color: "text-green-700" },
 ];
+
 export const PROJECTS: Project[] = [
   {
     id: 1,
     title: "AI Agent WorkFlow Visualizer",
-    category: "Frontend",
+    category: "Interactive Systems",
     keyFocus: "State Machines · Real-time UI · Parallel Execution",
     description:
       "A real-time execution panel that makes multi-agent AI workflows legible — tasks spawning in parallel, tools firing, failures retrying mid-flight, and partial outputs streaming in before completion. Built for financial analysts watching an AI research agent work through SEC filings and earnings data. The core challenge: modeling non-linear agent state (parallel groups, cancellations, retries) in a single reducer-based state machine where every event transition is predictable and the UI never contradicts actual execution order.",
@@ -184,6 +195,7 @@ export const PROJECTS: Project[] = [
   {
     id: 2,
     title: "HackerNews Search Portal",
+    category: "Frontend Engineering",
     image: hnNews_bg,
     description:
       "A production-grade Next.js application built to explore real-world rendering, performance, and reliability tradeoffs. Uses server-side rendering for fast initial load and SEO, with client-side state for search, pagination, and category filtering. Designed with clear component boundaries, resilient loading and error states, and reusable UI patterns to handle unreliable external APIs.",
@@ -199,12 +211,12 @@ export const PROJECTS: Project[] = [
     ],
     liveUrl: "https://hn-news-two.vercel.app/",
     gitHubUrl: "https://github.com/lalman-dev/hn-news",
-    category: "Frontend",
     featured: true,
   },
   {
     id: 3,
     title: "AI Resume Studio",
+    category: "Full Stack Engineering",
     image: resume_bg,
     description:
       "A full-stack resume builder with a strong emphasis on frontend architecture, data flow, and real-world form complexity. Built with React, TypeScript, and Redux Toolkit to manage multi-step workflows and predictable state transitions. Includes JWT-based authentication, protected routes, and AI-assisted content generation using OpenAI APIs, with a focus on usability, stability, and production-ready UI behavior.",
@@ -220,7 +232,6 @@ export const PROJECTS: Project[] = [
     ],
     liveUrl: "https://ai-resume-studio-snowy.vercel.app/",
     gitHubUrl: "https://github.com/lalman-dev/AI-Resume-Studio",
-    category: "Full-Stack",
     featured: true,
   },
 ];
@@ -236,7 +247,7 @@ export const JOURNEY_STEPS: JourneyStep[] = [
   },
   {
     year: "May 2025",
-    title: "Frontend Engineering Focus",
+    title: "Modern Frontend Engineering",
     company: "Self-directed",
     description:
       "Focused on building frontend applications using Reaind CSS, with emphasis on component structure, state management, and responsive design.",
@@ -245,7 +256,7 @@ export const JOURNEY_STEPS: JourneyStep[] = [
   },
   {
     year: "Late 2025",
-    title: "Production-Oriented Projects",
+    title: "Production Application Development",
     company: "Independent / Community",
     description:
       "Designed and built multiple production-style projects, prioritizing accessibility, performance, and maintainable UI architecture while refining a cohesive personal portfolio.",
@@ -261,17 +272,44 @@ export const JOURNEY_STEPS: JourneyStep[] = [
     icon: Rocket,
     color: "bg-yellow-500",
   },
+  {
+    year: "Apr 2026",
+    title: "Technical Validation",
+    company: "Multiple Product Companies",
+    description:
+      "Successfully progressed through technical assessments and interview rounds for frontend engineering roles, demonstrating production-level React, TypeScript, and modern web development skills across multiple organizations.",
+    icon: Rocket,
+    color: "bg-orange-500",
+  },
+  {
+    year: "June 2026",
+    title: "Frontend Engineer AI Intern",
+    company: "FlyRank AI",
+    description:
+      "Joined FlyRank AI as a Frontend Engineer AI Intern, contributing to AI-powered web applications while collaborating with modern frontend technologies, scalable architectures, and real-world product development workflows.",
+    icon: Briefcase,
+    color: "bg-emerald-500",
+  },
+  {
+    year: "Present",
+    title: "Full Stack Engineering",
+    company: "Actively Building & Open to Opportunities",
+    description:
+      "Expanding expertise beyond frontend engineering by building end-to-end applications with React, Next.js, Node.js, Express, MongoDB, and AI integrations, while seeking opportunities to deliver production-ready software in collaborative engineering teams.",
+    icon: Rocket,
+    color: "bg-violet-500",
+  },
 ];
 export const PASSION: Passion[] = [
   {
     icon: Layers,
-    title: "Frontend Architecture",
+    title: "Application Architecture",
     description:
-      "Designing scalable component structures, clear data flow, and predictable state boundaries that remain maintainable as applications grow.",
+      "Designing scalable frontend and backend systems with clear boundaries, reusable patterns, and maintainable code.",
   },
   {
     icon: Zap,
-    title: "Performance & UX",
+    title: "Performance Engineering",
     description:
       "Optimizing rendering behavior, minimizing unnecessary re-renders, and ensuring smooth, responsive user interactions.",
   },
@@ -282,10 +320,16 @@ export const PASSION: Passion[] = [
       "Building inclusive interfaces using semantic HTML, ARIA roles, and keyboard-friendly navigation patterns.",
   },
   {
-    icon: GitBranch,
-    title: "Iterative Development",
+    icon: BrainCircuit,
+    title: "AI-Powered Applications",
     description:
-      "Shipping early, debugging real issues, and refining implementations through feedback and continuous improvement.",
+      "Building intelligent experiences by integrating LLMs, prompt engineering, structured outputs, and workflow automation.",
+  },
+  {
+    icon: GitBranch,
+    title: "Product Thinking",
+    description:
+      "Building software that solves real user problems through continuous iteration, feedback, and measurable improvements.",
   },
 ];
 
