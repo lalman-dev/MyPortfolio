@@ -101,7 +101,7 @@ export interface ContactInfo {
 
 export const SKILL_CATEGORY: SkillCategory[] = [
   {
-    title: "Frontend Architecture",
+    title: "Frontend Engineering",
     icon: Code2,
     description:
       "Designing and building scalable, accessible, and maintainable UI systems using modern React and Next.js.",
@@ -141,10 +141,10 @@ export const SKILL_CATEGORY: SkillCategory[] = [
     ],
   },
   {
-    title: "Backend Exposure",
+    title: "Backend & APIs",
     icon: Wrench,
     description:
-      "Hands-on experience integrating frontend systems with backend services and authentication flows.",
+      "Developing secure REST APIs, authentication flows, and scalable server-side services using Node.js and Express.",
     skills: [
       { name: "Node.js" },
       { name: "Express.js" },
@@ -171,7 +171,7 @@ export const TECH_STACK: TechItem[] = [
 export const PROJECTS: Project[] = [
   {
     id: 1,
-    title: "Agent Run Visualizer",
+    title: "AI Agent WorkFlow Visualizer",
     category: "Frontend",
     keyFocus: "State Machines · Real-time UI · Parallel Execution",
     description:

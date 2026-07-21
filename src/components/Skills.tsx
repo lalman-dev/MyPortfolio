@@ -23,10 +23,7 @@ const Skills = () => {
           className="mb-16"
         >
           <div className="flex items-center gap-3 mb-4">
-            <div
-              className="w-6 h-px"
-              style={{ background: "var(--accent)" }}
-            />
+            <div className="w-6 h-px" style={{ background: "var(--accent)" }} />
             <span className="section-label">02 / Skills</span>
           </div>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
@@ -38,16 +35,16 @@ const Skills = () => {
                 color: "var(--text-primary)",
               }}
             >
-              What I Work
-              <br />
-              <span style={{ color: "var(--accent)" }}>With</span>
+              Engineering
+              <span style={{ color: "var(--accent)" }}>Toolkit</span>
             </h2>
             <p
               className="max-w-sm text-sm leading-relaxed"
               style={{ color: "var(--text-secondary)" }}
             >
-              Technologies and tools I use to design, build, and ship
-              production-ready frontend applications.
+              Technologies I use to architect, build, and deploy
+              production-ready full-stack applications—from modern frontend
+              experiences to scalable backend services and AI-powered workflows.
             </p>
           </div>
         </motion.div>
@@ -149,7 +146,7 @@ const Skills = () => {
                 color: "var(--text-muted)",
               }}
             >
-              Also Working With
+              Engineering Ecosystem
             </span>
             <div
               className="flex-1 h-px"
