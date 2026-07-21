@@ -6,21 +6,21 @@ const PRINCIPLES = [
     num: "01",
     title: "Separation of Concerns",
     description:
-      "UI components, state management, and data-fetching logic are clearly separated to keep the codebase predictable and easy to maintain.",
+      "I separate presentation, business logic, data access, and infrastructure concerns to keep applications modular, testable, and easy to scale.",
     example:
       "In my Hacker News Portal, I separated server-rendered data fetching from client-side search and pagination logic, keeping UI components focused and reusable.",
   },
   {
     num: "02",
-    title: "Rendering Strategy First",
+    title: "Performance by Design",
     description:
       "I intentionally choose between SSR, CSR, or hybrid rendering based on performance, SEO, and user experience requirements.",
     example:
-      "For the Hacker News Portal, I used SSR for initial page load and SEO, while handling search and interactions on the client to keep the UI fast and responsive.",
+      "The Hacker News Portal combines server rendering for fast initial loads and SEO with client-side interactivity for filtering and searching.",
   },
   {
     num: "03",
-    title: "Predictable State & Data Flow",
+    title: "Reliable State & Data Flow",
     description:
       "I prefer explicit, predictable state updates to avoid hidden side effects and fragile UI behavior.",
     example:
@@ -36,11 +36,20 @@ const PRINCIPLES = [
   },
   {
     num: "05",
-    title: "Scalability over Cleverness",
+    title: "Build for Growth",
     description:
-      "I favor simple, boring solutions that scale well with growing features and team size.",
+      "I prioritize maintainable architecture, reusable components, and straightforward patterns that support long-term product evolution and team collaboration.",
     example:
-      "Instead of over-abstracting components, I focused on clear component boundaries and readable patterns that would be easy for another developer to extend.",
+      "Projects are organized using reusable modules and consistent folder structures so additional features can be added without major refactoring.",
+  },
+  {
+    num: "06",
+    title: "End-to-End Ownership",
+    description:
+      "I enjoy building complete products—from responsive user interfaces and backend APIs to authentication, deployment, and AI integrations.",
+
+    example:
+      "My recent projects include frontend development, backend services, database design, authentication, and AI-powered workflows delivered as complete applications.",
   },
 ];
 
@@ -85,8 +94,7 @@ const ArchitecturePrinciples = () => {
               className="max-w-sm text-sm leading-relaxed"
               style={{ color: "var(--text-secondary)" }}
             >
-              Principles that guide my decisions when designing frontend systems
-              for real-world, production environments.
+              Principles that guide how I architect, build, and scale modern full-stack applications—from frontend interfaces to backend services and AI-powered workflows.
             </p>
           </div>
         </motion.div>
@@ -155,7 +163,7 @@ const ArchitecturePrinciples = () => {
                       color: "var(--accent)",
                     }}
                   >
-                    Real-world example
+                    Applied In
                   </div>
                   <p
                     className="text-sm leading-relaxed italic"
