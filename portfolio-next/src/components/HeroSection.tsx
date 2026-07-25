@@ -90,7 +90,7 @@ const HeroSection = () => {
 
       {/* Accent circle blur */}
       <div
-        className="absolute top-1/4 right-0 w-[500px] h-[500px] rounded-full pointer-events-none"
+        className="absolute top-1/4 right-0 w-125 h-125 rounded-full pointer-events-none"
         style={{
           background: "var(--accent)",
           filter: "blur(180px)",
