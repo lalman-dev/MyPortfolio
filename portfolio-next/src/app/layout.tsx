@@ -1,112 +1,73 @@
-import type { Metadata, Viewport } from "next";
-import { DM_Mono, DM_Sans, Syne } from "next/font/google";
-
+import type { Metadata } from "next";
+import { Syne, DM_Mono, DM_Sans } from "next/font/google";
+import { ThemeProvider } from "@/context/ThemeContext";
 import "./globals.css";
-
-import { ThemeProvider } from "@/components/providers/theme-provider";
 
 const syne = Syne({
   subsets: ["latin"],
-  variable: "--font-display",
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-syne",
+  display: "swap",
+});
+
+const dmMono = DM_Mono({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  style: ["normal", "italic"],
+  variable: "--font-dm-mono",
   display: "swap",
 });
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-body",
-  display: "swap",
-});
-
-const dmMono = DM_Mono({
   weight: ["300", "400", "500"],
-  subsets: ["latin"],
-  variable: "--font-mono",
+  style: ["normal", "italic"],
+  variable: "--font-dm-sans",
   display: "swap",
 });
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://your-domain.com"),
-
-  title: {
-    default: "Lalman | Frontend Engineer",
-    template: "%s | Lalman",
-  },
-
+  title: "Lalman — Frontend & Full Stack Engineer",
   description:
-    "Frontend-first Full Stack Engineer specializing in React, Next.js, TypeScript, AI-powered web applications, and modern user experiences.",
-
-  keywords: [
-    "Frontend Engineer",
-    "React",
-    "Next.js",
-    "TypeScript",
-    "JavaScript",
-    "Tailwind CSS",
-    "Node.js",
-    "Full Stack Developer",
-    "AI Engineer",
-    "Portfolio",
-  ],
-
-  authors: [
-    {
-      name: "Lalman",
-    },
-  ],
-
-  creator: "Lalman",
-
+    "Frontend-first Full Stack Engineer building scalable web applications with React, Next.js, TypeScript, Node.js, Express, and MongoDB. Experienced in AI integration, authentication, and modern application architecture.",
   openGraph: {
-    title: "Lalman | Frontend Engineer",
+    title: "Lalman — Frontend & Full Stack Engineer",
     description:
-      "Frontend-first Full Stack Engineer building performant, scalable, AI-powered web applications.",
-    type: "website",
-    locale: "en_US",
+      "Frontend-first Full Stack Engineer building scalable web applications with React, Next.js, TypeScript, Node.js, Express, and MongoDB.",
+    images: ["/og-image.png"],
   },
-
-  twitter: {
-    card: "summary_large_image",
-    title: "Lalman | Frontend Engineer",
-    description:
-      "Frontend-first Full Stack Engineer building performant web applications.",
-  },
-
-  robots: {
-    index: true,
-    follow: true,
+  icons: {
+    icon: "/favicon.ico",
   },
 };
 
-export const viewport: Viewport = {
-  themeColor: "#0a0908",
-};
+const themeInitScript = `
+(function () {
+  try {
+    var stored = localStorage.getItem("theme");
+    if (stored === "dark") document.documentElement.classList.add("dark");
+  } catch (e) {}
+})();
+`;
 
-type RootLayoutProps = Readonly<{
+export default function RootLayout({
+  children,
+}: {
   children: React.ReactNode;
-}>;
-
-export default function RootLayout({ children }: RootLayoutProps) {
+}) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${syne.variable} ${dmMono.variable} ${dmSans.variable}`}
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body
-        className={[
-          syne.variable,
-          dmSans.variable,
-          dmMono.variable,
-          "antialiased",
-          "min-h-screen",
-          "bg-[var(--bg-primary)]",
-          "text-[var(--text-primary)]",
-          "noise",
-        ].join(" ")}
+        className={`${syne.variable} ${dmMono.variable} ${dmSans.variable} noise`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );
