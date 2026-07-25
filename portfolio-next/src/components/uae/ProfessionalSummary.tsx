@@ -32,14 +32,15 @@ const ProfessionalSummary = () => {
               color: "var(--text-primary)",
             }}
           >
-            A frontend-focused Full Stack Engineer who builds production web
-            applications with React, Next.js, and TypeScript — and backs
-            them with Node.js, Express, and MongoDB when a product needs a
-            full stack. Recent work spans AI-powered application interfaces,
-            authenticated multi-step flows, and rendering-strategy decisions
-            (SSR vs. CSR) made deliberately rather than by framework default.
-            Comfortable owning a feature end-to-end: UI, state, API, and
-            deployment.
+            A frontend-focused Full Stack Engineer specializing in
+            production-grade web applications built with React, Next.js,
+            and TypeScript, extended with Node.js, Express, and MongoDB
+            where a product requires full-stack ownership. Recent work
+            spans AI-powered application interfaces, authenticated
+            multi-step workflows, and rendering-strategy decisions — SSR
+            versus CSR — made deliberately against product requirements
+            rather than by framework default. Experienced in owning a
+            feature end-to-end: interface, state, API, and deployment.
           </p>
         </motion.div>
       </div>

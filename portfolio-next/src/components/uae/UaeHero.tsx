@@ -56,7 +56,7 @@ const UaeHero = () => {
               color: "var(--text-primary)",
             }}
           >
-            Frontend Engineer, Ready to Build for{" "}
+            Building Scalable Frontend Experiences for{" "}
             <span style={{ color: "var(--accent)" }}>UAE Teams.</span>
           </motion.h1>
         </div>
@@ -69,9 +69,9 @@ const UaeHero = () => {
           className="max-w-xl text-base leading-relaxed mb-10"
           style={{ color: "var(--text-secondary)", fontFamily: "var(--font-body)" }}
         >
-          Lalman — a frontend-focused Full Stack Engineer building scalable
-          products with React, Next.js, TypeScript, and Node.js. Available
-          for UAE relocation with immediate availability.
+          Lalman — a frontend-focused Full Stack Engineer specializing in
+          React, Next.js, TypeScript, and Node.js. Available immediately
+          for relocation to the UAE.
         </motion.p>
 
         <motion.div

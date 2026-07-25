@@ -28,9 +28,8 @@ const UaeFinalCta = () => {
           className="text-sm leading-relaxed mb-10 max-w-lg mx-auto"
           style={{ color: "var(--text-secondary)" }}
         >
-          I&apos;d love to discuss how I can contribute to your team — available
-          for a call, an interview, or relocation as soon as it makes sense
-          for you.
+          Open to discussing how I can contribute to your engineering team —
+          available for a call, an interview, or relocation on your timeline.
         </motion.p>
 
         <motion.div

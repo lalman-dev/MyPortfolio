@@ -25,37 +25,37 @@ export const ENGINEERING_STRENGTHS: Strength[] = [
     icon: Zap,
     title: "Rendering & Performance",
     description:
-      "Choosing between SSR, CSR, and hybrid rendering deliberately — based on SEO, load time, and interactivity needs, not by default.",
+      "Rendering strategy — SSR, CSR, or hybrid — selected deliberately against SEO, load-time, and interactivity requirements rather than framework defaults.",
   },
   {
     icon: Layers,
     title: "Component Architecture",
     description:
-      "Building reusable, well-bounded components and design systems that scale with a product instead of accumulating one-off code.",
+      "Component and design-system boundaries structured for reuse and long-term maintainability, avoiding one-off implementations that accumulate technical debt.",
   },
   {
     icon: Workflow,
     title: "State Management",
     description:
-      "Predictable, explicit state transitions using Redux Toolkit and React state — avoiding hidden side effects in multi-step flows.",
+      "Explicit, predictable state transitions across multi-step flows using Redux Toolkit and React state, engineered to eliminate hidden side effects.",
   },
   {
     icon: ShieldCheck,
     title: "Auth & API Integration",
     description:
-      "JWT-based authentication, protected routes, and REST API integration built with clear error and loading states as first-class UI.",
+      "JWT-based authentication, protected routing, and REST API integration, with error and loading states designed as core UI requirements rather than exceptions.",
   },
   {
     icon: Accessibility,
     title: "Accessibility",
     description:
-      "Semantic HTML, ARIA roles, and keyboard-friendly navigation treated as a requirement, not an afterthought.",
+      "Semantic HTML, ARIA roles, and keyboard navigation implemented as baseline requirements for every interface, not optional polish.",
   },
   {
     icon: Sparkles,
     title: "Motion & Interaction",
     description:
-      "Purposeful animation with Framer Motion — used to clarify state changes and hierarchy, not to decorate.",
+      "Interface motion built with Framer Motion to reinforce state changes and hierarchy — applied with restraint, in service of clarity rather than decoration.",
   },
 ];
 
@@ -76,11 +76,11 @@ export const UAE_PROJECTS: UaeProject[] = [
     id: 1,
     title: "AI Agent Workflow Visualizer",
     problem:
-      "Multi-agent AI workflows are hard to trust — parallel tasks, retries, and streaming outputs give users no visibility into what the system is actually doing.",
+      "Multi-agent AI workflows are difficult to reason about in production: parallel task execution, retries, and streaming outputs leave users with no reliable visibility into system state.",
     solution:
-      "Built a real-time execution panel on a reducer-based state machine that models parallel task groups, cancellations, and retries as predictable event transitions, so the UI never contradicts actual execution order.",
+      "Engineered a real-time execution panel on a reducer-based state machine, modeling parallel task groups, cancellations, and retries as predictable event transitions so the UI remains consistent with actual execution order at every step.",
     impact:
-      "Analysts can watch an AI research agent work through SEC filings and earnings data live, with full visibility into what's running, what failed, and what's queued next.",
+      "Enables analysts to observe an AI research agent processing SEC filings and earnings data in real time, with complete visibility into running, failed, and queued tasks.",
     tech: ["React", "TypeScript", "Tailwind CSS", "Vite", "State Machine"],
     liveUrl: "https://agent-visualizer.vercel.app/",
     gitHubUrl: "https://github.com/lalman-dev/agent-visualizer",
@@ -90,11 +90,11 @@ export const UAE_PROJECTS: UaeProject[] = [
     id: 2,
     title: "HackerNews Search Portal",
     problem:
-      "Needed to prove out production rendering tradeoffs — fast, SEO-friendly initial loads versus rich client interactivity — against an external API that isn't fully reliable.",
+      "Required a production-grade evaluation of rendering strategy — balancing fast, SEO-optimized initial loads against rich client interactivity — against a third-party API with inconsistent reliability.",
     solution:
-      "Built on Next.js with server-side rendering for the initial load and SEO, client-side state for search/pagination/filtering, and resilient loading and error states for an unpredictable API.",
+      "Architected on Next.js with server-side rendering for initial load and SEO, client-side state for search, pagination, and filtering, and resilient loading and error handling to absorb API instability.",
     impact:
-      "Strong PageSpeed scores while staying fully interactive and stable under inconsistent API responses.",
+      "Delivers strong PageSpeed performance while remaining fully interactive and stable under inconsistent API conditions.",
     tech: ["Next.js", "React", "Tailwind CSS", "REST API", "SSR", "CSR"],
     liveUrl: "https://hn-news-two.vercel.app/",
     gitHubUrl: "https://github.com/lalman-dev/hn-news",
@@ -104,11 +104,11 @@ export const UAE_PROJECTS: UaeProject[] = [
     id: 3,
     title: "AI Resume Studio",
     problem:
-      "Resume builders live and die on multi-step forms — fragile state management here easily causes data loss or an inconsistent UI mid-flow.",
+      "Multi-step form workflows are a common failure point in production applications — fragile state management leads directly to data loss and inconsistent UI states.",
     solution:
-      "Full-stack resume builder using React, TypeScript, and Redux Toolkit for predictable multi-step state, JWT-based authentication and protected routes, and OpenAI-powered content generation.",
+      "Built a full-stack resume builder using React, TypeScript, and Redux Toolkit for predictable multi-step state management, backed by JWT-based authentication, protected routes, and OpenAI-powered content generation.",
     impact:
-      "A stable, production-ready path from sign-up through AI-assisted resume generation.",
+      "Delivers a stable, production-ready workflow from sign-up through AI-assisted resume generation.",
     tech: [
       "React",
       "TypeScript",
@@ -159,18 +159,18 @@ export const UAE_WHATSAPP_URL = "https://wa.me/971XXXXXXXXX";
 
 export const WHY_UAE_POINTS = [
   {
-    title: "A market building at speed",
+    title: "A market built for engineering impact",
     description:
-      "The UAE's product and engineering scene is growing fast across fintech, logistics, and government digital services — the kind of environment where frontend architecture decisions compound quickly.",
+      "The UAE's product and technology sector is expanding rapidly across fintech, logistics, and government digital services — an environment where sound frontend architecture decisions compound in value.",
   },
   {
-    title: "Room to grow with a team",
+    title: "Positioned for ownership and growth",
     description:
-      "Looking for a team where I can take ownership of real product surfaces, work closely with backend and design, and grow from early-career into a senior engineering track.",
+      "Seeking a team where I can take direct ownership of product surfaces, collaborate closely with backend and design functions, and progress toward a senior engineering track.",
   },
   {
-    title: "Ready to relocate now",
+    title: "Available without delay",
     description:
-      "No notice period blocking a start date — available for interviews and relocation as soon as a role is confirmed.",
+      "No notice period constraints — available for interviews and relocation as soon as a role is confirmed.",
   },
 ];
