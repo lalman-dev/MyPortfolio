@@ -1,36 +1,199 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Lalman — Frontend Engineer Portfolio
 
-## Getting Started
+A production-ready portfolio built with **Next.js**, showcasing modern frontend engineering, scalable architecture, performance-focused development, and thoughtful user experience.
 
-First, run the development server:
+Designed to reflect how I build software in professional environments—prioritizing maintainability, accessibility, performance, and clean engineering practices.
+
+🌐 **Live:** https://lalman.dev
+
+---
+
+# 🧭 Overview
+
+This portfolio demonstrates my approach to building modern web applications using the React ecosystem.
+
+It highlights:
+
+- Production-grade component architecture
+- Server-first rendering with Next.js App Router
+- Responsive, accessible user interfaces
+- Smooth, purposeful animations
+- Modern frontend engineering practices
+- Performance and SEO optimization
+
+Rather than being just a portfolio website, it serves as a demonstration of the engineering standards I apply when building real-world applications.
+
+---
+
+# ✨ Features
+
+### ⚡ Next.js App Router
+
+Built using the latest Next.js App Router architecture with modern routing, layouts, metadata, and optimized asset loading.
+
+### 🎨 Modern UI System
+
+A clean, editorial-inspired interface focused on typography, spacing, and visual hierarchy.
+
+### 🎭 Purposeful Motion
+
+Subtle, meaningful animations powered by Framer Motion to improve usability without compromising performance.
+
+### 🌗 Persistent Theme System
+
+Light and Dark mode with persistent user preference and seamless hydration.
+
+### 📱 Responsive by Design
+
+Optimized across desktop, tablet, and mobile devices.
+
+### ♿ Accessibility First
+
+Built using semantic HTML, keyboard-friendly interactions, proper contrast, and accessible UI patterns.
+
+### 📨 Production Contact Form
+
+Integrated with EmailJS for reliable client-side contact handling.
+
+### 🚀 Optimized Performance
+
+- Server-side rendering (SSR)
+- Automatic image optimization
+- Code splitting
+- Font optimization
+- Metadata & Open Graph support
+- Excellent Lighthouse performance
+
+---
+
+# 🛠 Tech Stack
+
+| Category   | Technologies                     |
+| ---------- | -------------------------------- |
+| Framework  | Next.js 15, React 19, TypeScript |
+| Styling    | Tailwind CSS v4                  |
+| Animations | Framer Motion                    |
+| Icons      | Lucide React, React Icons        |
+| Theme      | next-themes                      |
+| Forms      | EmailJS                          |
+| Images     | ImageKit                         |
+| Deployment | Vercel                           |
+
+---
+
+# 🏗 Architecture
+
+The project follows a scalable, feature-oriented structure.
+
+```text
+src/
+├── app/
+├── assets/
+├── components/
+│   ├── home/
+│   ├── layout/
+│   └── ui/
+├── context/
+├── lib/
+├── utils/
+└── types/
+```
+
+The application emphasizes:
+
+- Reusable UI components
+- Clear separation of concerns
+- Type-safe development
+- Maintainable project organization
+- Production-ready architecture
+
+---
+
+# ⚡ Performance
+
+The project is optimized for modern web standards.
+
+- Next.js Image Optimization
+- Font Optimization
+- Static Asset Optimization
+- Route-based Code Splitting
+- SEO-friendly Metadata
+- Responsive Images
+- Smooth Animations without unnecessary re-renders
+
+---
+
+# 📬 Contact
+
+**Portfolio**  
+https://lalman.dev
+
+**Email**  
+lalman.dev7@gmail.com
+
+**GitHub**  
+https://github.com/lalman-dev
+
+**LinkedIn**  
+https://linkedin.com/in/lalman-dev
+
+---
+
+# 🚀 Getting Started
+
+Clone the repository:
+
+```bash
+git clone https://github.com/lalman-dev/myportfolio.git
+```
+
+Navigate to the project:
+
+```bash
+cd myportfolio
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+# 📈 Future Improvements
 
-To learn more about Next.js, take a look at the following resources:
+The portfolio will continue evolving with:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Design system abstractions
+- Improved accessibility
+- Richer micro-interactions
+- Better performance optimization
+- Additional case studies
+- Blog & writing section
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+# 🤝 Feedback
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+I'm always open to discussions about frontend engineering, architecture, performance, UI/UX, and new opportunities.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Feel free to connect or reach out.
+
+---
+
+## © Lalman
+
+Built with **Next.js**, **React**, **TypeScript**, **Tailwind CSS**, **Framer Motion**, and ❤️.
