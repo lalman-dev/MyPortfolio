@@ -152,10 +152,9 @@ export const RECRUITER_INFO: RecruiterField[] = [
   { icon: Languages, label: "Languages", value: "English, Hindi" },
 ];
 
-// TODO: replace with a real number before publishing — used for the
-// "Call" / WhatsApp CTAs on the recruiter card and final CTA section.
-export const UAE_PHONE_DISPLAY = "+971 XX XXX XXXX";
-export const UAE_WHATSAPP_URL = "https://wa.me/971XXXXXXXXX";
+
+export const UAE_PHONE_DISPLAY = "+918858274145";
+export const UAE_WHATSAPP_URL = "https://wa.me/918858274145";
 
 export const WHY_UAE_POINTS = [
   {
