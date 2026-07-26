@@ -51,7 +51,7 @@ const UaeProjects = () => {
               className="grid md:grid-cols-[280px_1fr] gap-0 rounded-2xl overflow-hidden list-none"
               style={{ background: "var(--bg-card)", border: "1px solid var(--border)" }}
             >
-              <div className="relative h-48 md:h-full min-h-[220px]">
+              <div className="relative h-48 md:h-full min-h-55">
                 <Image
                   src={project.image}
                   alt={`${project.title} preview`}
