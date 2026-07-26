@@ -24,8 +24,12 @@ const UaeHero = () => {
         }}
       />
       <div
-        className="absolute top-0 right-0 w-[450px] h-[450px] rounded-full pointer-events-none"
-        style={{ background: "var(--accent)", filter: "blur(180px)", opacity: 0.07 }}
+        className="absolute top-0 right-0 w-112.5 h-112.5 rounded-full pointer-events-none"
+        style={{
+          background: "var(--accent)",
+          filter: "blur(180px)",
+          opacity: 0.07,
+        }}
       />
 
       <div className="relative max-w-6xl mx-auto">
@@ -36,7 +40,9 @@ const UaeHero = () => {
           className="flex items-center gap-4 mb-8"
         >
           <div className="w-8 h-px" style={{ background: "var(--accent)" }} />
-          <span className="section-label">Frontend Engineer · Open to UAE Roles</span>
+          <span className="section-label">
+            Fullstack Engineer · Open to UAE Roles
+          </span>
           <div
             className="w-2 h-2 rounded-full animate-pulse"
             style={{ background: "#22c55e" }}
@@ -56,7 +62,7 @@ const UaeHero = () => {
               color: "var(--text-primary)",
             }}
           >
-            Building Scalable Frontend Experiences for{" "}
+            Building Scalable Fullstack Experiences for{" "}
             <span style={{ color: "var(--accent)" }}>UAE Teams.</span>
           </motion.h1>
         </div>
@@ -67,11 +73,14 @@ const UaeHero = () => {
           variants={textVariants}
           transition={{ delay: 0.2 }}
           className="max-w-xl text-base leading-relaxed mb-10"
-          style={{ color: "var(--text-secondary)", fontFamily: "var(--font-body)" }}
+          style={{
+            color: "var(--text-secondary)",
+            fontFamily: "var(--font-body)",
+          }}
         >
-          Lalman — a frontend-focused Full Stack Engineer specializing in
-          React, Next.js, TypeScript, and Node.js. Available immediately
-          for relocation to the UAE.
+          Lalman — a frontend-focused Full Stack Engineer specializing in React,
+          Next.js, TypeScript, and Node.js. Available immediately for relocation
+          to the UAE.
         </motion.p>
 
         <motion.div
@@ -85,7 +94,10 @@ const UaeHero = () => {
             whileHover={{ scale: 1.03, y: -2 }}
             whileTap={{ scale: 0.97 }}
             className="group flex items-center gap-2 px-6 py-3 rounded-full text-white text-sm font-medium"
-            style={{ background: "var(--accent)", fontFamily: "var(--font-display)" }}
+            style={{
+              background: "var(--accent)",
+              fontFamily: "var(--font-display)",
+            }}
           >
             <Mail size={15} />
             Contact Me
