@@ -22,8 +22,8 @@ export const metadata: Metadata = {
     "React Developer Dubai",
     "Next.js Developer UAE",
     "Frontend Developer Abu Dhabi",
-    "Full Stack Engineer UAE relocation",
-    "Visa sponsorship frontend developer",
+    "Full Stack Engineer based in Abu Dhabi",
+    "Frontend-focused Fullstack software developer",
   ],
   alternates: {
     canonical: "https://lalman.dev/uae",
