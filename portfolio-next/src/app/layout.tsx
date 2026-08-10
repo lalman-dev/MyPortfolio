@@ -35,6 +35,15 @@ export const metadata: Metadata = {
     description:
       "Frontend-first Full Stack Engineer building scalable web applications with React, Next.js, TypeScript, Node.js, Express, and MongoDB.",
     images: ["/og-image.png"],
+    type: "website",
+    url: "https://lalman.dev",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lalman — Full-Stack Engineer · React · Next.js · TypeScript",
+    description:
+      "Full-Stack Engineer building production-grade web applications with React, Next.js, TypeScript, Node.js, and AI integration. Based in Abu Dhabi, UAE. Available immediately.",
+    images: ["/og-image.png"],
   },
   icons: {
     icon: "/favicon.ico",
