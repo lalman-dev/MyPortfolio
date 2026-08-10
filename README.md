@@ -1,199 +1,100 @@
-# 🚀 Lalman — Frontend Engineer Portfolio
+# Lalman — Full-Stack Engineer Portfolio
 
-A production-ready portfolio built with **Next.js**, showcasing modern frontend engineering, scalable architecture, performance-focused development, and thoughtful user experience.
+A production-ready portfolio built with **Next.js 15**, showcasing full-stack engineering, AI integration, auth systems, and performance-focused development.
 
-Designed to reflect how I build software in professional environments—prioritizing maintainability, accessibility, performance, and clean engineering practices.
-
-🌐 **Live:** https://lalman.dev
-
----
-
-# 🧭 Overview
-
-This portfolio demonstrates my approach to building modern web applications using the React ecosystem.
-
-It highlights:
-
-- Production-grade component architecture
-- Server-first rendering with Next.js App Router
-- Responsive, accessible user interfaces
-- Smooth, purposeful animations
-- Modern frontend engineering practices
-- Performance and SEO optimization
-
-Rather than being just a portfolio website, it serves as a demonstration of the engineering standards I apply when building real-world applications.
+🌐 **Live:** https://lalman.dev  
+🇦🇪 **UAE Profile:** https://lalman.dev/uae
 
 ---
 
-# ✨ Features
+## About
 
-### ⚡ Next.js App Router
+This portfolio reflects how I build software in professional environments — deliberate rendering decisions, production-grade auth, AI integration, and maintainable architecture. It's both a showcase and a demonstration of the engineering standards I apply to real products.
 
-Built using the latest Next.js App Router architecture with modern routing, layouts, metadata, and optimized asset loading.
-
-### 🎨 Modern UI System
-
-A clean, editorial-inspired interface focused on typography, spacing, and visual hierarchy.
-
-### 🎭 Purposeful Motion
-
-Subtle, meaningful animations powered by Framer Motion to improve usability without compromising performance.
-
-### 🌗 Persistent Theme System
-
-Light and Dark mode with persistent user preference and seamless hydration.
-
-### 📱 Responsive by Design
-
-Optimized across desktop, tablet, and mobile devices.
-
-### ♿ Accessibility First
-
-Built using semantic HTML, keyboard-friendly interactions, proper contrast, and accessible UI patterns.
-
-### 📨 Production Contact Form
-
-Integrated with EmailJS for reliable client-side contact handling.
-
-### 🚀 Optimized Performance
-
-- Server-side rendering (SSR)
-- Automatic image optimization
-- Code splitting
-- Font optimization
-- Metadata & Open Graph support
-- Excellent Lighthouse performance
+Currently based in **Abu Dhabi, UAE** — available immediately for full-time roles.
 
 ---
 
-# 🛠 Tech Stack
+## Projects Showcased
 
-| Category   | Technologies                     |
-| ---------- | -------------------------------- |
-| Framework  | Next.js 15, React 19, TypeScript |
-| Styling    | Tailwind CSS v4                  |
-| Animations | Framer Motion                    |
-| Icons      | Lucide React, React Icons        |
-| Theme      | next-themes                      |
-| Forms      | EmailJS                          |
-| Images     | ImageKit                         |
-| Deployment | Vercel                           |
+### 🤖 AI Agent Workflow Visualizer
+Real-time visualisation platform for AI multi-agent execution. Reducer-based state machine, mock SSE streaming, parallel async lifecycle management.  
+**React · TypeScript · Tailwind CSS · Vite**  
+→ [agent-visualizer.vercel.app](https://agent-visualizer.vercel.app)
+
+### 🚗 Ryvo — Vehicle Booking Platform
+Full-stack booking platform with Google OAuth + email/password auth, MongoDB, 28 vehicles across 7 categories, booking lifecycle with cancellation, and a premium dark/light theme system.  
+**Next.js · TypeScript · MongoDB · Auth.js v5 · Tailwind CSS · Framer Motion**  
+→ [ryvo-lux.vercel.app](https://ryvo-lux.vercel.app)
+
+### 📰 Hacker News Portal
+Deliberate SSR/CSR split per page. Lighthouse 98 mobile / 99 desktop, 100/100 Best Practices & SEO. Recursive comment threading with correct ARIA at every nesting depth.  
+**Next.js · TypeScript · Tailwind CSS v4 · Framer Motion**  
+→ [hn-news-two.vercel.app](https://hn-news-two.vercel.app)
+
+### 📄 AI Resume Studio
+Full-stack AI resume builder. Streaming OpenAI integration, Redux multi-step flows, JWT auth fixed across 12 API routes with one global Axios interceptor.  
+**React · TypeScript · Node.js · Express · MongoDB · OpenAI API**  
+→ [ai-resume-studio-snowy.vercel.app](https://ai-resume-studio-snowy.vercel.app)
 
 ---
 
-# 🏗 Architecture
+## Tech Stack
 
-The project follows a scalable, feature-oriented structure.
+| Category | Technologies |
+|---|---|
+| Framework | Next.js 15, React 19, TypeScript |
+| Styling | Tailwind CSS v4, Framer Motion |
+| Backend | Node.js, Express, NestJS, MongoDB, Mongoose |
+| Auth | Auth.js v5, Google OAuth, bcrypt, JWT |
+| AI | OpenAI API, Anthropic API, Streaming |
+| Icons | Lucide React, React Icons |
+| Theme | next-themes |
+| Deployment | Vercel |
+
+---
+
+## Architecture
 
 ```text
-src/
-├── app/
-├── assets/
-├── components/
-│   ├── home/
-│   ├── layout/
-│   └── ui/
-├── context/
-├── lib/
-├── utils/
-└── types/
+portfolio-next/
+├── src/
+│   ├── app/
+│   │   ├── page.tsx          # Main portfolio
+│   │   └── uae/              # UAE-specific hiring page
+│   ├── components/
+│   │   ├── home/             # Main portfolio sections
+│   │   └── uae/              # UAE page components
+│   ├── context/              # ThemeContext
+│   └── lib/
+│       ├── data.ts           # Main portfolio data
+│       └── uae-data.ts       # UAE page data
+└── public/                   # Images, OG image, favicon
 ```
-
-The application emphasizes:
-
-- Reusable UI components
-- Clear separation of concerns
-- Type-safe development
-- Maintainable project organization
-- Production-ready architecture
 
 ---
 
-# ⚡ Performance
-
-The project is optimized for modern web standards.
-
-- Next.js Image Optimization
-- Font Optimization
-- Static Asset Optimization
-- Route-based Code Splitting
-- SEO-friendly Metadata
-- Responsive Images
-- Smooth Animations without unnecessary re-renders
-
----
-
-# 📬 Contact
-
-**Portfolio**  
-https://lalman.dev
-
-**Email**  
-lalman.dev7@gmail.com
-
-**GitHub**  
-https://github.com/lalman-dev
-
-**LinkedIn**  
-https://linkedin.com/in/lalman-dev
-
----
-
-# 🚀 Getting Started
-
-Clone the repository:
+## Getting Started
 
 ```bash
-git clone https://github.com/lalman-dev/myportfolio.git
-```
-
-Navigate to the project:
-
-```bash
-cd myportfolio
-```
-
-Install dependencies:
-
-```bash
+git clone https://github.com/lalman-dev/MyPortfolio.git
+cd MyPortfolio/portfolio-next
 npm install
-```
-
-Run the development server:
-
-```bash
 npm run dev
 ```
 
-Visit:
-
-```
-http://localhost:3000
-```
+Visit `http://localhost:3000`
 
 ---
 
-# 📈 Future Improvements
+## Contact
 
-The portfolio will continue evolving with:
-
-- Design system abstractions
-- Improved accessibility
-- Richer micro-interactions
-- Better performance optimization
-- Additional case studies
-- Blog & writing section
+**Portfolio** → https://lalman.dev  
+**UAE Profile** → https://lalman.dev/uae  
+**Email** → lalman.dev7@gmail.com  
+**GitHub** → https://github.com/lalman-dev  
+**LinkedIn** → https://linkedin.com/in/lalman-dev
 
 ---
 
-# 🤝 Feedback
-
-I'm always open to discussions about frontend engineering, architecture, performance, UI/UX, and new opportunities.
-
-Feel free to connect or reach out.
-
----
-
-## © Lalman
-
-Built with **Next.js**, **React**, **TypeScript**, **Tailwind CSS**, **Framer Motion**, and ❤️.
+Built with Next.js · TypeScript · Tailwind CSS · Framer Motion
