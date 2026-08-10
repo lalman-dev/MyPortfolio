@@ -3,8 +3,6 @@ import {
   Briefcase,
   Mail,
   MapPin,
-  Phone,
-  User,
   Rocket,
   Code2,
   Server,
@@ -13,6 +11,8 @@ import {
   Zap,
   Layers,
   BrainCircuit,
+  Bot,
+  ShieldCheck,
 } from "lucide-react";
 
 import { FiGithub, FiLinkedin } from "react-icons/fi";
@@ -40,6 +40,7 @@ import {
 const hnNews_bg = "/hackernews.png";
 const resume_bg = "/resume.png";
 const agentBg = "/agent-visualizer.png";
+const ryvoBg = "/ryvo.png";
 
 export interface Skill {
   name: string;
@@ -104,7 +105,7 @@ export const SKILL_CATEGORY: SkillCategory[] = [
     title: "Frontend Engineering",
     icon: Code2,
     description:
-      "Building fast, accessible, and scalable user interfaces with modern React, Next.js, and TypeScript.",
+      "Building fast, accessible, and scalable user interfaces with React, Next.js App Router, and TypeScript — with deliberate SSR/CSR decisions, Framer Motion animations, and component systems built for long-term maintainability.",
     skills: [
       { name: "React" },
       { name: "Next.js (App Router)" },
@@ -115,45 +116,73 @@ export const SKILL_CATEGORY: SkillCategory[] = [
     ],
   },
   {
-    title: "Application Architecture",
-    icon: Layers,
-    description:
-      "Designing maintainable application architecture with efficient rendering, predictable state, and reusable patterns.",
-    skills: [
-      { name: "Server Components" },
-      { name: "Client Components" },
-      { name: "SSR / CSR" },
-      { name: "REST APIs" },
-      { name: "State Management" },
-      { name: "Routing & Navigation" },
-    ],
-  },
-  {
-    title: "Backend & APIs",
+    title: "Full-Stack & API",
     icon: Server,
     description:
-      "Building secure backend services, authentication systems, and scalable REST APIs for modern web applications.",
+      "Building secure backend services, authentication systems, and REST APIs — from JWT auth and protected routes to MongoDB schema design and full booking lifecycle management.",
     skills: [
       { name: "Node.js" },
       { name: "Express.js" },
-      { name: "MongoDB" },
+      { name: "NestJS" },
+      { name: "MongoDB & Mongoose" },
+      { name: "Auth.js v5" },
+      { name: "REST APIs" },
+    ],
+  },
+  {
+    title: "Auth & Security",
+    icon: ShieldCheck,
+    description:
+      "Implementing production-grade authentication with Google OAuth, email/password credentials, bcrypt hashing, JWT sessions, and ownership-verified API routes.",
+    skills: [
+      { name: "Auth.js v5" },
+      { name: "Google OAuth" },
       { name: "JWT Authentication" },
-      { name: "API Integration" },
-      { name: "CRUD Operations" },
+      { name: "bcrypt" },
+      { name: "Protected Routes" },
+      { name: "Session Management" },
+    ],
+  },
+  {
+    title: "AI Integration",
+    icon: Bot,
+    description:
+      "Integrating OpenAI and Anthropic APIs into production interfaces — streaming responses, structured outputs, retry logic, fallback states, and real-time agent execution visualization.",
+    skills: [
+      { name: "OpenAI API" },
+      { name: "Anthropic API" },
+      { name: "Streaming Responses" },
+      { name: "Structured Outputs" },
+      { name: "Retry Logic" },
+      { name: "Agentic Interfaces" },
+    ],
+  },
+  {
+    title: "Application Architecture",
+    icon: Layers,
+    description:
+      "Designing maintainable application architecture with efficient rendering strategy, predictable state machines, reusable patterns, and clear server/client component boundaries.",
+    skills: [
+      { name: "Server Components" },
+      { name: "Client Components" },
+      { name: "SSR / CSR / Hybrid" },
+      { name: "State Machines" },
+      { name: "Route Groups" },
+      { name: "Monorepo (Turborepo)" },
     ],
   },
   {
     title: "Performance & Quality",
     icon: Zap,
     description:
-      "Delivering production-ready applications with a focus on performance, accessibility, responsiveness, and reliability.",
+      "Delivering production-ready applications optimized for Core Web Vitals, accessibility, and reliability — with skeleton loaders, error boundaries, and graceful empty states as baseline requirements.",
     skills: [
+      { name: "Core Web Vitals" },
+      { name: "Lighthouse Optimization" },
       { name: "Accessibility (ARIA)" },
       { name: "Responsive Design" },
-      { name: "Code Splitting" },
       { name: "Loading & Error States" },
       { name: "Performance Optimization" },
-      { name: "Reusable Components" },
     ],
   },
 ];
@@ -169,59 +198,78 @@ export const TECH_STACK: TechItem[] = [
   { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-teal-400" },
   { name: "Redux Toolkit", icon: SiRedux, color: "text-violet-600" },
   { name: "Framer Motion", icon: SiFramer, color: "text-slate-700" },
+  { name: "OpenAI API", icon: SiOpenai, color: "text-green-700" },
   { name: "Git", icon: SiGit, color: "text-orange-600" },
   { name: "GitHub", icon: SiGithub, color: "text-gray-800" },
   { name: "Vercel", icon: SiVercel, color: "text-black" },
   { name: "Postman", icon: SiPostman, color: "text-orange-500" },
-  { name: "OpenAI API", icon: SiOpenai, color: "text-green-700" },
 ];
 
 export const PROJECTS: Project[] = [
   {
     id: 1,
-    title: "AI Agent WorkFlow Visualizer",
+    title: "AI Agent Workflow Visualizer",
     category: "Interactive Systems",
     keyFocus: "State Machines · Real-time UI · Parallel Execution",
     description:
-      "A real-time execution panel that makes multi-agent AI workflows legible — tasks spawning in parallel, tools firing, failures retrying mid-flight, and partial outputs streaming in before completion. Built for financial analysts watching an AI research agent work through SEC filings and earnings data. The core challenge: modeling non-linear agent state (parallel groups, cancellations, retries) in a single reducer-based state machine where every event transition is predictable and the UI never contradicts actual execution order.",
+      "A real-time execution panel that makes multi-agent AI workflows legible — tasks spawning in parallel, tools firing, failures retrying mid-flight, and partial outputs streaming in before completion. The core challenge: modeling non-linear agent state in a single reducer-based state machine where every event transition is predictable and the UI never contradicts actual execution order. Mock SSE engine enables complete frontend testing with zero backend dependency.",
     tag: ["React", "TypeScript", "Tailwind CSS", "Vite", "State Machine"],
     liveUrl: "https://agent-visualizer.vercel.app/",
     gitHubUrl: "https://github.com/lalman-dev/agent-visualizer",
     image: agentBg,
+    featured: true,
   },
   {
     id: 2,
+    title: "Ryvo — Vehicle Booking Platform",
+    category: "Full Stack Engineering",
+    keyFocus: "Auth · Database · Booking Lifecycle · Theme System",
+    description:
+      "A full-stack premium vehicle booking platform built with Next.js App Router, MongoDB, and Auth.js v5. Supports Google OAuth and email/password credentials with bcrypt. 28 vehicles across 7 categories with category filter capsules and price range filtering. Complete booking lifecycle — create, confirm, cancel — with server-side ownership verification. Premium dark/light theme system via CSS custom properties with next-themes.",
+    tag: [
+      "Next.js",
+      "TypeScript",
+      "MongoDB",
+      "Auth.js v5",
+      "Tailwind CSS",
+      "Framer Motion",
+    ],
+    liveUrl: "https://ryvo-lux.vercel.app/",
+    gitHubUrl: "https://github.com/lalman-dev/ryvo",
+    image: ryvoBg,
+    featured: true,
+  },
+  {
+    id: 3,
     title: "HackerNews Search Portal",
     category: "Frontend Engineering",
-    image: hnNews_bg,
+    keyFocus: "Rendering Strategy · SSR / CSR · Performance",
     description:
-      "A production-grade Next.js application built to explore real-world rendering, performance, and reliability tradeoffs. Uses server-side rendering for fast initial load and SEO, with client-side state for search, pagination, and category filtering. Designed with clear component boundaries, resilient loading and error states, and reusable UI patterns to handle unreliable external APIs.",
-    keyFocus: "Rendering Strategy • SSR / CSR",
+      "A production-grade Next.js application built around deliberate rendering decisions — SSR for content pages (fast first paint, SEO), CSR for search and pagination (eliminates server round trips). Recursive comment thread rendering with correct ARIA at every nesting depth. Lighthouse 98 mobile / 99 desktop, 100/100 Best Practices & SEO. Resilient loading and error states for unreliable external APIs.",
     tag: [
       "Next.js",
       "React",
-      "TailwindCSS",
-      "REST API",
+      "TypeScript",
+      "Tailwind CSS",
       "SSR",
       "CSR",
       "Framer Motion",
     ],
     liveUrl: "https://hn-news-two.vercel.app/",
     gitHubUrl: "https://github.com/lalman-dev/hn-news",
+    image: hnNews_bg,
     featured: true,
   },
   {
-    id: 3,
+    id: 4,
     title: "AI Resume Studio",
     category: "Full Stack Engineering",
-    image: resume_bg,
+    keyFocus: "State Management · Auth · AI Streaming",
     description:
-      "A full-stack resume builder with a strong emphasis on frontend architecture, data flow, and real-world form complexity. Built with React, TypeScript, and Redux Toolkit to manage multi-step workflows and predictable state transitions. Includes JWT-based authentication, protected routes, and AI-assisted content generation using OpenAI APIs, with a focus on usability, stability, and production-ready UI behavior.",
-    keyFocus: "State Management • Auth • Forms",
+      "A full-stack AI resume builder with streaming OpenAI integration, structured outputs, retry logic, and graceful fallback states. Redux Toolkit manages multi-step editing flows with consistent state across complex user interactions. JWT auth across 12 API routes fixed with a single global Axios interceptor. Debugged three silent stack failures across MongoDB, API routing, and Multer layers.",
     tag: [
       "React",
       "TypeScript",
-      "Framer Motion",
       "Redux Toolkit",
       "Node.js",
       "MongoDB",
@@ -229,9 +277,11 @@ export const PROJECTS: Project[] = [
     ],
     liveUrl: "https://ai-resume-studio-snowy.vercel.app/",
     gitHubUrl: "https://github.com/lalman-dev/AI-Resume-Studio",
+    image: resume_bg,
     featured: true,
   },
 ];
+
 export const JOURNEY_STEPS: JourneyStep[] = [
   {
     year: "Feb 2025",
@@ -247,86 +297,93 @@ export const JOURNEY_STEPS: JourneyStep[] = [
     title: "Modern Frontend Engineering",
     company: "Self-directed",
     description:
-      "Focused on building frontend applications using React and Tailwind CSS, with emphasis on component structure, state management, and responsive design.",
+      "Built production-style applications with React, TypeScript, and Tailwind CSS — focusing on component architecture, state management, and rendering strategy decisions.",
     icon: GraduationCap,
     color: "bg-pink-500",
   },
   {
     year: "Late 2025",
-    title: "Production Application Development",
-    company: "Independent / Community",
+    title: "Full-Stack Development",
+    company: "Independent",
     description:
-      "Designed and built multiple production-style projects, prioritizing accessibility, performance, and maintainable UI architecture while refining a cohesive personal portfolio.",
-    icon: User,
+      "Extended into full-stack development — Node.js, Express, MongoDB, JWT auth, REST APIs. Built and deployed AI-integrated applications with OpenAI and Anthropic APIs.",
+    icon: Server,
     color: "bg-blue-500",
-  },
-  {
-    year: "Jan 2026",
-    title: "Professional Contribution",
-    company: "Open to opportunities",
-    description:
-      "Seeking to contribute to real-world products, collaborate with experienced teams, and continue growing through ownership, feedback, and production-scale challenges.",
-    icon: Rocket,
-    color: "bg-yellow-500",
   },
   {
     year: "Apr 2026",
     title: "Technical Validation",
     company: "Multiple Product Companies",
     description:
-      "Successfully progressed through technical assessments and interview rounds for frontend engineering roles, demonstrating production-level React, TypeScript, and modern web development skills across multiple organizations.",
+      "Progressed through technical assessments and interview rounds at multiple product companies, demonstrating production-level React, TypeScript, and full-stack skills.",
     icon: Rocket,
     color: "bg-orange-500",
   },
   {
     year: "June 2026",
-    title: "Frontend Engineer AI Intern",
+    title: "Frontend AI Engineer Intern",
     company: "FlyRank AI",
     description:
-      "Joined FlyRank AI as a Frontend Engineer AI Intern, contributing to AI-powered web applications while collaborating with modern frontend technologies, scalable architectures, and real-world product development workflows.",
+      "Building AI-powered web features using React, Next.js, TypeScript, and Tailwind CSS. Integrating REST APIs and LLM services, shipping streaming interfaces and structured AI output handling for a production SaaS product.",
     icon: Briefcase,
     color: "bg-emerald-500",
   },
   {
-    year: "Present",
-    title: "Full Stack Engineering",
-    company: "Actively Building & Open to Opportunities",
+    year: "Aug 2026",
+    title: "Ryvo — Full-Stack Platform Shipped",
+    company: "Independent",
     description:
-      "Expanding expertise beyond frontend engineering by building end-to-end applications with React, Next.js, Node.js, Express, MongoDB, and AI integrations, while seeking opportunities to deliver production-ready software in collaborative engineering teams.",
+      "Designed and shipped Ryvo — a full-stack vehicle booking platform with dual auth (Google OAuth + email/password), MongoDB, booking lifecycle management, and a premium dark/light theme system. Deployed on Vercel.",
+    icon: Rocket,
+    color: "bg-indigo-500",
+  },
+  {
+    year: "Present",
+    title: "Seeking First Full-Time Role",
+    company: "Abu Dhabi, UAE · Available Immediately",
+    description:
+      "Based in Abu Dhabi, actively seeking a full-time full-stack or frontend engineering role. Four live production projects, a current AI internship, and immediate availability — no notice period, no relocation delay.",
     icon: Rocket,
     color: "bg-violet-500",
   },
 ];
+
 export const PASSION: Passion[] = [
   {
     icon: Layers,
     title: "Application Architecture",
     description:
-      "Designing scalable frontend and backend systems with clear boundaries, reusable patterns, and maintainable code.",
+      "Designing scalable full-stack systems with clear server/client boundaries, reusable patterns, and maintainable code that teams can extend.",
   },
   {
     icon: Zap,
     title: "Performance Engineering",
     description:
-      "Optimizing rendering behavior, minimizing unnecessary re-renders, and ensuring smooth, responsive user interactions.",
+      "Deliberate rendering strategy — SSR, CSR, or hybrid — selected against real product requirements. Lighthouse scores as a baseline, not a goal.",
   },
   {
     icon: Accessibility,
     title: "Accessibility & Semantics",
     description:
-      "Building inclusive interfaces using semantic HTML, ARIA roles, and keyboard-friendly navigation patterns.",
+      "Semantic HTML, ARIA roles, and keyboard navigation as baseline requirements for every interface — not optional polish.",
   },
   {
     icon: BrainCircuit,
     title: "AI-Powered Applications",
     description:
-      "Building intelligent experiences by integrating LLMs, prompt engineering, structured outputs, and workflow automation.",
+      "Building intelligent interfaces with OpenAI and Anthropic APIs — streaming responses, structured outputs, retry logic, and real-time agent execution visualization.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Auth & Security",
+    description:
+      "Production-grade authentication — Google OAuth, email/password credentials, bcrypt hashing, JWT sessions, and ownership-verified API routes.",
   },
   {
     icon: GitBranch,
     title: "Product Thinking",
     description:
-      "Building software that solves real user problems through continuous iteration, feedback, and measurable improvements.",
+      "Building software that solves real user problems. Architecture decisions made against product requirements, not framework defaults.",
   },
 ];
 
@@ -365,16 +422,11 @@ export const CONTACT_INFO = [
   {
     icon: MapPin,
     label: "Location",
-    value: "Uttar Pradesh, INDIA",
+    value: "Abu Dhabi, UAE",
   },
   {
     icon: Mail,
     label: "Email",
     value: "lalman.dev7@gmail.com",
-  },
-  {
-    icon: Phone,
-    label: "Phone",
-    value: "+91-8858274145",
   },
 ];
