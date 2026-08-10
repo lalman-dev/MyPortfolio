@@ -161,7 +161,7 @@ export const AVAILABILITY_TAGS = [
   "Hybrid",
   "Remote",
   "On-site",
-  "No Visa Sponsorship Required",
+  "Employment Visa Required",
   "Available Immediately",
 ];
 
@@ -180,7 +180,7 @@ export const RECRUITER_INFO: RecruiterField[] = [
   },
   { icon: Briefcase, label: "Employment Type", value: "Full-Time" },
   { icon: Clock, label: "Availability", value: "Immediate" },
-  { icon: Plane, label: "Relocation", value: "Already in UAE" },
+  { icon: Plane, label: "Relocation", value: "Based in UAE" },
   { icon: FileCheck, label: "Visa", value: "Currently on Visit Visa" },
   { icon: Languages, label: "Languages", value: "English, Hindi" },
 ];
