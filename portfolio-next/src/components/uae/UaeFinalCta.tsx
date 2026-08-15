@@ -2,11 +2,14 @@
 
 import { motion } from "framer-motion";
 import { Mail, Download, MessageCircle } from "lucide-react";
-import { UAE_WHATSAPP_URL } from "@/lib/uae-data";
+import { UAE_WHATSAPP_URL } from "@/lib/data";
 
 const UaeFinalCta = () => {
   return (
-    <section className="py-28 px-6" style={{ background: "var(--bg-secondary)" }}>
+    <section
+      className="py-28 px-6"
+      style={{ background: "var(--bg-secondary)" }}
+    >
       <div className="max-w-3xl mx-auto text-center">
         <motion.h2
           initial={{ opacity: 0, y: 16 }}
@@ -14,7 +17,10 @@ const UaeFinalCta = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="text-3xl md:text-4xl font-bold leading-tight mb-6"
-          style={{ fontFamily: "var(--font-display)", color: "var(--text-primary)" }}
+          style={{
+            fontFamily: "var(--font-display)",
+            color: "var(--text-primary)",
+          }}
         >
           Hiring frontend engineers
           <br />
@@ -44,7 +50,10 @@ const UaeFinalCta = () => {
             whileHover={{ scale: 1.03, y: -2 }}
             whileTap={{ scale: 0.97 }}
             className="flex items-center gap-2 px-6 py-3 rounded-full text-white text-sm font-medium"
-            style={{ background: "var(--accent)", fontFamily: "var(--font-display)" }}
+            style={{
+              background: "var(--accent)",
+              fontFamily: "var(--font-display)",
+            }}
           >
             <Mail size={15} />
             Email Me

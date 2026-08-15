@@ -3,6 +3,7 @@ import {
   Briefcase,
   Mail,
   MapPin,
+  Phone,
   Rocket,
   Code2,
   Server,
@@ -13,6 +14,10 @@ import {
   BrainCircuit,
   Bot,
   ShieldCheck,
+  Plane,
+  Clock,
+  FileCheck,
+  Languages,
 } from "lucide-react";
 
 import { FiGithub, FiLinkedin } from "react-icons/fi";
@@ -42,6 +47,8 @@ const resume_bg = "/resume.png";
 const agentBg = "/agent-visualizer.png";
 const ryvoBg = "/ryvo.png";
 
+// ---------- Skills ----------
+
 export interface Skill {
   name: string;
 }
@@ -50,54 +57,6 @@ export interface SkillCategory {
   icon: LucideIcon;
   description: string;
   skills: Skill[];
-}
-
-export interface Project {
-  id: number;
-  title: string;
-  description: string;
-  tag: string[];
-  liveUrl: string;
-  gitHubUrl: string;
-  category: string;
-  featured?: boolean;
-  image: string;
-  keyFocus: string;
-}
-
-export interface TechItem {
-  name: string;
-  icon?: IconType | LucideIcon;
-  color: string;
-}
-
-export interface JourneyStep {
-  year: string;
-  title: string;
-  company: string;
-  description: string;
-  icon: LucideIcon;
-  color: string;
-}
-
-export interface Passion {
-  icon: LucideIcon;
-  title: string;
-  description: string;
-}
-
-export interface SocialLinks {
-  name: string;
-  icon: IconType;
-  url: string;
-  color: string;
-  bgColor: string;
-}
-
-export interface ContactInfo {
-  icon: LucideIcon;
-  label: string;
-  value: string;
 }
 
 export const SKILL_CATEGORY: SkillCategory[] = [
@@ -187,6 +146,12 @@ export const SKILL_CATEGORY: SkillCategory[] = [
   },
 ];
 
+export interface TechItem {
+  name: string;
+  icon?: IconType | LucideIcon;
+  color: string;
+}
+
 export const TECH_STACK: TechItem[] = [
   { name: "React", icon: SiReact, color: "text-cyan-500" },
   { name: "Next.js", icon: SiNextdotjs, color: "text-black/70" },
@@ -205,82 +170,97 @@ export const TECH_STACK: TechItem[] = [
   { name: "Postman", icon: SiPostman, color: "text-orange-500" },
 ];
 
+// ---------- Projects (now carries Problem/Solution/Impact) ----------
+
+export interface Project {
+  id: number;
+  title: string;
+  category: string;
+  keyFocus: string;
+  problem: string;
+  solution: string;
+  impact: string;
+  tag: string[];
+  liveUrl: string;
+  gitHubUrl: string;
+  image: string;
+}
+
 export const PROJECTS: Project[] = [
   {
     id: 1,
     title: "AI Agent Workflow Visualizer",
     category: "Interactive Systems",
     keyFocus: "State Machines · Real-time UI · Parallel Execution",
-    description:
-      "A real-time execution panel that makes multi-agent AI workflows legible — tasks spawning in parallel, tools firing, failures retrying mid-flight, and partial outputs streaming in before completion. The core challenge: modeling non-linear agent state in a single reducer-based state machine where every event transition is predictable and the UI never contradicts actual execution order. Mock SSE engine enables complete frontend testing with zero backend dependency.",
+    problem:
+      "Multi-agent AI workflows are difficult to reason about in production: parallel task execution, retries, and streaming outputs leave users with no reliable visibility into system state.",
+    solution:
+      "Engineered a real-time execution panel on a reducer-based state machine, modeling parallel task groups, cancellations, and retries as predictable event transitions so the UI remains consistent with actual execution order at every step.",
+    impact:
+      "Enables analysts to observe an AI research agent processing SEC filings and earnings data in real time, with complete visibility into running, failed, and queued tasks.",
     tag: ["React", "TypeScript", "Tailwind CSS", "Vite", "State Machine"],
     liveUrl: "https://agent-visualizer.vercel.app/",
     gitHubUrl: "https://github.com/lalman-dev/agent-visualizer",
     image: agentBg,
-    featured: true,
   },
   {
     id: 2,
     title: "Ryvo — Vehicle Booking Platform",
     category: "Full Stack Engineering",
     keyFocus: "Auth · Database · Booking Lifecycle · Theme System",
-    description:
-      "A full-stack premium vehicle booking platform built with Next.js App Router, MongoDB, and Auth.js v5. Supports Google OAuth and email/password credentials with bcrypt. 28 vehicles across 7 categories with category filter capsules and price range filtering. Complete booking lifecycle — create, confirm, cancel — with server-side ownership verification. Premium dark/light theme system via CSS custom properties with next-themes.",
-    tag: [
-      "Next.js",
-      "TypeScript",
-      "MongoDB",
-      "Auth.js v5",
-      "Tailwind CSS",
-      "Framer Motion",
-    ],
+    problem:
+      "Vehicle booking demos commonly lack production-grade fundamentals — fake auth, no real database persistence, no booking lifecycle, and no consideration for multi-provider authentication flows.",
+    solution:
+      "Built a full-stack booking platform on Next.js App Router with MongoDB, Auth.js v5 supporting Google OAuth and email/password credentials with bcrypt, 28 vehicles across 7 categories, booking creation and cancellation with server-side ownership verification, and a premium dark/light theme system via CSS custom properties.",
+    impact:
+      "Complete production flow — browse → authenticate → book → cancel — deployed on Vercel. Architecture decisions cover database schema design, JWT session strategy, server vs client component boundaries, and API route security.",
+    tag: ["Next.js", "TypeScript", "MongoDB", "Auth.js v5", "Tailwind CSS", "Framer Motion"],
     liveUrl: "https://ryvo-lux.vercel.app/",
     gitHubUrl: "https://github.com/lalman-dev/ryvo",
     image: ryvoBg,
-    featured: true,
   },
   {
     id: 3,
     title: "HackerNews Search Portal",
     category: "Frontend Engineering",
     keyFocus: "Rendering Strategy · SSR / CSR · Performance",
-    description:
-      "A production-grade Next.js application built around deliberate rendering decisions — SSR for content pages (fast first paint, SEO), CSR for search and pagination (eliminates server round trips). Recursive comment thread rendering with correct ARIA at every nesting depth. Lighthouse 98 mobile / 99 desktop, 100/100 Best Practices & SEO. Resilient loading and error states for unreliable external APIs.",
-    tag: [
-      "Next.js",
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "SSR",
-      "CSR",
-      "Framer Motion",
-    ],
+    problem:
+      "Required a production-grade evaluation of rendering strategy — balancing fast, SEO-optimized initial loads against rich client interactivity — against a third-party API with inconsistent reliability.",
+    solution:
+      "Architected on Next.js with server-side rendering for initial load and SEO, client-side state for search, pagination, and filtering, and resilient loading and error handling to absorb API instability.",
+    impact:
+      "Lighthouse 98 mobile / 99 desktop, 100/100 Best Practices & SEO. Fully interactive and stable under inconsistent API conditions.",
+    tag: ["Next.js", "React", "Tailwind CSS", "REST API", "SSR", "CSR"],
     liveUrl: "https://hn-news-two.vercel.app/",
     gitHubUrl: "https://github.com/lalman-dev/hn-news",
     image: hnNews_bg,
-    featured: true,
   },
   {
     id: 4,
     title: "AI Resume Studio",
     category: "Full Stack Engineering",
     keyFocus: "State Management · Auth · AI Streaming",
-    description:
-      "A full-stack AI resume builder with streaming OpenAI integration, structured outputs, retry logic, and graceful fallback states. Redux Toolkit manages multi-step editing flows with consistent state across complex user interactions. JWT auth across 12 API routes fixed with a single global Axios interceptor. Debugged three silent stack failures across MongoDB, API routing, and Multer layers.",
-    tag: [
-      "React",
-      "TypeScript",
-      "Redux Toolkit",
-      "Node.js",
-      "MongoDB",
-      "OpenAI API",
-    ],
+    problem:
+      "Multi-step form workflows are a common failure point in production applications — fragile state management leads directly to data loss and inconsistent UI states.",
+    solution:
+      "Built a full-stack resume builder using React, TypeScript, and Redux Toolkit for predictable multi-step state management, backed by JWT-based authentication, protected routes, and OpenAI-powered content generation with streaming responses and retry logic.",
+    impact:
+      "Delivers a stable, production-ready workflow from sign-up through AI-assisted resume generation. Fixed a JWT inconsistency across 12 API routes with a single global Axios interceptor.",
+    tag: ["React", "TypeScript", "Redux Toolkit", "Node.js", "MongoDB", "OpenAI API"],
     liveUrl: "https://ai-resume-studio-snowy.vercel.app/",
     gitHubUrl: "https://github.com/lalman-dev/AI-Resume-Studio",
     image: resume_bg,
-    featured: true,
   },
 ];
+
+export interface JourneyStep {
+  year: string;
+  title: string;
+  company: string;
+  description: string;
+  icon: LucideIcon;
+  color: string;
+}
 
 export const JOURNEY_STEPS: JourneyStep[] = [
   {
@@ -348,6 +328,12 @@ export const JOURNEY_STEPS: JourneyStep[] = [
   },
 ];
 
+export interface Passion {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+}
+
 export const PASSION: Passion[] = [
   {
     icon: Layers,
@@ -387,46 +373,91 @@ export const PASSION: Passion[] = [
   },
 ];
 
-export const SOCIAL_LINKS: SocialLinks[] = [
+export interface WhyUaePoint {
+  title: string;
+  description: string;
+}
+
+export const WHY_UAE_POINTS: WhyUaePoint[] = [
   {
-    name: "GitHub",
-    icon: FiGithub,
-    url: "https://github.com/lalman-dev/",
-    color: "hover:text-gray-400",
-    bgColor: "hover:bg-gray-800",
+    title: "A market built for engineering impact",
+    description:
+      "The UAE's product and technology sector is expanding rapidly across fintech, logistics, and government digital services — an environment where sound full-stack architecture decisions compound in value.",
   },
   {
-    name: "LinkedIn",
-    icon: FiLinkedin,
-    url: "https://www.linkedin.com/in/lalman-dev/",
-    color: "hover:text-blue-500",
-    bgColor: "hover:bg-blue-100",
+    title: "Positioned for ownership and growth",
+    description:
+      "Seeking a team where I can take direct ownership of product surfaces end to end — interface, API, database — collaborate closely with backend and design functions, and progress toward a senior engineering track.",
   },
   {
-    name: "X (Twitter)",
-    icon: FaXTwitter,
-    url: "https://x.com/imchaudhary2",
-    color: "hover:text-sky-400",
-    bgColor: "hover:bg-sky-100",
+    title: "Available without delay",
+    description:
+      "Based in Abu Dhabi — no notice period, no relocation delay. Available for in-person interviews across Dubai and Abu Dhabi from day one.",
   },
   {
-    name: "Email",
-    icon: Mail,
-    url: "mailto:lalman.dev7@gmail.com",
-    color: "hover:text-red-500",
-    bgColor: "hover:bg-red-100",
+    title: "Connected to the market",
+    description:
+      "Actively networking at UAE tech meetups and startup events including Hub71 Abu Dhabi and AI Tinkerers — building local relationships alongside the job search.",
   },
 ];
 
-export const CONTACT_INFO = [
-  {
-    icon: MapPin,
-    label: "Location",
-    value: "Abu Dhabi, UAE",
-  },
-  {
-    icon: Mail,
-    label: "Email",
-    value: "lalman.dev7@gmail.com",
-  },
+export interface RecruiterField {
+  icon: LucideIcon;
+  label: string;
+  value: string;
+}
+
+export const RECRUITER_INFO: RecruiterField[] = [
+  { icon: MapPin, label: "Current Location", value: "Abu Dhabi, UAE" },
+  { icon: Plane, label: "Preferred Location", value: "Dubai · Abu Dhabi · Remote" },
+  { icon: Briefcase, label: "Employment Type", value: "Full-Time" },
+  { icon: Clock, label: "Availability", value: "Immediate" },
+  { icon: Plane, label: "Relocation", value: "Based in UAE" },
+  { icon: FileCheck, label: "Visa", value: "Currently on Visit Visa" },
+  { icon: Languages, label: "Languages", value: "English, Hindi" },
+];
+
+export const UAE_PHONE_DISPLAY = "+971 56 588 7134";
+export const UAE_WHATSAPP_URL = "https://wa.me/971565887134";
+
+export const AVAILABILITY_TAGS = [
+  "Dubai",
+  "Abu Dhabi",
+  "Sharjah",
+  "Ajman",
+  "Ras Al Khaimah",
+  "Hybrid",
+  "Remote",
+  "On-site",
+  "Employment Visa Required",
+  "Available Immediately",
+];
+
+// ---------- Contact / Social ----------
+
+export interface SocialLinks {
+  name: string;
+  icon: IconType;
+  url: string;
+  color: string;
+  bgColor: string;
+}
+
+export const SOCIAL_LINKS: SocialLinks[] = [
+  { name: "GitHub", icon: FiGithub, url: "https://github.com/lalman-dev/", color: "hover:text-gray-400", bgColor: "hover:bg-gray-800" },
+  { name: "LinkedIn", icon: FiLinkedin, url: "https://www.linkedin.com/in/lalman-dev/", color: "hover:text-blue-500", bgColor: "hover:bg-blue-100" },
+  { name: "X (Twitter)", icon: FaXTwitter, url: "https://x.com/imchaudhary2", color: "hover:text-sky-400", bgColor: "hover:bg-sky-100" },
+  { name: "Email", icon: Mail, url: "mailto:lalman.dev7@gmail.com", color: "hover:text-red-500", bgColor: "hover:bg-red-100" },
+];
+
+export interface ContactInfo {
+  icon: LucideIcon;
+  label: string;
+  value: string;
+}
+
+export const CONTACT_INFO: ContactInfo[] = [
+  { icon: MapPin, label: "Location", value: "Abu Dhabi, UAE" },
+  { icon: Mail, label: "Email", value: "lalman.dev7@gmail.com" },
+  { icon: Phone, label: "Phone", value: UAE_PHONE_DISPLAY },
 ];

@@ -3,8 +3,8 @@
 import { useState, useRef, type FormEvent } from "react";
 import { motion, useInView } from "framer-motion";
 import { useTheme } from "@/context/ThemeContext";
-import { Send, MapPin, Mail, Phone } from "lucide-react";
-import { SOCIAL_LINKS } from "@/lib/data";
+import { Send } from "lucide-react";
+import { SOCIAL_LINKS, CONTACT_INFO } from "@/lib/data";
 import SuccessModel from "./SuccessModel";
 import emailjs from "emailjs-com";
 
@@ -44,9 +44,6 @@ const ContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      // NOTE: Vite exposed env vars via import.meta.env.VITE_*. In Next.js,
-      // anything read in a client component must be prefixed
-      // NEXT_PUBLIC_ and set in .env.local (see MIGRATION.md).
       const result = await emailjs.send(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string,
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string,
@@ -69,12 +66,6 @@ const ContactSection = () => {
       setIsSubmitting(false);
     }
   };
-
-  const CONTACT_INFO = [
-    { icon: MapPin, label: "Location", value: "Uttar Pradesh, India" },
-    { icon: Mail, label: "Email", value: "lalman.dev7@gmail.com" },
-    { icon: Phone, label: "Phone", value: "+91-8858274145" },
-  ];
 
   return (
     <section
@@ -139,7 +130,6 @@ const ContactSection = () => {
           >
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid sm:grid-cols-2 gap-5">
-                {/* Name */}
                 <div>
                   <label
                     className="block text-xs mb-2"
@@ -167,7 +157,6 @@ const ContactSection = () => {
                     }}
                   />
                 </div>
-                {/* Email */}
                 <div>
                   <label
                     className="block text-xs mb-2"
@@ -197,7 +186,6 @@ const ContactSection = () => {
                 </div>
               </div>
 
-              {/* Message */}
               <div>
                 <label
                   className="block text-xs mb-2"
@@ -226,7 +214,6 @@ const ContactSection = () => {
                 />
               </div>
 
-              {/* Submit */}
               <motion.button
                 type="submit"
                 disabled={isSubmitting}
@@ -269,7 +256,6 @@ const ContactSection = () => {
             transition={{ delay: 0.3 }}
             className="space-y-6"
           >
-            {/* Contact info */}
             <div>
               <h3
                 className="text-xs mb-4"
@@ -321,7 +307,6 @@ const ContactSection = () => {
               </div>
             </div>
 
-            {/* Socials */}
             <div>
               <h3
                 className="text-xs mb-4"
@@ -370,7 +355,6 @@ const ContactSection = () => {
               </div>
             </div>
 
-            {/* Note */}
             <div
               className="p-4 rounded-xl text-xs leading-relaxed"
               style={{

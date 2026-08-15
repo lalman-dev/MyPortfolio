@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon, Download } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
 import { useState, useEffect } from "react";
 
@@ -9,6 +9,7 @@ const NAV_ITEMS = [
   { label: "Skills", id: "skills" },
   { label: "Principles", id: "architecture" },
   { label: "Work", id: "work" },
+  { label: "Why UAE", id: "why-uae" },
   { label: "About", id: "about" },
   { label: "Contact", id: "contact" },
 ];
@@ -34,7 +35,6 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Scroll Progress Bar */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-0.5 z-60"
         style={{ scaleX, transformOrigin: "0%", background: "var(--accent)" }}
@@ -59,14 +59,13 @@ const Navbar = () => {
           transition: "all 0.4s ease",
         }}
       >
-        {/* progress bar */}
         <motion.div
           style={{ scaleX, transformOrigin: "0%" }}
           className="absolute top-0 left-0 right-0 h-0.5"
         />
 
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          {/* Logo */}
+          {/* Logo — no UAE pill, whole site is UAE-focused now */}
           <motion.button
             onClick={() => scrollToSection("home")}
             whileHover={{ scale: 1.02 }}
@@ -123,6 +122,25 @@ const Navbar = () => {
 
           {/* Right controls */}
           <div className="flex items-center gap-3">
+            {/* Download CV — pulled in from UaeNav, was missing on the old homepage */}
+            <motion.a
+              href="/lalman-resume.pdf"
+              download
+              whileHover={{ scale: 1.03, y: -1 }}
+              whileTap={{ scale: 0.97 }}
+              className="hidden md:flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium"
+              style={{
+                border: "1px solid var(--border)",
+                color: "var(--text-secondary)",
+                background: "var(--bg-card)",
+                fontFamily: "var(--font-mono)",
+                letterSpacing: "0.06em",
+              }}
+            >
+              <Download size={13} />
+              CV
+            </motion.a>
+
             {/* Hire me CTA */}
             <motion.button
               onClick={() => scrollToSection("contact")}
@@ -210,6 +228,19 @@ const Navbar = () => {
                   </motion.li>
                 ))}
                 <li className="pt-1 pb-1">
+                  <a
+                    href="/lalman-resume.pdf"
+                    download
+                    className="w-full flex items-center justify-center gap-2 py-3 rounded-lg text-xs font-medium mb-1"
+                    style={{
+                      border: "1px solid var(--border)",
+                      color: "var(--text-secondary)",
+                      fontFamily: "var(--font-mono)",
+                    }}
+                  >
+                    <Download size={13} />
+                    Download CV
+                  </a>
                   <button
                     onClick={() => scrollToSection("contact")}
                     className="w-full py-3 rounded-lg text-white text-xs font-medium"
