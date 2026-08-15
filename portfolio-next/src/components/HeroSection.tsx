@@ -46,9 +46,7 @@ const HeroSection = () => {
       }
     }
     return () => {
-      if (timeoutRef.current !== null) {
-        clearTimeout(timeoutRef.current);
-      }
+      if (timeoutRef.current !== null) clearTimeout(timeoutRef.current);
     };
   }, [displayed, typing, roleIndex]);
 
@@ -57,18 +55,9 @@ const HeroSection = () => {
   };
 
   const stats = [
-    {
-      value: "10+",
-      label: "Technologies",
-    },
-    {
-      value: "3+",
-      label: "Production Projects",
-    },
-    {
-      value: "AI",
-      label: "Applications Built with",
-    },
+    { value: "10+", label: "Technologies" },
+    { value: "3+", label: "Production Projects" },
+    { value: "AI", label: "Applications Built with" },
   ];
 
   return (
@@ -77,7 +66,6 @@ const HeroSection = () => {
       className="min-h-screen relative overflow-hidden"
       style={{ background: "var(--bg-primary)" }}
     >
-      {/* Background grid */}
       <div
         className="absolute inset-0 pointer-events-none opacity-30"
         style={{
@@ -87,8 +75,6 @@ const HeroSection = () => {
             "radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%)",
         }}
       />
-
-      {/* Accent circle blur */}
       <div
         className="absolute top-1/4 right-0 w-125 h-125 rounded-full pointer-events-none"
         style={{
@@ -103,7 +89,6 @@ const HeroSection = () => {
         className="min-h-screen flex items-center px-6 pt-24 pb-16 max-w-7xl mx-auto"
       >
         <div className="w-full">
-          {/* Top label row */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -120,11 +105,8 @@ const HeroSection = () => {
             />
           </motion.div>
 
-          {/* Main split layout */}
           <div className="grid lg:grid-cols-[1fr_auto] gap-12 lg:gap-20 items-start">
-            {/* Left — Big text */}
             <div>
-              {/* Typing role */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -143,7 +125,6 @@ const HeroSection = () => {
                 </span>
               </motion.div>
 
-              {/* Big headline */}
               <div className="overflow-hidden mb-6">
                 <motion.h1
                   initial={{ y: "100%" }}
@@ -169,7 +150,7 @@ const HeroSection = () => {
                 </motion.h1>
               </div>
 
-              {/* Sub text */}
+              {/* Sub text — merged in the relocation-availability line from UaeHero */}
               <motion.p
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -183,10 +164,10 @@ const HeroSection = () => {
                 Frontend-first Full Stack Engineer building scalable web
                 applications with React, Next.js, TypeScript, Node.js, Express,
                 and MongoDB. Experienced in AI integration, authentication, REST
-                APIs, and modern application architecture.
+                APIs, and modern application architecture. Based in Abu Dhabi —
+                available immediately for relocation across the UAE.
               </motion.p>
 
-              {/* CTAs */}
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -225,7 +206,6 @@ const HeroSection = () => {
                 </motion.button>
               </motion.div>
 
-              {/* Social row */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -273,7 +253,6 @@ const HeroSection = () => {
               </motion.div>
             </div>
 
-            {/* Right — Profile image + stats */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -284,7 +263,6 @@ const HeroSection = () => {
               }}
               className="hidden lg:flex flex-col items-center gap-6"
             >
-              {/* Profile image */}
               <div className="relative">
                 <motion.div
                   whileHover={{ scale: 1.02 }}
@@ -301,7 +279,6 @@ const HeroSection = () => {
                     className="object-cover"
                   />
                 </motion.div>
-                {/* Accent corner */}
                 <div
                   className="absolute -bottom-3 -right-3 w-16 h-16 rounded-xl -z-10"
                   style={{ background: "var(--accent)", opacity: 0.3 }}
@@ -312,7 +289,6 @@ const HeroSection = () => {
                 />
               </div>
 
-              {/* Stats */}
               <div className="w-full space-y-2">
                 {stats.map((stat, i) => (
                   <motion.div
@@ -351,7 +327,6 @@ const HeroSection = () => {
             </motion.div>
           </div>
 
-          {/* Bottom scroll cue */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
