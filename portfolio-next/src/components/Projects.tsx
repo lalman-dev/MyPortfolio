@@ -2,12 +2,12 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { useTheme } from "@/context/ThemeContext";
+import Image from "next/image";
+import { ExternalLink } from "lucide-react";
+import { FiGithub } from "react-icons/fi";
 import { PROJECTS } from "@/lib/data";
-import ProjectCard from "./ProjectCard";
 
 const Projects = () => {
-  const { theme } = useTheme();
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
 
@@ -19,7 +19,7 @@ const Projects = () => {
       className="py-28 px-6"
       style={{ background: "var(--bg-secondary)" }}
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -28,10 +28,7 @@ const Projects = () => {
           className="mb-16"
         >
           <div className="flex items-center gap-3 mb-4">
-            <div
-              className="w-6 h-px"
-              style={{ background: "var(--accent)" }}
-            />
+            <div className="w-6 h-px" style={{ background: "var(--accent)" }} />
             <span className="section-label">04 / Work</span>
           </div>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
@@ -43,28 +40,173 @@ const Projects = () => {
                 color: "var(--text-primary)",
               }}
             >
-              Selected
+              Projects, by problem
               <br />
-              <span style={{ color: "var(--accent)" }}>Projects</span>
+              <span style={{ color: "var(--accent)" }}>and impact</span>
             </h2>
             <p
               className="max-w-sm text-sm leading-relaxed"
               style={{ color: "var(--text-secondary)" }}
             >
               Projects that demonstrate frontend architecture decisions,
-              rendering strategy, and production-ready UI patterns.
+              rendering strategy, and production-ready UI patterns — framed by
+              the problem each one solves.
             </p>
           </div>
         </motion.div>
 
         <div className="divider mb-12" />
 
-        {/* Projects Grid */}
-        <ul className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-          {PROJECTS.map((project, index) => (
-            <li key={project.id} className="list-none flex">
-              <ProjectCard project={project} index={index} theme={theme} />
-            </li>
+        {/* Project rows — image left, Problem/Solution/Impact right */}
+        <ul className="space-y-6">
+          {PROJECTS.map((project, i) => (
+            <motion.li
+              key={project.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+              className="group grid md:grid-cols-[280px_1fr] gap-0 rounded-2xl overflow-hidden list-none"
+              style={{
+                background: "var(--bg-card)",
+                border: "1px solid var(--border)",
+                transition: "border-color 0.3s ease",
+              }}
+              onMouseEnter={(e) =>
+                ((e.currentTarget as HTMLElement).style.borderColor =
+                  "var(--accent)")
+              }
+              onMouseLeave={(e) =>
+                ((e.currentTarget as HTMLElement).style.borderColor =
+                  "var(--border)")
+              }
+            >
+              {/* Image */}
+              <div className="relative h-48 md:h-full min-h-55">
+                <Image
+                  src={project.image}
+                  alt={`${project.title} preview`}
+                  fill
+                  sizes="(min-width: 768px) 280px, 100vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div
+                  className="absolute top-3 right-3 px-2.5 py-1 rounded-full text-xs font-medium"
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    background: "rgba(0,0,0,0.6)",
+                    color: "rgba(255,255,255,0.85)",
+                    backdropFilter: "blur(4px)",
+                    fontSize: "0.65rem",
+                    letterSpacing: "0.08em",
+                  }}
+                >
+                  {project.category}
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="p-7">
+                <div
+                  className="mb-2 text-xs flex items-center gap-2"
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    color: "var(--accent)",
+                  }}
+                >
+                  <div
+                    className="w-3 h-px"
+                    style={{ background: "var(--accent)" }}
+                  />
+                  {project.keyFocus}
+                </div>
+
+                <h3
+                  className="text-lg font-bold mb-4"
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    color: "var(--text-primary)",
+                  }}
+                >
+                  {project.title}
+                </h3>
+
+                <div className="grid sm:grid-cols-3 gap-5 mb-5">
+                  {[
+                    { label: "Problem", text: project.problem },
+                    { label: "Solution", text: project.solution },
+                    { label: "Impact", text: project.impact },
+                  ].map((block) => (
+                    <div key={block.label}>
+                      <div
+                        className="text-xs mb-1.5"
+                        style={{
+                          fontFamily: "var(--font-mono)",
+                          color: "var(--accent)",
+                          letterSpacing: "0.08em",
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        {block.label}
+                      </div>
+                      <p
+                        className="text-xs leading-relaxed"
+                        style={{ color: "var(--text-secondary)" }}
+                      >
+                        {block.text}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                <ul className="flex flex-wrap gap-1.5 mb-5">
+                  {project.tag.map((tag) => (
+                    <li
+                      key={tag}
+                      className="px-2.5 py-1 rounded-md text-xs"
+                      style={{
+                        fontFamily: "var(--font-mono)",
+                        border: "1px solid var(--border)",
+                        color: "var(--text-muted)",
+                        background: "var(--bg-secondary)",
+                        fontSize: "0.65rem",
+                      }}
+                    >
+                      {tag}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="flex items-center gap-5">
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 text-xs font-medium"
+                    style={{
+                      color: "var(--accent)",
+                      fontFamily: "var(--font-mono)",
+                    }}
+                  >
+                    <ExternalLink size={12} />
+                    Live Demo
+                  </a>
+                  <a
+                    href={project.gitHubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 text-xs"
+                    style={{
+                      color: "var(--text-muted)",
+                      fontFamily: "var(--font-mono)",
+                    }}
+                  >
+                    <FiGithub size={13} />
+                    Source
+                  </a>
+                </div>
+              </div>
+            </motion.li>
           ))}
         </ul>
 
