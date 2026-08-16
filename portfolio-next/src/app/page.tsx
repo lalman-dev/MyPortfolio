@@ -11,7 +11,7 @@ import UaeFinalCta from "@/components/uae/UaeFinalCta";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
-const title = "Lalman — Frontend Engineer Available for UAE Relocation";
+const title = "Lalman — Frontend-focused Full-Stack Engineer Available for Immediate joining in UAE";
 const description =
   "Frontend-focused Full Stack Engineer (React, Next.js, TypeScript, Node.js) available for immediate relocation to Dubai, Abu Dhabi, Sharjah, and across the UAE. Open to full-time roles with visa sponsorship.";
 

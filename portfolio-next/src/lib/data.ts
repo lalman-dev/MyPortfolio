@@ -170,7 +170,7 @@ export const TECH_STACK: TechItem[] = [
   { name: "Postman", icon: SiPostman, color: "text-orange-500" },
 ];
 
-// ---------- Projects (now carries Problem/Solution/Impact) ----------
+// ---------- Projects ----------
 
 export interface Project {
   id: number;

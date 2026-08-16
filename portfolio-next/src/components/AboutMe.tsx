@@ -45,7 +45,7 @@ const AboutMe = () => {
         <div className="divider mb-16" />
 
         <div className="grid lg:grid-cols-2 gap-16">
-          {/* Left — Approach + passions */}
+          {/* Approach + passions */}
           <div>
             <motion.div
               initial={{ opacity: 0, y: 16 }}
@@ -158,7 +158,7 @@ const AboutMe = () => {
             </motion.div>
           </div>
 
-          {/* Right — Timeline */}
+          {/* Timeline */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}

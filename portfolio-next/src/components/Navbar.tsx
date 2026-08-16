@@ -65,7 +65,7 @@ const Navbar = () => {
         />
 
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          {/* Logo — no UAE pill, whole site is UAE-focused now */}
+          {/* Logo */}
           <motion.button
             onClick={() => scrollToSection("home")}
             whileHover={{ scale: 1.02 }}
@@ -122,7 +122,7 @@ const Navbar = () => {
 
           {/* Right controls */}
           <div className="flex items-center gap-3">
-            {/* Download CV — pulled in from UaeNav, was missing on the old homepage */}
+            {/* Download CV */}
             <motion.a
               href="/lalman-resume.pdf"
               download

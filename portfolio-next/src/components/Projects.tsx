@@ -57,7 +57,7 @@ const Projects = () => {
 
         <div className="divider mb-12" />
 
-        {/* Project cards — image full-width on top at its native ratio, content below */}
+        {/* Project cards */}
         <ul className="grid md:grid-cols-2 gap-6">
           {PROJECTS.map((project, i) => (
             <motion.li
@@ -81,7 +81,6 @@ const Projects = () => {
                   "var(--border)")
               }
             >
-              {/* Image — aspect-[3/2] matches the actual screenshot dimensions, no more squeeze-crop */}
               <div className="relative aspect-[3/2] overflow-hidden">
                 <Image
                   src={project.image}
@@ -213,7 +212,7 @@ const Projects = () => {
           ))}
         </ul>
 
-        {/* More on GitHub CTA */}
+        {/* GitHub CTA */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}

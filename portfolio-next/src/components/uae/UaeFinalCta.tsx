@@ -22,7 +22,7 @@ const UaeFinalCta = () => {
             color: "var(--text-primary)",
           }}
         >
-          Hiring frontend engineers
+          Hiring frontend or full-stack engineers
           <br />
           <span style={{ color: "var(--accent)" }}>in the UAE?</span>
         </motion.h2>

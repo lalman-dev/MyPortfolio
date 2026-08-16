@@ -56,7 +56,7 @@ const HeroSection = () => {
 
   const stats = [
     { value: "10+", label: "Technologies" },
-    { value: "3+", label: "Production Projects" },
+    { value: "5+", label: "Production Projects" },
     { value: "AI", label: "Applications Built with" },
   ];
 
@@ -150,7 +150,6 @@ const HeroSection = () => {
                 </motion.h1>
               </div>
 
-              {/* Sub text — merged in the relocation-availability line from UaeHero */}
               <motion.p
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}

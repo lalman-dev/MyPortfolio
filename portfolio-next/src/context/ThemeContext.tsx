@@ -13,10 +13,6 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  // Server has no localStorage, so the initial render always assumes
-  // "light" and the theme script in <head> (see app/layout.tsx) sets the
-  // .dark class on <html> before paint to avoid a flash. This state just
-  // has to catch up to whatever the script already decided.
   const [theme, setTheme] = useState<Theme>("light");
 
   useEffect(() => {

@@ -156,7 +156,7 @@ const ArchitecturePrinciples = () => {
                   </p>
                 </div>
 
-                {/* Example — hidden on mobile, shown on lg */}
+                {/* Example — hidden on mobile */}
                 <div className="hidden lg:block">
                   <div
                     className="text-xs mb-1 uppercase tracking-widest"
