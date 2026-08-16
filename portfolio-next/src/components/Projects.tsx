@@ -57,8 +57,8 @@ const Projects = () => {
 
         <div className="divider mb-12" />
 
-        {/* Project rows — image left, Problem/Solution/Impact right */}
-        <ul className="space-y-6">
+        {/* Project cards — image full-width on top at its native ratio, content below */}
+        <ul className="grid md:grid-cols-2 gap-6">
           {PROJECTS.map((project, i) => (
             <motion.li
               key={project.id}
@@ -66,7 +66,7 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="group grid md:grid-cols-[280px_1fr] gap-0 rounded-2xl overflow-hidden list-none"
+              className="group flex flex-col rounded-2xl overflow-hidden list-none"
               style={{
                 background: "var(--bg-card)",
                 border: "1px solid var(--border)",
@@ -81,13 +81,13 @@ const Projects = () => {
                   "var(--border)")
               }
             >
-              {/* Image */}
-              <div className="relative h-48 md:h-full min-h-55">
+              {/* Image — aspect-[3/2] matches the actual screenshot dimensions, no more squeeze-crop */}
+              <div className="relative aspect-[3/2] overflow-hidden">
                 <Image
                   src={project.image}
                   alt={`${project.title} preview`}
                   fill
-                  sizes="(min-width: 768px) 280px, 100vw"
+                  sizes="(min-width: 768px) 50vw, 100vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div
@@ -106,7 +106,7 @@ const Projects = () => {
               </div>
 
               {/* Content */}
-              <div className="p-7">
+              <div className="p-7 flex flex-col flex-1">
                 <div
                   className="mb-2 text-xs flex items-center gap-2"
                   style={{
@@ -159,7 +159,7 @@ const Projects = () => {
                   ))}
                 </div>
 
-                <ul className="flex flex-wrap gap-1.5 mb-5">
+                <ul className="flex flex-wrap gap-1.5 mb-5 mt-auto">
                   {project.tag.map((tag) => (
                     <li
                       key={tag}
@@ -177,7 +177,10 @@ const Projects = () => {
                   ))}
                 </ul>
 
-                <div className="flex items-center gap-5">
+                <div
+                  className="flex items-center gap-5 pt-4"
+                  style={{ borderTop: "1px solid var(--border)" }}
+                >
                   <a
                     href={project.liveUrl}
                     target="_blank"
