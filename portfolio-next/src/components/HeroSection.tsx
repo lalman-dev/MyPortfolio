@@ -97,7 +97,7 @@ const HeroSection = () => {
           >
             <div className="w-8 h-px" style={{ background: "var(--accent)" }} />
             <span className="section-label">
-              Available for Frontend or Fullstack roles and UAE Relocation
+              Available for Frontend or Fullstack roles across UAE
             </span>
             <div
               className="w-2 h-2 rounded-full animate-pulse"
